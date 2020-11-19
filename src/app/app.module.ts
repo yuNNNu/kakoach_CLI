@@ -10,6 +10,9 @@ import { BenefitsComponent } from './pages/inicio/benefits/benefits.component';
 import { FooterComponent } from './pages/inicio/footer/footer.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { PlanesComponent } from './pages/planes/planes.component';
+import { ImagenPrincipalComponent } from './pages/planes/imagen-principal/imagen-principal.component';
+import { ShortPlansComponent } from './pages/planes/short-plans/short-plans.component';
+import { ComenzamosComponent } from './pages/planes/comenzamos/comenzamos.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { PlanesComponent } from './pages/planes/planes.component';
     BenefitsComponent,
     FooterComponent,
     InicioComponent,
-    PlanesComponent
+    PlanesComponent,
+    ImagenPrincipalComponent,
+    ShortPlansComponent,
+    ComenzamosComponent
   ],
   imports: [
     BrowserModule,
