@@ -14,6 +14,8 @@ import { ImagenPrincipalComponent } from './pages/planes/imagen-principal/imagen
 import { ShortPlansComponent } from './pages/planes/short-plans/short-plans.component';
 import { ComenzamosComponent } from './pages/planes/comenzamos/comenzamos.component';
 import { PlanComponent } from './pages/plan/plan.component';
+import { ColeccionHistoriaComponent } from './pages/coleccion-historia/coleccion-historia.component';
+import { HistoriaComponent } from './pages/historia/historia.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { PlanComponent } from './pages/plan/plan.component';
     ImagenPrincipalComponent,
     ShortPlansComponent,
     ComenzamosComponent,
-    PlanComponent
+    PlanComponent,
+    ColeccionHistoriaComponent
+
   ],
   imports: [
     BrowserModule,
