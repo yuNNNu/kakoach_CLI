@@ -13,6 +13,7 @@ import { PlanesComponent } from './pages/planes/planes.component';
 import { ImagenPrincipalComponent } from './pages/planes/imagen-principal/imagen-principal.component';
 import { ShortPlansComponent } from './pages/planes/short-plans/short-plans.component';
 import { ComenzamosComponent } from './pages/planes/comenzamos/comenzamos.component';
+import { PlanComponent } from './pages/plan/plan.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ComenzamosComponent } from './pages/planes/comenzamos/comenzamos.compon
     PlanesComponent,
     ImagenPrincipalComponent,
     ShortPlansComponent,
-    ComenzamosComponent
+    ComenzamosComponent,
+    PlanComponent
   ],
   imports: [
     BrowserModule,
