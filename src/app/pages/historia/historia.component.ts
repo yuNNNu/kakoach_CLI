@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarComponent } from '../inicio/navbar/navbar.component';
 
 @Component({
   selector: 'app-historia',

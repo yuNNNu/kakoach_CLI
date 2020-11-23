@@ -19,6 +19,7 @@ import { HistoriaComponent } from './pages/historia/historia.component';
 import { CrearusuarioComponent } from './pages/user/crearusuario/crearusuario.component';
 import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
 import { BorderFooterComponent } from './pages/herramientas/border-footer/border-footer.component';
+import { BodyRecuperarPwComponent } from './pages/user/recuperarpass/body-recuperar-pw/body-recuperar-pw.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { BorderFooterComponent } from './pages/herramientas/border-footer/border
     ColeccionHistoriaComponent,
     CrearusuarioComponent,
     RecuperarpassComponent,
-    BorderFooterComponent
+    BorderFooterComponent,
+    BodyRecuperarPwComponent
 
   ],
   imports: [

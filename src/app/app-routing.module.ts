@@ -7,8 +7,7 @@ import { ColeccionHistoriaComponent } from './pages/coleccion-historia/coleccion
 import { HistoriaComponent } from './pages/historia/historia.component';
 import { CrearusuarioComponent } from './pages/user/crearusuario/crearusuario.component';
 import { BorderFooterComponent } from './pages/herramientas/border-footer/border-footer.component';
-
-
+import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
 
 
 const routes: Routes = [
@@ -17,7 +16,8 @@ const routes: Routes = [
   { path: 'plan', component: PlanComponent },
   { path: 'coleccion', component: ColeccionHistoriaComponent },
   { path: 'historia', component: HistoriaComponent },
-  { path: 'crear-usuario', component: CrearusuarioComponent }
+  { path: 'crear-usuario', component: CrearusuarioComponent },
+  { path: 'recuperar-password', component: RecuperarpassComponent }
 ];
 
 @NgModule({
