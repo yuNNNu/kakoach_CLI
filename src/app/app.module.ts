@@ -16,6 +16,9 @@ import { ComenzamosComponent } from './pages/planes/comenzamos/comenzamos.compon
 import { PlanComponent } from './pages/plan/plan.component';
 import { ColeccionHistoriaComponent } from './pages/coleccion-historia/coleccion-historia.component';
 import { HistoriaComponent } from './pages/historia/historia.component';
+import { CrearusuarioComponent } from './pages/user/crearusuario/crearusuario.component';
+import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
+import { BorderFooterComponent } from './pages/herramientas/border-footer/border-footer.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { HistoriaComponent } from './pages/historia/historia.component';
     ShortPlansComponent,
     ComenzamosComponent,
     PlanComponent,
-    ColeccionHistoriaComponent
+    ColeccionHistoriaComponent,
+    CrearusuarioComponent,
+    RecuperarpassComponent,
+    BorderFooterComponent
 
   ],
   imports: [
