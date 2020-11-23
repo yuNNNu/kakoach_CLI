@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,11 +15,12 @@ import { ShortPlansComponent } from './pages/planes/short-plans/short-plans.comp
 import { ComenzamosComponent } from './pages/planes/comenzamos/comenzamos.component';
 import { PlanComponent } from './pages/plan/plan.component';
 import { ColeccionHistoriaComponent } from './pages/coleccion-historia/coleccion-historia.component';
-import { HistoriaComponent } from './pages/historia/historia.component';
 import { CrearusuarioComponent } from './pages/user/crearusuario/crearusuario.component';
 import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
 import { BorderFooterComponent } from './pages/herramientas/border-footer/border-footer.component';
 import { BodyRecuperarPwComponent } from './pages/user/recuperarpass/body-recuperar-pw/body-recuperar-pw.component';
+import { HistoryComponent } from './pages/history/history.component';
+import { HistoryBodyComponent } from './pages/history/history-body/history-body.component';
 
 
 @NgModule({
@@ -40,8 +41,9 @@ import { BodyRecuperarPwComponent } from './pages/user/recuperarpass/body-recupe
     CrearusuarioComponent,
     RecuperarpassComponent,
     BorderFooterComponent,
-    BodyRecuperarPwComponent
-
+    BodyRecuperarPwComponent,
+    HistoryComponent,
+    HistoryBodyComponent
   ],
   imports: [
     BrowserModule,
