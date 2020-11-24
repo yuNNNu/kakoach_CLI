@@ -8,6 +8,8 @@ import { CrearusuarioComponent } from './pages/user/crearusuario/crearusuario.co
 import { BorderFooterComponent } from './pages/herramientas/border-footer/border-footer.component';
 import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { ContactmeComponent } from './pages/contactme/contactme.component';
+
 
 
 const routes: Routes = [
@@ -17,7 +19,8 @@ const routes: Routes = [
   { path: 'coleccion', component: ColeccionHistoriaComponent },
   { path: 'historia', component: HistoryComponent},
   { path: 'crear-usuario', component: CrearusuarioComponent },
-  { path: 'recuperar-password', component: RecuperarpassComponent }
+  { path: 'recuperar-password', component: RecuperarpassComponent },
+  { path: 'contact', component: ContactmeComponent }
 ];
 
 @NgModule({

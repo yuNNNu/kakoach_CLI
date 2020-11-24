@@ -21,6 +21,8 @@ import { BorderFooterComponent } from './pages/herramientas/border-footer/border
 import { BodyRecuperarPwComponent } from './pages/user/recuperarpass/body-recuperar-pw/body-recuperar-pw.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { HistoryBodyComponent } from './pages/history/history-body/history-body.component';
+import { ContactmeComponent } from './pages/contactme/contactme.component';
+import { ContactBodyComponent } from './pages/contactme/contact-body/contact-body.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { HistoryBodyComponent } from './pages/history/history-body/history-body.
     BorderFooterComponent,
     BodyRecuperarPwComponent,
     HistoryComponent,
-    HistoryBodyComponent
+    HistoryBodyComponent,
+    ContactmeComponent,
+    ContactBodyComponent
   ],
   imports: [
     BrowserModule,
