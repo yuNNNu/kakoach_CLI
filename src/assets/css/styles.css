@@ -23443,3 +23443,21 @@ section {
   clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
+
+.grid-divider {
+    position: relative;
+    padding: 0;
+}
+.grid-divider>[class*='col-'] {
+    position: static;
+}
+.grid-divider>[class*='col-']:nth-child(n+2):before {
+    content: "";
+    border-left: 1px solid #DDD;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+.col-padding {
+    padding: 0 15px;
+}

@@ -24,6 +24,7 @@ import { HistoryBodyComponent } from './pages/history/history-body/history-body.
 import { ContactmeComponent } from './pages/contactme/contactme.component';
 import { ContactBodyComponent } from './pages/contactme/contact-body/contact-body.component';
 import { SocialmediaComponent } from './pages/herramientas/socialmedia/socialmedia.component';
+import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-coleccion/imagen-coleccion.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { SocialmediaComponent } from './pages/herramientas/socialmedia/socialmed
     HistoryBodyComponent,
     ContactmeComponent,
     ContactBodyComponent,
-    SocialmediaComponent
+    SocialmediaComponent,
+    ImagenColeccionComponent
   ],
   imports: [
     BrowserModule,
