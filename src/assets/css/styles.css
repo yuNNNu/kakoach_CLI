@@ -3129,6 +3129,7 @@ textarea.form-control {
 
 .form-group {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .form-text {
@@ -6453,6 +6454,7 @@ input[type=button].btn-block {
   background-clip: padding-box;
   border: 1px solid #e3e6ec;
   border-radius: 0.35rem;
+  width: 350px;
 }
 
 .dropdown-menu-left {
