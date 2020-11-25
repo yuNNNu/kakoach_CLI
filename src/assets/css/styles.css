@@ -6436,7 +6436,7 @@ input[type=button].btn-block {
   margin-left: 0;
 }
 
-@media (min-width: 1093px){
+@media (min-width: 1091px){
   .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -6459,7 +6459,30 @@ input[type=button].btn-block {
   }
 }
 
-@media (max-width: 844px){
+@media (max-width: 1090px){
+  .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #687281;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e3e6ec;
+  border-radius: 0.35rem;
+  width: 100%;
+}
+}
+
+@media (min-width: 844px){
   .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -6528,7 +6551,7 @@ input[type=button].btn-block {
   }
 }
 
-/*@media (min-width: 1200px) {
+@media (min-width: 1200px) {
   .dropdown-menu-xl-left {
     right: auto;
     left: 0;
@@ -6538,7 +6561,7 @@ input[type=button].btn-block {
     right: 0;
     left: auto;
   }
-}*/
+}
 
 .dropup .dropdown-menu {
   top: auto;
@@ -6692,7 +6715,7 @@ input[type=button].btn-block {
   display: block;
   padding: 0.25rem 1.5rem;
   color: #1f2d41;
-}
+}git sta@
 
 .btn-group,
 .btn-group-vertical {
