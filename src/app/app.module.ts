@@ -58,9 +58,9 @@ import { DefinitionormassComponent } from './pages/planes/definitionormass/defin
   imports: [
     BrowserModule,
     AppRoutingModule
-
+    
   ],
-  providers: [],
+  providers: [DefinitionormassComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

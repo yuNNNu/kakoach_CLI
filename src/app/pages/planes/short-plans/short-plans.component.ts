@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DefinitionormassComponent } from '../definitionormass/definitionormass.component';
 
 @Component({
   selector: 'app-short-plans',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShortPlansComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dom: DefinitionormassComponent) { }
+
+  public show:any = this.dom.defOrMass;
 
   ngOnInit(): void {
   }

@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './planes.component.html',
   styleUrls: ['./planes.component.css']
 })
+
+
 export class PlanesComponent implements OnInit {
 
   constructor() { }
