@@ -25,6 +25,7 @@ import { ContactmeComponent } from './pages/contactme/contactme.component';
 import { ContactBodyComponent } from './pages/contactme/contact-body/contact-body.component';
 import { SocialmediaComponent } from './pages/herramientas/socialmedia/socialmedia.component';
 import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-coleccion/imagen-coleccion.component';
+import { DefinitionormassComponent } from './pages/planes/definitionormass/definitionormass.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-cole
     ContactmeComponent,
     ContactBodyComponent,
     SocialmediaComponent,
-    ImagenColeccionComponent
+    ImagenColeccionComponent,
+    DefinitionormassComponent
   ],
   imports: [
     BrowserModule,
