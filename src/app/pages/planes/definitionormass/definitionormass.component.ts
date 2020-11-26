@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShowdeformassService } from '../../../services/showdeformass.service';
 
 @Component({
   selector: 'app-definitionormass',
@@ -8,25 +9,22 @@ import { Component, OnInit } from '@angular/core';
 
 export class DefinitionormassComponent implements OnInit {	
 
-  public defOrMass:boolean = false;
-
-  public probando(){
-  	if(!this.defOrMass){
-  		this.defOrMass = true;
-  		console.log("defOrMass", this.defOrMass);
-
-  	}else{
-  		this.defOrMass = false;
-  		console.log("defOrMass", this.defOrMass);
-  	}		
-  }
-
-  constructor() { }
+  public deformass:boolean = true;
+  constructor(private showdeformassservice:ShowdeformassService) { }
 
   ngOnInit(): void {
 
+    this.showdeformassservice.cast.subscribe(show => this.deformass = show);
+  }
 
-  
+  public showview(){
+    if(!this.deformass){
+      this.deformass = true;
+    }else{
+      this.deformass = false;
+    }    
+
+    this.showdeformassservice.seeView(this.deformass);
   }
 
 

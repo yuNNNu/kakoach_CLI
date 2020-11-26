@@ -3,6 +3,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+/* COMPONENTES */
+
 import { NavbarComponent } from './pages/inicio/navbar/navbar.component';
 import { PrincipalimageComponent } from './pages/inicio/principalimage/principalimage.component';
 import { PlanesEstrellasComponent } from './pages/inicio/planes-estrellas/planes-estrellas.component';
@@ -27,6 +30,10 @@ import { SocialmediaComponent } from './pages/herramientas/socialmedia/socialmed
 import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-coleccion/imagen-coleccion.component';
 import { DefinitionormassComponent } from './pages/planes/definitionormass/definitionormass.component';
 
+
+/* SERVICIOS */
+
+import { ShowdeformassService } from './services/showdeformass.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +67,7 @@ import { DefinitionormassComponent } from './pages/planes/definitionormass/defin
     AppRoutingModule
     
   ],
-  providers: [DefinitionormassComponent],
+  providers: [ShowdeformassService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

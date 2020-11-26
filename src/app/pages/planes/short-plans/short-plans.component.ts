@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DefinitionormassComponent } from '../definitionormass/definitionormass.component';
+import { ShowdeformassService } from '../../../services/showdeformass.service'; 
 
 @Component({
   selector: 'app-short-plans',
@@ -8,11 +8,11 @@ import { DefinitionormassComponent } from '../definitionormass/definitionormass.
 })
 export class ShortPlansComponent implements OnInit {
 
-  constructor(private dom: DefinitionormassComponent) { }
-
-  public show:any = this.dom.defOrMass;
+  public deformass:boolean;
+  constructor(private showdeformassservice:ShowdeformassService) { }
 
   ngOnInit(): void {
-  }
 
+    this.showdeformassservice.cast.subscribe(show => this.deformass = show);
+  }
 }
