@@ -1,55 +1,22 @@
   <!-- CARTAS -->
-                    <section class="bg-black py-2 pb-5" *ngIf="deformass">  
-                        <div class="container z-1 pb-4">
-                            <!-- PRIMERA CARTA -->
-                            <div class="card mb-5" data-aos="fade-right">
-                                <!-- FILA -->
-                                <div class="row no-gutters">
-                                    <!-- COLUMNA IMAGEN ideal(800*500)-->
-                                    <div class="col-md-6"><img class="img-fluid" src="../../../../assets/img/planes/deporte1.jpg" alt="..." /></div>
-                                    <!-- COLUMNA TEXTO -->
-                                    <div class="col-md-6">
-                                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
-                                            <h3 class="card-title font-weight-bold text-uppercase mb-2">Planes Básicos</h3>
-                                            <p class="card-text font-weight-light mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias sapiente eos sequi ipsa eaque tempore officiis placeat possimus provident fuga lorem!</p>
-                                            <a class="btn btn-outline-dark btn-marketing rounded-pill" href="/plan">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- SEGUNDA CARTA -->
-                            <div class="card mb-5" data-aos="fade-left">
-                                <!-- FILA -->
-                                <div class="row no-gutters">
-                                    <!-- TEXTO -->
-                                    <div class="col-md-6 order-1 order-md-0">
-                                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
-                                            <h3 class="card-title font-weight-bold text-uppercase mb-2">Planes Intermedios</h3>
-                                            <p class="card-text font-weight-light mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla soluta excepturi, nisi veniam consequatur error vel! Sunt mollitia placeat perspiciatis.</p>
-                                            <a class="btn btn-outline-dark btn-marketing rounded-pill" href="#!">Ver más</a>
-                                        </div>
-                                    </div>
-                                    <!-- IMAGEN -->
-                                    <div class="col-md-6 order-0 order-md-1"><img class="img-fluid" src="../../../../assets/img/planes/deporte2.jpg" alt="..." /></div>
-                                </div>
-                            </div>
-                            
-                             <!-- TERCERA CARTA -->
-                            <div class="card mb-5" data-aos="fade-right">
-                                <!-- FILA -->
-                                <div class="row no-gutters">
-                                    <!-- COLUMNA IMAGEN ideal(800*500)-->
-                                    <div class="col-md-6"><img class="img-fluid" src="../../../../assets/img/planes/deporte1.jpg" alt="..." /></div>
-                                    <!-- COLUMNA TEXTO -->
-                                    <div class="col-md-6">
-                                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
-                                            <h3 class="card-title font-weight-bold text-uppercase mb-2">Planes Avanzados</h3>
-                                            <p class="card-text font-weight-light mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias sapiente eos sequi ipsa eaque tempore officiis placeat possimus provident fuga!</p>
-                                            <a class="btn btn-outline-dark btn-marketing rounded-pill" href="/plan">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </section>
+<section class="bg-black py-2 pb-5">  
+    <div class="container z-1 pb-4">
+        <!-- PRIMERA CARTA -->
+        <div class="card mb-5" data-aos="`fade-${rightLeftAos}`" *ngFor="let plan of planJson ">
+            {{changed ? callback() : ""}}
+            <!-- FILA -->
+            <div class="row no-gutters">
+                <!-- COLUMNA IMAGEN ideal(800*500)-->
+                <div class="col-md-6"><img class="img-fluid" src="{{plan.imagen}}" alt="..." /></div>
+                <!-- COLUMNA TEXTO -->
+                <div class="col-md-6">
+                    <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
+                        <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.titulo}}</h3>
+                        <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
+                        <a class="btn btn-outline-dark btn-marketing rounded-pill" href="/plan">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

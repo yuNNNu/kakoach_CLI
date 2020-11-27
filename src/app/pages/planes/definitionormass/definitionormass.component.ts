@@ -17,16 +17,14 @@ export class DefinitionormassComponent implements OnInit {
     this.showdeformassservice.cast.subscribe(show => this.deformass = show);
   }
 
-  public showview(){
-    if(!this.deformass){
-      this.deformass = true;
-    }else{
-      this.deformass = false;
-    }    
-
+  public showDef(){
+    this.deformass = false;
     this.showdeformassservice.seeView(this.deformass);
   }
 
-
+  public showHyp(){
+    this.deformass = true;
+    this.showdeformassservice.seeView(this.deformass);
+  }
 
 }
