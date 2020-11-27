@@ -18,36 +18,13 @@
                     </div>
                 </div>
                 <div class="container">
-                <div class="card-columns card-columns-portfolio" >
-                   <a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako2.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum dolor sit, amet</div>
+                <div class="card-columns card-columns-portfolio"  >
+                   <a class="card card-portfolio" data-aos="zoom-in" href="#!" *ngFor="let card of cardsJson"
+                        ><img class="card-img-top" src="{{card.imagen}}" alt="..." />
+                        <div class="card-body"><div class="card-title">{{card.titulo}}</div>
                         
-                    </div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako3.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako4.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako1.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako2.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako3.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako4.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako1.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div></div></a
-                    ><a class="card card-portfolio" data-aos="zoom-in" href="#!"
-                        ><img class="card-img-top" src="../../../assets/img/historia/kako1.PNG" alt="..." />
-                        <div class="card-body"><div class="card-title">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</div></div></a
+                        </div>
+                    </a
                     >
                 </div>
                 </div>
