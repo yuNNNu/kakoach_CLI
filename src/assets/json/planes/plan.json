@@ -1,0 +1,52 @@
+[
+{
+	"imagen": "../img/planes/deporte1.jpg",
+	"titulo": "Plan  espalda",
+    "descripcion-corta": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "categoria":"Definicion",
+    "nivel": "basico"
+},
+{
+	"imagen": "../img/planes/deporte1.jpg",
+	"titulo": "Plan  espalda",
+    "descripcion-corta": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "categoria":"hipertrofia",
+    "nivel": "basico"
+},
+{
+	"imagen": "../img/planes/deporte1.jpg",
+	"titulo": "Plan  espalda",
+    "descripcion-corta": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "categoria":"Definicion",
+    "nivel": "intermedio"
+},
+{
+	"imagen": "../img/planes/deporte1.jpg",
+	"titulo": "Plan  espalda",
+    "descripcion-corta": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "categoria":"hipertrofia",
+    "nivel": "intermedio"
+},
+{
+	"imagen": "../img/planes/deporte1.jpg",
+	"titulo": "Plan  espalda",
+    "descripcion-corta": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "categoria":"hipertrofia",
+    "nivel": "avanzado"
+}
+]
