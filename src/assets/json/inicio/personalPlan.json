@@ -1,7 +1,6 @@
-[
+
 {
-	"imagen": "../img/planes/deporte2.jpg",
+	"imagen": "../../../../assets/img/planes/deporte2.jpg",
 	"titulo": "Lorem ipsum, dolor sit amet consectetur ",
 	"descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ut libero corporis placeat ex, eos voluptas, iure praesentium perferendis explicabo recusandae asperiores suscipit magni quod deleniti amet aperiam? Omnis, reprehenderit.t!"
 }
-]

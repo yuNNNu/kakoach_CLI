@@ -15,9 +15,9 @@ export class PrincipalimageComponent implements OnInit {
     ============================================== */
     this.firstImage.getFirstImage()
       .subscribe(respuesta => {
-        console.log(respuesta)
+        // console.log(respuesta)
         this.firstImageJson = respuesta;
-        console.log(this.firstImageJson.imagen)
+        // console.log(this.firstImageJson.imagen)
       })
   }
 
