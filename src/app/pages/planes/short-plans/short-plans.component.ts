@@ -13,18 +13,19 @@ declare var $:any;
 export class ShortPlansComponent implements OnInit {
 
   public defOrMass:boolean;
-  public rlBool:boolean = true;
-  public rightLeftAos:string = "right";
   //////////////////////////////
   public planJson:any;
+  //////////////////////////////
+  // (alternate = true) = (right = true) + (left = false)
+  // (alternate = false) = (right = false) + (left = true)
 
-  public changingSide(){
+  public alternate:boolean = false;
+  public right:boolean = true;
+  public left:boolean = false;
+  
 
-  }
-
-  public changeSide
   constructor(private showdeformassservice:ShowdeformassService, 
-  			  private level: DatalevelsService) { 
+  			  private level: DatalevelsService){ 
     }
 
   ngOnInit(): void {
@@ -47,15 +48,41 @@ export class ShortPlansComponent implements OnInit {
     })
   }
 
-  callback(){
+  toRight(){
+  	this.right = true;
+  	return this.right;
+  }
 
-  	if(!this.rlBool){
-  		this.rightLeftAos = "right";
-  		return this.rightLeftAos;
+  cancelRight(){
+  	this.right = false;
+  	return this.right;
+  }
+
+  toLeft(){
+  	this.left = true;
+  	return this.left;
+  }
+
+  cancelLeft(){
+  	this.left = false;
+  	return this.left;
+  }
+
+  changingSide(){
+
+  	if(this.alternate){
+  		this.alternate = false;
+  		this.cancelLeft();
+  		this.toRight();
   	}else{
-  		this.rightLeftAos = "left";
-  		return this.rightLeftAos;
+  		this.alternate = true;
+  		this.cancelRight();
+  		this.toLeft();
   	}
 
   }
+
+
+
+
 }
