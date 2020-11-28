@@ -105,7 +105,6 @@ body {
   line-height: 1.5;
   color: #687281;
   text-align: left;
-  background-color: #fff;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -5277,14 +5276,20 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(239, 243, 249, 0.5);
 }
 
+
 .btn-outline-dark {
   color: #1f2d41;
   border-color: #1f2d41;
 }
 
-#deformass.btn-outline-dark {
+#deformass1.btn-outline-dark {
   color: white;
-  border-color: #1f2d41;
+  border-color: #0061f2;
+}
+
+#deformass2.btn-outline-dark {
+  color: white;
+  border-color: #0061f2;
 }
 
 .btn-outline-dark:hover {
@@ -5308,7 +5313,7 @@ fieldset:disabled a.btn {
 .btn-outline-dark:not(:disabled):not(.disabled).active,
 .show>.btn-outline-dark.dropdown-toggle {
   color: #fff;
-  background-color: #1f2d41;
+  background-color: #0061f2;
   border-color: #1f2d41;
 }
 
@@ -7625,6 +7630,7 @@ input[type=button].btn-block {
   -webkit-box-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  z-index: 1000;
 }
 
 .navbar .container,
@@ -7640,6 +7646,10 @@ input[type=button].btn-block {
   align-items: center;
   -webkit-box-pack: justify;
   justify-content: space-between;
+}
+
+.container .bg-black{
+  background-color: black;
 }
 
 .navbar-brand {

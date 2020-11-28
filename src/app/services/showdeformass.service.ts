@@ -7,7 +7,7 @@ import { DefinitionormassComponent } from '../pages/planes/definitionormass/defi
 })
 export class ShowdeformassService {
 
-	public show = new BehaviorSubject<boolean>(true);
+	public show = new BehaviorSubject<boolean>(false);
 	cast = this.show.asObservable();
   	constructor() {
 

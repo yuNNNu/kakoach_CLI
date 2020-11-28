@@ -1,25 +1,21 @@
-<div class="row bg-black py-5">
-	<div class="col-2"></div>
-	<div class="row col-8">
-		<div class="col-2"></div>
-		<div class="col-md-4 col-xs-12">
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<button class="btn btn-outline-dark btn-marketing rounded-pill col-8 col-sm-12 col-xs-12" id="deformass" style="left: 33px" (click)="showDef()">PLANES DE DEFINICIÓN</button>
-				<div class="col-sm-2"></div>
+ <div class="container-fluid bg-black py-5">
+ 	<div class="row">
+ 		<div class="col-12">
+ 			<div class="row">
+				<div class=" col-sm-2 col-md-1"></div>
+				<button 
+				(click)="showDef()" (click)="onDef()" 
+				[ngClass]="{'active': defToActive}"
+				 class="btn btn-outline-dark btn-marketing rounded-pill col-12 col-sm-8 col-md-4 active" id="deformass1">PLANES DE DEFINICIÓN</button>
+				<div class=" col-sm-2 col-md-1"></div>
+			
+
+
+				<div class="col-sm-2 col-md-1"></div>
+				<button (click)="onHyp()" [ngClass]="{'active': hypToActive}" class="btn btn-outline-dark btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>	
+				<div class="col-sm-2 col-md-1"></div>
 			</div>	
-		</div>
-
-		<div class="col-md-4 col-xs-12">
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<button class="btn btn-outline-dark btn-marketing rounded-pill col-8 col-sm-12 col-xs-12" id="deformass" style="left: 33px" (click)="showHyp()">PLANES DE HIPERTROFIA</button>	
-				<div class="col-sm-2"></div>
-			</div>
-	    </div>	
-	    <div class="col-2"></div>
-
-	</div>
-	
-    <div class="col-2"></div>
+ 		</div>
+ 	</div>
 </div>
+
