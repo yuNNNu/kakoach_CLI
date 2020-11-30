@@ -6,21 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DatalevelsService {
 
-  public urldefinition: string;
-  public urlhypertrophy: string;
 
+  public urlData: string;
   constructor(private http: HttpClient) {
 
-  	this.urldefinition = "../../assets/json/definition.json";
-  	this.urlhypertrophy = "../../assets/json/hypertrophy.json";
+
+    this.urlData = "../../assets/json/planes/ideaPlans.json";
 
   }
-
-  getDefinitionData(){
-  	return this.http.get(this.urldefinition);
+  getData() {
+    return this.http.get(this.urlData);
   }
 
-  getHypertrophyData(){
-  	return this.http.get(this.urlhypertrophy);
-  }
 }
