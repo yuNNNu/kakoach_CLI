@@ -19,10 +19,19 @@ export class ShortPlansComponent implements OnInit {
 	// (alternate = true) = (right = true) + (left = false)
 	// (alternate = false) = (right = false) + (left = true)
 
+
+  // VARIABLES RELACIONADAS A BOTONES (PLANES DE DEFINICION O VOLUMEN)
 	public alternate: boolean = false;
 	public right: boolean = true;
 	public left: boolean = false;
 	public data: any;
+
+  // VARIABLES RELACIONADAS A BOTONES VER MAS(BASICO/INTERMEDIO/AVANZADO)
+
+  public basic:any;
+  public intermediate:any;
+  public advanced:any
+
 
 	constructor(private showdeformassservice: ShowdeformassService,
 		private level: DatalevelsService) {
@@ -38,18 +47,32 @@ export class ShortPlansComponent implements OnInit {
 
 			// Filtrado
 			if (!this.defOrMass) {
-
+         // GET DATA DE DEFINICION
 				this.level.getData().subscribe(result => {
-
 					this.planJson = result[0].nivel;
+
+          if(this.basic){
+            
+          }else if(this.intermediate){
+
+          }else{
+
+          }
+
 				})
-
-
 			} else {
-
+        // GET DATA DE VOLUMEN
 				this.level.getData().subscribe(result => {
 
 					this.planJson = result[1].nivel;
+
+          if(this.basic){
+
+          }else if(this.intermediate){
+
+          }else{
+            
+          }
 				})
 
 
@@ -57,6 +80,7 @@ export class ShortPlansComponent implements OnInit {
 		})
 	}
 
+  // METODOS DE CAMBIO ENTRE VISTA DE DEFINICION Y VOLUMEN
 	toRight() {
 		this.right = true;
 		return this.right;
@@ -90,8 +114,47 @@ export class ShortPlansComponent implements OnInit {
 		}
 
 	}
+  ///////////////////////////////////////////////////////////
 
+  // MÉTODOS PARA LA SELECCION DE BOTONES PLANES(BASIC/INTERMEDIATE/ADVANCED)
+  // PARA POSTERIOR FILTRADO 
 
+  handleClick(method: string) {
+   switch (method) {
+     case 'basicBool':
+     this.basicBool();
+    break;
+     case 'intermediateBool':
+     this.intermediateBool();
+    break;
+     case 'advancedBool':
+     this.advancedBool();
+    break;
 
+    default:
+    break;
+     }
+  }
+
+  basicBool(){
+    this.basic = true;
+    this.intermediate = false;
+    this.advanced = false;
+    console.log("boton basico");
+  }
+
+  intermediateBool(){
+    this.basic = false;
+    this.intermediate = true;
+    this.advanced = false;
+    console.log("boton intermedio");
+  }
+
+  advancedBool(){
+    this.basic = false;
+    this.intermediate = false;
+    this.advanced = true;
+    console.log("boton avanzado");
+  }
 
 }

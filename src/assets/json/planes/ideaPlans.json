@@ -1,16 +1,19 @@
 [
     {
     "categoria": "definicion",
-    "nivel": [
+    "nivel":[
                 {"imagen": "assets/img/planes/deporte2.jpg","nombre":"basico",
-                 "descripcion": "Los planes básicos de definición implican una menor carga muscular y menor actividad deportiva, PERO una mayor restricción alimenticia"
+                 "descripcion": "Los planes básicos de definición implican una menor carga muscular y menor actividad deportiva, PERO una mayor restricción alimenticia",
+                 "click": "basicBool"
                 },
                 {"imagen": "assets/img/planes/deporte2.jpg","nombre":"intermedio",
-                 "descripcion": "Los planes intermedios de definición implican una carga muscular y actividad deportiva dentro de los parametros recomendados, como también una restricción alimenticia sostenible durante el tiempo"
+                 "descripcion": "Los planes intermedios de definición implican una carga muscular y actividad deportiva dentro de los parametros recomendados, como también una restricción alimenticia sostenible durante el tiempo",
+                 "click": "intermediateBool"
                 },
                 {
                 "imagen": "assets/img/planes/deporte2.jpg","nombre":"avanzado",
-                 "descripcion": "Los planes avanzados de definición implican una mayo carga muscular y actividad deportiva, PERO una menor restricción alimenticia"
+                 "descripcion": "Los planes avanzados de definición implican una mayo carga muscular y actividad deportiva, PERO una menor restricción alimenticia",
+                 "click": "advancedBool"
                 }
             ],
     "planes":[ 
@@ -69,7 +72,6 @@
                     "nivel": "avanzado"
                 }
             ]
-           
     },
     {
     "categoria": "volumen",
