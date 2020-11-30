@@ -48,54 +48,50 @@ export class ShortPlansComponent implements OnInit {
 		this.showdeformassservice.cast.subscribe(res => {
 			// alterno entre botones volumen o definicion, boolean
 			this.defOrMass = res;
-
-			// Filtrado
-			if (!this.defOrMass) {
-				// GET DATA DE DEFINICION
-				this.level.getData().subscribe(result => {
+      this.level.getData().subscribe(result => {
+  			// Filtrado
+  			if (!this.defOrMass) {
+  				// GET DATA DE DEFINICION
+  				
 					this.planJson = result[0].nivel;
+          console.log("plan definicion", this.planJson);
 
 					// recepcion de planes 
 					this.array = result[0].planes;
+          console.log("array filtrado", this.array);
 
-					console.log("definicion", this.array)
 					// console.log("this.array a trabajar: ", this.array)
 					// console.log("definicion_idea_a_comparar: ", result[0].planes[0].nivel)
 
 					// console.log("resultado: ", this.test)
-				})
+  				
 
-				if (this.basic) {
+  				if (this.basic) {
 
-				} else if (this.intermediate) {
+  				} else if (this.intermediate) {
 
-				} else {
+  				} else {
 
-				}
+  				}
 
+  			} else {
 
-			} else {
+  					this.planJson = result[1].nivel;
+            console.log("this.planJson", this.planJson);
 
-				// GET DATA DE VOLUMEN
-				this.level.getData().subscribe(result => {
+  					// recepcion de planes 
+  					this.array = result[1].planes;
+            console.log("this.array", this.array);
 
-					this.planJson = result[1].nivel;
+  					if (this.basic) {
 
-					// recepcion de planes 
-					this.array = result[1].planes;
+  					} else if (this.intermediate) {
 
-					console.log("volumen", this.array)
-					if (this.basic) {
+  					} else {
 
-					} else if (this.intermediate) {
-
-					} else {
-
-					}
-				})
-
-
-			}
+  					}
+  			}
+      })
 		})
 	}
 
