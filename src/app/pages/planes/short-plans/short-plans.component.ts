@@ -35,7 +35,7 @@ export class ShortPlansComponent implements OnInit {
 
 	// var de filtro
 	public nameNivel: any;
-
+	public array: any;
 
 	constructor(private showdeformassservice: ShowdeformassService,
 		private level: DatalevelsService) {
@@ -55,16 +55,14 @@ export class ShortPlansComponent implements OnInit {
 				this.level.getData().subscribe(result => {
 					this.planJson = result[0].nivel;
 
-					this.nameNivel = "intermedio"
-					let array = result[0].planes;
-					this.test = array.filter(ar =>
-						ar.nivel === this.nameNivel
-					);
+					// recepcion de planes 
+					this.array = result[0].planes;
 
-					console.log("array a trabajar: ", array)
-					console.log("definicion_idea_a_comparar: ", result[0].planes[0].nivel)
+					console.log("definicion", this.array)
+					// console.log("this.array a trabajar: ", this.array)
+					// console.log("definicion_idea_a_comparar: ", result[0].planes[0].nivel)
 
-					console.log("resultado: ", this.test)
+					// console.log("resultado: ", this.test)
 				})
 
 				if (this.basic) {
@@ -77,13 +75,16 @@ export class ShortPlansComponent implements OnInit {
 
 
 			} else {
+
 				// GET DATA DE VOLUMEN
 				this.level.getData().subscribe(result => {
 
 					this.planJson = result[1].nivel;
-					console.log("volumen: ", this.planJson)
 
+					// recepcion de planes 
+					this.array = result[1].planes;
 
+					console.log("volumen", this.array)
 					if (this.basic) {
 
 					} else if (this.intermediate) {
@@ -160,6 +161,11 @@ export class ShortPlansComponent implements OnInit {
 		this.advanced = false;
 		this.nameNivel = "basico"
 		console.log("boton basico");
+		// filtro
+		this.test = this.array.filter(ar =>
+			ar.nivel === this.nameNivel
+		);
+		console.log(this.test)
 	}
 
 	intermediateBool() {
@@ -168,6 +174,11 @@ export class ShortPlansComponent implements OnInit {
 		this.advanced = false;
 		this.nameNivel = "intermedio"
 		console.log("boton intermedio");
+		// filtro
+		this.test = this.array.filter(ar =>
+			ar.nivel === this.nameNivel
+		);
+		console.log(this.test)
 	}
 
 	advancedBool() {
@@ -176,6 +187,11 @@ export class ShortPlansComponent implements OnInit {
 		this.advanced = true;
 		this.nameNivel = "avanzado"
 		console.log("boton avanzado");
+		// filtro
+		this.test = this.array.filter(ar =>
+			ar.nivel === this.nameNivel
+		);
+		console.log(this.test)
 	}
 
 }
