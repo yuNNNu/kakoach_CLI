@@ -23,6 +23,7 @@ export class ShortPlansComponent implements OnInit {
 	public right: boolean = true;
 	public left: boolean = false;
 	public data: any;
+	public test: any;
 
 	constructor(private showdeformassservice: ShowdeformassService,
 		private level: DatalevelsService) {
@@ -42,6 +43,17 @@ export class ShortPlansComponent implements OnInit {
 				this.level.getData().subscribe(result => {
 
 					this.planJson = result[0].nivel;
+
+					let nameNivel = "intermedio"
+					let array = result[0].planes;
+					this.test = array.filter(ar =>
+						ar.nivel === nameNivel
+					);
+
+					console.log("array a trabajar: ", array)
+					console.log("definicion_idea_a_comparar: ", result[0].planes[0].nivel)
+
+					console.log("resultado: ", this.test)
 				})
 
 
@@ -50,6 +62,8 @@ export class ShortPlansComponent implements OnInit {
 				this.level.getData().subscribe(result => {
 
 					this.planJson = result[1].nivel;
+					console.log("volumen: ", this.planJson)
+
 				})
 
 
