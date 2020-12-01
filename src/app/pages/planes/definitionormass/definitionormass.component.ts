@@ -7,36 +7,36 @@ import { ShowdeformassService } from '../../../services/showdeformass.service';
   styleUrls: ['./definitionormass.component.css']
 })
 
-export class DefinitionormassComponent implements OnInit {	
+export class DefinitionormassComponent implements OnInit {
 
-  public deformass:boolean = true;
-  public defToActive:boolean = true;
-  public hypToActive:boolean;
-  constructor(private showdeformassservice:ShowdeformassService) { }
+  public deformass: boolean = true;
+  public defToActive: boolean = true;
+  public hypToActive: boolean;
+  constructor(private showdeformassservice: ShowdeformassService) { }
 
   ngOnInit(): void {
 
     this.showdeformassservice.cast.subscribe(show => this.deformass = show);
   }
 
-  public showDef(){
+  public showDef() {
     this.deformass = false;
     this.showdeformassservice.seeView(this.deformass);
   }
 
-  public showHyp(){
+  public showHyp() {
     this.deformass = true;
     this.showdeformassservice.seeView(this.deformass);
 
   }
 
-  public onDef(){
+  public onDef() {
     this.defToActive = true;
     this.hypToActive = false;
     return this.defToActive;
   }
 
-  public onHyp(){
+  public onHyp() {
     this.defToActive = false;
     this.hypToActive = true;
     return this.hypToActive;

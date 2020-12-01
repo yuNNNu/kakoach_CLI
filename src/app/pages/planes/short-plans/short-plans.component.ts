@@ -12,6 +12,7 @@ declare var $: any;
 })
 export class ShortPlansComponent implements OnInit {
 
+
 	public defOrMass: boolean;
 	//////////////////////////////
 	public planJson: any;
@@ -22,8 +23,8 @@ export class ShortPlansComponent implements OnInit {
 
 	// VARIABLES RELACIONADAS A BOTONES (PLANES DE DEFINICION O VOLUMEN)
 	public alternate: boolean = false;
-	public right: boolean = true;
-	public left: boolean = false;
+	public right: boolean;
+	public left: boolean;
 	public data: any;
 	public test: any;
 
@@ -43,55 +44,57 @@ export class ShortPlansComponent implements OnInit {
 
 	ngOnInit(): void {
 
+		this.right = true;
+		this.left = false
 		/* SE RECIBEN DATOS DE NIVELES */
 
 		this.showdeformassservice.cast.subscribe(res => {
 			// alterno entre botones volumen o definicion, boolean
 			this.defOrMass = res;
-      this.level.getData().subscribe(result => {
-  			// Filtrado
-  			if (!this.defOrMass) {
-  				// GET DATA DE DEFINICION
-  				
+			this.level.getData().subscribe(result => {
+				// Filtrado
+				if (!this.defOrMass) {
+					// GET DATA DE DEFINICION
+
 					this.planJson = result[0].nivel;
-          console.log("plan definicion", this.planJson);
+					console.log("plan definicion", this.planJson);
 
 					// recepcion de planes 
 					this.array = result[0].planes;
-          console.log("array filtrado", this.array);
+					console.log("array filtrado", this.array);
 
 					// console.log("this.array a trabajar: ", this.array)
 					// console.log("definicion_idea_a_comparar: ", result[0].planes[0].nivel)
 
 					// console.log("resultado: ", this.test)
-  				
 
-  				if (this.basic) {
 
-  				} else if (this.intermediate) {
+					if (this.basic) {
 
-  				} else {
+					} else if (this.intermediate) {
 
-  				}
+					} else {
 
-  			} else {
+					}
 
-  					this.planJson = result[1].nivel;
-            console.log("this.planJson", this.planJson);
+				} else {
 
-  					// recepcion de planes 
-  					this.array = result[1].planes;
-            console.log("this.array", this.array);
+					this.planJson = result[1].nivel;
+					console.log("this.planJson", this.planJson);
 
-  					if (this.basic) {
+					// recepcion de planes 
+					this.array = result[1].planes;
+					console.log("this.array", this.array);
 
-  					} else if (this.intermediate) {
+					if (this.basic) {
 
-  					} else {
+					} else if (this.intermediate) {
 
-  					}
-  			}
-      })
+					} else {
+
+					}
+				}
+			})
 		})
 	}
 
