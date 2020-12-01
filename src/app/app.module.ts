@@ -34,6 +34,7 @@ import { DefinitionormassComponent } from './pages/planes/definitionormass/defin
 /* SERVICIOS */
 
 import { ShowdeformassService } from './services/showdeformass.service';
+import { InlvlService } from './services/planes/inlvl.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { ShowdeformassService } from './services/showdeformass.service';
     HttpClientModule
     
   ],
-  providers: [ShowdeformassService],
+  providers: [ShowdeformassService, InlvlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
