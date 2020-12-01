@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowdeformassService } from '../../../services/showdeformass.service';
 import { DatalevelsService } from '../../../services/datalevels.service';
+import { InlvlService } from '../../../services/planes/inlvl.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -38,62 +39,57 @@ export class ShortPlansComponent implements OnInit {
 	public nameNivel: any;
 	public array: any;
 
+	// 
+
+	public inLvl: boolean;
+
 	constructor(private showdeformassservice: ShowdeformassService,
-		private level: DatalevelsService) {
+		private level: DatalevelsService,
+		private inlevel: InlvlService) {
 	}
 
 	ngOnInit(): void {
 
-		this.right = true;
-		this.left = false
+		this.inlevel.cast.subscribe(lvl => this.inLvl = lvl);
+
 		/* SE RECIBEN DATOS DE NIVELES */
 
 		this.showdeformassservice.cast.subscribe(res => {
-			// alterno entre botones volumen o definicion, boolean
-			this.defOrMass = res;
-			this.level.getData().subscribe(result => {
-				// Filtrado
-				if (!this.defOrMass) {
-					// GET DATA DE DEFINICION
+			this.inlevel.cast.subscribe(resp => {
+				this.inLvl = resp;
+				// alterno entre botones volumen o definicion, boolean
+				this.defOrMass = res;
+				this.level.getData().subscribe(result => {
+					// Filtrado
+					if (!this.inLvl) {
 
-					this.planJson = result[0].nivel;
-					console.log("plan definicion", this.planJson);
+						if (!this.defOrMass) {
+							// GET DATA DE DEFINICION
 
-					// recepcion de planes 
-					this.array = result[0].planes;
-					console.log("array filtrado", this.array);
+							this.planJson = result[0].nivel;
+							console.log("plan definicion", this.planJson);
 
-					// console.log("this.array a trabajar: ", this.array)
-					// console.log("definicion_idea_a_comparar: ", result[0].planes[0].nivel)
+							// recepcion de planes 
+							this.array = result[0].planes;
+							console.log("array filtrado def", this.array);
 
-					// console.log("resultado: ", this.test)
+						} else {
 
+							this.planJson = result[1].nivel;
+							console.log("plan volumen", this.planJson);
 
-					if (this.basic) {
-
-					} else if (this.intermediate) {
-
+							// recepcion de planes 
+							this.array = result[1].planes;
+							console.log("array filtrado vol", this.array);
+						}
 					} else {
 
-					}
-
-				} else {
-
-					this.planJson = result[1].nivel;
-					console.log("this.planJson", this.planJson);
-
-					// recepcion de planes 
-					this.array = result[1].planes;
-					console.log("this.array", this.array);
-
-					if (this.basic) {
-
-					} else if (this.intermediate) {
-
-					} else {
+						this.planJson = this.test;
+						console.log("this.planJson", this.planJson);
+						console.log("holo");
 
 					}
-				}
+				})
 			})
 		})
 	}
@@ -154,7 +150,11 @@ export class ShortPlansComponent implements OnInit {
 		}
 	}
 
+
+
 	basicBool() {
+		this.getInLvl();
+		console.log("this.inLvl", this.inLvl);
 		this.basic = true;
 		this.intermediate = false;
 		this.advanced = false;
@@ -164,10 +164,10 @@ export class ShortPlansComponent implements OnInit {
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
-		console.log(this.test)
 	}
 
 	intermediateBool() {
+		this.getInLvl();
 		this.basic = false;
 		this.intermediate = true;
 		this.advanced = false;
@@ -181,6 +181,7 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	advancedBool() {
+		this.getInLvl();
 		this.basic = false;
 		this.intermediate = false;
 		this.advanced = true;
@@ -191,6 +192,13 @@ export class ShortPlansComponent implements OnInit {
 			ar.nivel === this.nameNivel
 		);
 		console.log(this.test)
+	}
+
+	/////////////////
+
+	getInLvl() {
+		this.inLvl = true;
+		this.inlevel.seeLvl(this.inLvl)
 	}
 
 }
