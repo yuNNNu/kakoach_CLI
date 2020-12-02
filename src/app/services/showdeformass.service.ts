@@ -6,9 +6,10 @@ import { DefinitionormassComponent } from '../pages/planes/definitionormass/defi
   providedIn: 'root'
 })
 export class ShowdeformassService {
-
+	/// mostrar planes de definicion o masa en pantalla
 	public show = new BehaviorSubject<boolean>(false);
 	cast = this.show.asObservable();
+
   	constructor() {
 
     }

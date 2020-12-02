@@ -49,12 +49,9 @@ export class ShortPlansComponent implements OnInit {
 
 	ngOnInit(): void {
 
-		this.inlevel.cast.subscribe(lvl => this.inLvl = lvl);
-
 		/* SE RECIBEN DATOS DE NIVELES */
-
-		this.showdeformassservice.cast.subscribe(res => {
-			this.inlevel.cast.subscribe(resp => {
+		this.inlevel.cast.subscribe(resp => {
+			this.showdeformassservice.cast.subscribe(res => {
 				this.inLvl = resp;
 				// alterno entre botones volumen o definicion, boolean
 				this.defOrMass = res;
@@ -71,6 +68,7 @@ export class ShortPlansComponent implements OnInit {
 							// recepcion de planes 
 							this.array = result[0].planes;
 			      			console.log("array filtrado def", this.array);
+			      			return;
 
 		  				} else {
 
@@ -80,13 +78,13 @@ export class ShortPlansComponent implements OnInit {
 							// recepcion de planes 
 							this.array = result[1].planes;
 			   				console.log("array filtrado vol", this.array);
+			   				return;
 		  				}
 	  				}else{
 
 	  					this.planJson = this.test;
-	  					console.log("this.planJson", this.planJson);
-	  					console.log("holo");
 
+	  					return;
 		  			}	
 	     		})	
 		}) })
@@ -151,7 +149,8 @@ export class ShortPlansComponent implements OnInit {
 
 
 	basicBool() {
-		this.getInLvl();
+		this.inLvl = true;
+		this.inlevel.seeLvl(this.inLvl)
 		console.log("this.inLvl", this.inLvl);
 		this.basic = true;
 		this.intermediate = false;
@@ -195,8 +194,10 @@ export class ShortPlansComponent implements OnInit {
 	/////////////////
 
 	getInLvl(){
-		this.inLvl = true;
-		this.inlevel.seeLvl(this.inLvl)
+		if(!this.inLvl){
+			this.inLvl = true;
+			this.inlevel.seeLvl(this.inLvl)
+		}
 	}
 
 }
