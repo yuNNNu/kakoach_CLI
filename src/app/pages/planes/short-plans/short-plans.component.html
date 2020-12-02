@@ -1,3 +1,24 @@
+  <div class="container-fluid bg-black py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class=" col-sm-2 col-md-1"></div>
+                <button 
+                (click)="showDef()" 
+                [ngClass]="{'active': defToActive}"
+                 class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4 active" id="deformass1">PLANES DE DEFINICIÓN</button>
+                <div class=" col-sm-2 col-md-1 mt-2 mt-lg-2"></div>
+            
+                <div class="col-sm-2 col-md-1"></div>
+                <button [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
+                <div class="col-sm-2 col-md-1"></div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+
+
   <!-- CARTAS -->
 <section class="bg-black py-2 pb-5">  
     <div class="container z-1 pb-4" style="left: 9px;" *ngFor="let plan of planJson; ">

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShowdeformassService } from '../../../services/showdeformass.service';
 import { DatalevelsService } from '../../../services/datalevels.service';
-import { InlvlService } from '../../../services/planes/inlvl.service';
 
 declare var jQuery: any;
 declare var $: any;
@@ -14,9 +12,7 @@ declare var $: any;
 export class ShortPlansComponent implements OnInit {
 
 
-	public defOrMass: boolean;
 	//////////////////////////////
-	public planJson: any;
 	//////////////////////////////
 	// (alternate = true) = (right = true) + (left = false)
 	// (alternate = false) = (right = false) + (left = true)
@@ -26,72 +22,64 @@ export class ShortPlansComponent implements OnInit {
 	public alternate: boolean = false;
 	public right: boolean;
 	public left: boolean;
-	public data: any;
+	///////////////////////////////////
 	public test: any;
-
-	// VARIABLES RELACIONADAS A BOTONES VER MAS(BASICO/INTERMEDIO/AVANZADO)
-
-	public basic: any;
-	public intermediate: any;
-	public advanced: any
-
-	// var de filtro
-	public nameNivel: any;
 	public array: any;
-
-	// 
-
+	///////////////////////////////////
+	public nameNivel: any
 	public inLvl: boolean;
+	public defOrMass: boolean;
+	///////////////////////////////////
+  	public defToActive:boolean = true;
+ 	public hypToActive:boolean;
+ 	///////////////////////////////////
+ 	public planJson: any;
 
-	constructor(private showdeformassservice: ShowdeformassService,
-		private level: DatalevelsService,
-		private inlevel: InlvlService) {
+	constructor(private level: DatalevelsService) {
 	}
 
 	ngOnInit(): void {
 
 		/* SE RECIBEN DATOS DE NIVELES */
-		this.inlevel.cast.subscribe(resp => {
-			this.showdeformassservice.cast.subscribe(res => {
-				this.inLvl = resp;
-				// alterno entre botones volumen o definicion, boolean
-				this.defOrMass = res;
-				this.level.getData().subscribe(result => {
-					// Filtrado
-					if (!this.inLvl) {
+		// alterno entre botones volumen o definicion, boolean
+		this.level.getData().subscribe(result => {
+			// Filtrado
+			if (!this.inLvl) {
+				console.log("this.inLvl", this.inLvl);
 
-						if (!this.defOrMass) {
-							// GET DATA DE DEFINICION
+				if (!this.defOrMass) {
+					console.log("this.defOrMass", this.defOrMass);
+					// GET DATA DE DEFINICION
 
-							this.planJson = result[0].nivel;
-							console.log("plan definicion", this.planJson);
+					this.planJson = result[0].nivel;
+					console.log("plan definicion", this.planJson);
 
-							// recepcion de planes 
-							this.array = result[0].planes;
-			      			console.log("array filtrado def", this.array);
-			      			return;
+					// recepcion de planes 
+					this.array = result[0].planes;
+	      			console.log("array filtrado def", this.array);
+	      			return;
 
-						} else {
+				} else {
 
-							this.planJson = result[1].nivel;
-							console.log("plan volumen", this.planJson);
+					this.planJson = result[1].nivel;
+					console.log("plan volumen", this.planJson);
 
-							// recepcion de planes 
-							this.array = result[1].planes;
-			   				console.log("array filtrado vol", this.array);
-			   				return;
-		  				}
-	  				}else{
+					// recepcion de planes 
+					this.array = result[1].planes;
+	   				console.log("array filtrado vol", this.array);
+	   				return;
+  				}
 
-	  					this.planJson = this.test;
+			}else{
 
-	  					return;
-		  			}	
-	     		})	
-		}) })
+				this.planJson = this.test;
+
+				return;
+  			}	
+ 		})	
 	}
 
-	// METODOS DE CAMBIO ENTRE VISTA DE DEFINICION Y VOLUMEN
+	// ALTERNADO ENTRE TARJETAS AL MOMENTO DE CARGAR JSON (IZQUIERDA A DERECHA HACIA ABAJO)
 	toRight() {
 		this.right = true;
 		return this.right;
@@ -125,6 +113,25 @@ export class ShortPlansComponent implements OnInit {
 		}
 
 	}
+
+	// PRENDIDO O APAGADO DE UN BOTON, SE APAGA EL DE AL LADO
+
+	public showDef() {
+		this.defOrMass = false;
+	    this.inLvl = false;
+	    this.defToActive = true;
+	    this.hypToActive = false;
+	    return this.defToActive;
+	}
+
+	public showHyp() {
+	  this.defOrMass = true;
+	  this.inLvl = false;
+	  this.defToActive = false;
+	  this.hypToActive = true;
+	  return this.hypToActive;
+	}
+
 	///////////////////////////////////////////////////////////
 
 	// MÉTODOS PARA LA SELECCION DE BOTONES PLANES(BASIC/INTERMEDIATE/ADVANCED)
@@ -151,13 +158,7 @@ export class ShortPlansComponent implements OnInit {
 
 	basicBool() {
 		this.inLvl = true;
-		this.inlevel.seeLvl(this.inLvl)
-		console.log("this.inLvl", this.inLvl);
-		this.basic = true;
-		this.intermediate = false;
-		this.advanced = false;
 		this.nameNivel = "basico"
-		console.log("boton basico");
 		// filtro
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
@@ -165,26 +166,16 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	intermediateBool() {
-		this.getInLvl();
-		this.basic = false;
-		this.intermediate = true;
-		this.advanced = false;
 		this.nameNivel = "intermedio"
-		console.log("boton intermedio");
 		// filtro
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
-		console.log(this.test)
 	}
 
 	advancedBool() {
-		this.getInLvl();
-		this.basic = false;
-		this.intermediate = false;
-		this.advanced = true;
+		this.inLvl = true;
 		this.nameNivel = "avanzado"
-		console.log("boton avanzado");
 		// filtro
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
@@ -192,12 +183,7 @@ export class ShortPlansComponent implements OnInit {
 		console.log(this.test)
 	}
 
-	/////////////////
 
-	getInLvl(){
-		if(!this.inLvl){
-			this.inLvl = true;
-			this.inlevel.seeLvl(this.inLvl)
-	}	}
+
 
 }
