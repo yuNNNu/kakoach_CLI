@@ -30,10 +30,13 @@ export class ShortPlansComponent implements OnInit {
 	public inLvl: boolean;
 	public defOrMass: boolean;
 	///////////////////////////////////
-  	public defToActive:boolean = true;
- 	public hypToActive:boolean;
- 	///////////////////////////////////
- 	public planJson: any;
+	public defToActive: boolean = true;
+	public hypToActive: boolean;
+	///////////////////////////////////
+	public planJson: any;
+	// 
+	public backdef: boolean = true;
+	public backvol: boolean = true;
 
 	constructor(private level: DatalevelsService) {
 	}
@@ -45,38 +48,38 @@ export class ShortPlansComponent implements OnInit {
 		this.level.getData().subscribe(result => {
 			// Filtrado
 			if (!this.inLvl) {
-				console.log("this.inLvl", this.inLvl);
+
 
 				if (!this.defOrMass) {
-					console.log("this.defOrMass", this.defOrMass);
+
 					// GET DATA DE DEFINICION
 
 					this.planJson = result[0].nivel;
-					console.log("plan definicion", this.planJson);
+
 
 					// recepcion de planes 
 					this.array = result[0].planes;
-	      			console.log("array filtrado def", this.array);
-	      			return;
+
+					return;
 
 				} else {
 
 					this.planJson = result[1].nivel;
-					console.log("plan volumen", this.planJson);
+
 
 					// recepcion de planes 
 					this.array = result[1].planes;
-	   				console.log("array filtrado vol", this.array);
-	   				return;
-  				}
+					console.log("array filtrado vol", this.array);
+					return;
+				}
 
-			}else{
+			} else {
 
 				this.planJson = this.test;
 
 				return;
-  			}	
- 		})	
+			}
+		})
 	}
 
 	// ALTERNADO ENTRE TARJETAS AL MOMENTO DE CARGAR JSON (IZQUIERDA A DERECHA HACIA ABAJO)
@@ -118,20 +121,29 @@ export class ShortPlansComponent implements OnInit {
 
 	public showDef() {
 		this.defOrMass = false;
-	    this.inLvl = false;
-	    this.defToActive = true;
-	    this.hypToActive = false;
-	    this.update();
-	    return this.defToActive;
+		this.inLvl = false;
+		this.defToActive = true;
+		this.hypToActive = false;
+		this.update();
+		this.backdef = true
+		this.backvol = true
+
+
+
+		return this.defToActive;
+
 	}
 
 	public showHyp() {
-	  this.defOrMass = true;
-	  this.inLvl = false;
-	  this.defToActive = false;
-	  this.hypToActive = true;
-	  this.update();
-	  return this.hypToActive;
+		this.defOrMass = true;
+		this.inLvl = false;
+		this.defToActive = false;
+		this.hypToActive = true;
+		this.update();
+		this.backdef = true
+		this.backvol = true
+
+		return this.hypToActive;
 	}
 
 	///////////////////////////////////////////////////////////
@@ -156,7 +168,15 @@ export class ShortPlansComponent implements OnInit {
 		}
 	}
 
-
+	backto() {
+		if (!this.defOrMass) {
+			this.backdef = false
+			this.backvol = true
+		} else {
+			this.backdef = true
+			this.backvol = false
+		}
+	}
 
 	basicBool() {
 		this.inLvl = true;
@@ -166,6 +186,8 @@ export class ShortPlansComponent implements OnInit {
 			ar.nivel === this.nameNivel
 		);
 		this.update();
+		this.backto();
+
 	}
 
 	intermediateBool() {
@@ -175,6 +197,7 @@ export class ShortPlansComponent implements OnInit {
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
+		this.backto();
 		this.update();
 	}
 
@@ -185,10 +208,11 @@ export class ShortPlansComponent implements OnInit {
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
+		this.backto();
 		this.update();
 	}
 
-	update(){
+	update() {
 		this.ngOnInit();
 	}
 

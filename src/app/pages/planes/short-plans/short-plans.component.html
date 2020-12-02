@@ -3,14 +3,19 @@
         <div class="col-12">
             <div class="row">
                 <div class=" col-sm-2 col-md-1"></div>
-                <button 
+                <button *ngIf="backdef"
                 (click)="showDef()" 
                 [ngClass]="{'active': defToActive}"
                  class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4 active" id="deformass1">PLANES DE DEFINICIÓN</button>
+                 <button *ngIf="!backdef"
+                (click)="showDef()" 
+                [ngClass]="{'active': defToActive}"
+                 class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4 active" id="deformass1">VOLVER PLANES DE DEFINICIÓN</button>
                 <div class=" col-sm-2 col-md-1 mt-2 mt-lg-2"></div>
             
                 <div class="col-sm-2 col-md-1"></div>
-                <button [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
+                <button *ngIf="backvol" [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
+                <button *ngIf="!backvol" [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">VOLVER PLANES DE VOLUMEN</button>  
                 <div class="col-sm-2 col-md-1"></div>
             </div>  
         </div>
