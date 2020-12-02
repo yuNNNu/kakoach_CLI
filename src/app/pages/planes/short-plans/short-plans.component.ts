@@ -121,6 +121,7 @@ export class ShortPlansComponent implements OnInit {
 	    this.inLvl = false;
 	    this.defToActive = true;
 	    this.hypToActive = false;
+	    this.update();
 	    return this.defToActive;
 	}
 
@@ -129,6 +130,7 @@ export class ShortPlansComponent implements OnInit {
 	  this.inLvl = false;
 	  this.defToActive = false;
 	  this.hypToActive = true;
+	  this.update();
 	  return this.hypToActive;
 	}
 
@@ -163,14 +165,17 @@ export class ShortPlansComponent implements OnInit {
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
+		this.update();
 	}
 
 	intermediateBool() {
+		this.inLvl = true;
 		this.nameNivel = "intermedio"
 		// filtro
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
+		this.update();
 	}
 
 	advancedBool() {
@@ -180,10 +185,12 @@ export class ShortPlansComponent implements OnInit {
 		this.test = this.array.filter(ar =>
 			ar.nivel === this.nameNivel
 		);
-		console.log(this.test)
+		this.update();
 	}
 
-
+	update(){
+		this.ngOnInit();
+	}
 
 
 }
