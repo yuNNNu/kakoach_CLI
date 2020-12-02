@@ -8,7 +8,7 @@ import { InlvlService } from '../../../services/planes/inlvl.service';
   styleUrls: ['./definitionormass.component.css']
 })
 
-export class DefinitionormassComponent implements OnInit {	
+export class DefinitionormassComponent implements OnInit {
 
   public deformass:boolean = true;
   public defToActive:boolean = true;
@@ -25,7 +25,7 @@ export class DefinitionormassComponent implements OnInit {
 
   }
 
-  public showDef(){
+  public showDef() {
     this.deformass = false;
     if(this.offInLvl){
       this.offInLvl = false;
@@ -34,7 +34,7 @@ export class DefinitionormassComponent implements OnInit {
     this.showdeformassservice.seeView(this.deformass);
   }
 
-  public showHyp(){
+  public showHyp() {
     this.deformass = true;
     if(this.offInLvl){
       this.offInLvl = false;
@@ -43,13 +43,13 @@ export class DefinitionormassComponent implements OnInit {
     this.showdeformassservice.seeView(this.deformass);
   }
 
-  public onDef(){
+  public onDef() {
     this.defToActive = true;
     this.hypToActive = false;
     return this.defToActive;
   }
 
-  public onHyp(){
+  public onHyp() {
     this.defToActive = false;
     this.hypToActive = true;
     return this.hypToActive;

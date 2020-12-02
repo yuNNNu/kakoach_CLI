@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class ShortPlansComponent implements OnInit {
 
+
 	public defOrMass: boolean;
 	//////////////////////////////
 	public planJson: any;
@@ -23,8 +24,8 @@ export class ShortPlansComponent implements OnInit {
 
 	// VARIABLES RELACIONADAS A BOTONES (PLANES DE DEFINICION O VOLUMEN)
 	public alternate: boolean = false;
-	public right: boolean = true;
-	public left: boolean = false;
+	public right: boolean;
+	public left: boolean;
 	public data: any;
 	public test: any;
 
@@ -40,11 +41,11 @@ export class ShortPlansComponent implements OnInit {
 
 	// 
 
-	public inLvl:boolean;
+	public inLvl: boolean;
 
 	constructor(private showdeformassservice: ShowdeformassService,
-		        private level: DatalevelsService,
-		        private inlevel: InlvlService) {
+		private level: DatalevelsService,
+		private inlevel: InlvlService) {
 	}
 
 	ngOnInit(): void {
@@ -55,25 +56,25 @@ export class ShortPlansComponent implements OnInit {
 				this.inLvl = resp;
 				// alterno entre botones volumen o definicion, boolean
 				this.defOrMass = res;
-	     		this.level.getData().subscribe(result => {
-	  			// Filtrado
-	  				if(!this.inLvl){
+				this.level.getData().subscribe(result => {
+					// Filtrado
+					if (!this.inLvl) {
 
-	  					if (!this.defOrMass) {
-						// GET DATA DE DEFINICION
-						
+						if (!this.defOrMass) {
+							// GET DATA DE DEFINICION
+
 							this.planJson = result[0].nivel;
-			      			console.log("plan definicion", this.planJson);
+							console.log("plan definicion", this.planJson);
 
 							// recepcion de planes 
 							this.array = result[0].planes;
 			      			console.log("array filtrado def", this.array);
 			      			return;
 
-		  				} else {
+						} else {
 
 							this.planJson = result[1].nivel;
-			    			console.log("plan volumen", this.planJson);
+							console.log("plan volumen", this.planJson);
 
 							// recepcion de planes 
 							this.array = result[1].planes;
@@ -197,7 +198,6 @@ export class ShortPlansComponent implements OnInit {
 		if(!this.inLvl){
 			this.inLvl = true;
 			this.inlevel.seeLvl(this.inLvl)
-		}
-	}
+	}	}
 
 }
