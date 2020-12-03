@@ -62,7 +62,6 @@ import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-cole
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

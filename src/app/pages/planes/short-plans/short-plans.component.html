@@ -5,23 +5,25 @@
                 <div class="col-sm-2 col-md-1" *ngIf="!inLvl"></div>
                 <div class="col-2" *ngIf="inLvl"></div>
 
-                <button *ngIf="backdef && !inLvl"
+                <button *ngIf="backdef && !inLvl" data-aos="fade-zoom-in"
                 (click)="showDef()" 
                 [ngClass]="{'active': defToActive}"
                  class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4 active" id="deformass1">PLANES DE DEFINICIÓN</button>
 
-                 <button *ngIf="!backdef && inLvl"
+                <button *ngIf="!backdef && inLvl" data-aos="fade-right"
                 (click)="showDef()" 
                 [ngClass]="{'active': defToActive}"
                  class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-8 active" id="deformass1"><i class="fas fa-arrow-left mr-4" style="font-size: 1rem"></i>
                 VOLVER A PLANES DE DEFINICIÓN</button>
-                <div class=" col-sm-2 col-md-1 mt-2 mt-lg-2" *ngIf="!inLvl"></div>
+                <div class=" col-sm-2 col-md-1 mt-2 mt-lg-2" *ngIf="!inLvl"></div> 
             
                 <div class="col-sm-2 col-md-1" *ngIf="!inLvl"></div>
-                <button *ngIf="backvol && !inLvl" [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
+                <button *ngIf="backvol && !inLvl" data-aos="fade-zoom-in"
+                [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
 
-                <button *ngIf="!backvol && inLvl" [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-8" id="deformass2"(click)="showHyp()"><i class="fas fa-arrow-left mr-4" style="font-size: 1rem" data-aos="zoom-out"></i>
-                VOLVER A PLANES DE VOLUMEN</button>  
+                <button *ngIf="!backvol && inLvl" data-aos="fade-left"
+                [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-8" id="deformass2"(click)="showHyp()">
+                VOLVER A PLANES DE VOLUMEN<i class="fas fa-arrow-right ml-4" style="font-size: 1rem"></i></button>  
 
                 <div class="col-sm-2 col-md-1" *ngIf="!inLvl"></div>
                 <div class="col-2" *ngIf="inLvl"></div>
@@ -37,41 +39,84 @@
 <section class="bg-black py-2 pb-5">  
     <div class="container z-1 pb-4" style="left: 9px;" *ngFor="let plan of planJson; ">
         {{ changingSide()}}
-        <!-- PRIMERA CARTA -->
-        <div class="card mb-5 " data-aos="fade-right" *ngIf="right">
-            <!-- FILA -->
-            <div class="row no-gutters">
-                <!-- COLUMNA IMAGEN ideal(800*500)-->
-                <div class="col-md-6"><img class="img-fluid" src="{{plan.imagen}}" alt="..." /></div>
-                <!-- COLUMNA TEXTO -->
-                <div class="col-md-6">
-                    <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
-                        <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
-                        <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
-                        <button class="btn btn-outline-dark btn-marketing rounded-pill" href="#!" 
-                        (click)="handleClick(plan.click)"
-                        >Ver más</button>
+
+        <div *ngIf="defOrMass">
+                   <!-- PRIMERA CARTA -->
+            <div class="card mb-5 " data-aos="fade-right" *ngIf="right">
+                <!-- FILA -->
+                <div class="row no-gutters">
+                    <!-- COLUMNA IMAGEN ideal(800*500)-->
+                    <div class="col-md-6"><img class="img-fluid" src="{{plan.imagen}}" alt="..." /></div>
+                    <!-- COLUMNA TEXTO -->
+                    <div class="col-md-6">
+                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
+                            <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
+                            <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
+                            <button class="btn btn-outline-dark btn-marketing rounded-pill" href="#!" 
+                            (click)="handleClick(plan.click)"
+                            >Ver más</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- SEGUNDA CARTA -->
-        <div class="card mb-5" data-aos="fade-left" *ngIf="left">
-            <!-- FILA -->
-            <div class="row no-gutters">
-                <!-- TEXTO -->
-                <div class="col-md-6 order-1 order-md-0">
-                    <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
-                        <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
-                        <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
-                        <button class="btn btn-outline-dark btn-marketing rounded-pill" href="#!"
-                        (click)="handleClick(plan.click)"
-                        >Ver más</button>
+            <!-- SEGUNDA CARTA -->
+            <div class="card mb-5" data-aos="fade-left" *ngIf="left">
+                <!-- FILA -->
+                <div class="row no-gutters">
+                    <!-- TEXTO -->
+                    <div class="col-md-6 order-1 order-md-0">
+                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
+                            <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
+                            <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
+                            <button class="btn btn-outline-dark btn-marketing rounded-pill" href="#!"
+                            (click)="handleClick(plan.click)"
+                            >Ver más</button>
+                        </div>
                     </div>
+                    <!-- IMAGEN -->
+                    <div class="col-md-6 order-0 order-md-1"><img class="img-fluid" src="{{plan.imagen}}"  alt="..." /></div>
                 </div>
-                <!-- IMAGEN -->
-                <div class="col-md-6 order-0 order-md-1"><img class="img-fluid" src="{{plan.imagen}}"  alt="..." /></div>
             </div>
         </div>
+
+        <div *ngIf="!defOrMass">
+                   <!-- PRIMERA CARTA -->
+            <div class="card mb-5 " data-aos="fade-left" *ngIf="right">
+                <!-- FILA -->
+                <div class="row no-gutters">
+                    <!-- COLUMNA IMAGEN ideal(800*500)-->
+                    <div class="col-md-6"><img class="img-fluid" src="{{plan.imagen}}" alt="..." /></div>
+                    <!-- COLUMNA TEXTO -->
+                    <div class="col-md-6">
+                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
+                            <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
+                            <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
+                            <button class="btn btn-outline-dark btn-marketing rounded-pill" href="#!" 
+                            (click)="handleClick(plan.click)"
+                            >Ver más</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SEGUNDA CARTA -->
+            <div class="card mb-5" data-aos="fade-right" *ngIf="left">
+                <!-- FILA -->
+                <div class="row no-gutters">
+                    <!-- TEXTO -->
+                    <div class="col-md-6 order-1 order-md-0">
+                        <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
+                            <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
+                            <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
+                            <button class="btn btn-outline-dark btn-marketing rounded-pill" href="#!"
+                            (click)="handleClick(plan.click)"
+                            >Ver más</button>
+                        </div>
+                    </div>
+                    <!-- IMAGEN -->
+                    <div class="col-md-6 order-0 order-md-1"><img class="img-fluid" src="{{plan.imagen}}"  alt="..." /></div>
+                </div>
+            </div>
+        </div>
+     
     </div>
 </section>

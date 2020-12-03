@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatalevelsService } from '../../../services/datalevels.service';
 
+
 declare var jQuery: any;
 declare var $: any;
 
@@ -8,7 +9,9 @@ declare var $: any;
 	selector: 'app-short-plans',
 	templateUrl: './short-plans.component.html',
 	styleUrls: ['./short-plans.component.css']
+	
 })
+
 export class ShortPlansComponent implements OnInit {
 
 
