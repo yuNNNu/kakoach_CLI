@@ -9,7 +9,7 @@ declare var $: any;
 	selector: 'app-short-plans',
 	templateUrl: './short-plans.component.html',
 	styleUrls: ['./short-plans.component.css']
-	
+
 })
 
 export class ShortPlansComponent implements OnInit {
@@ -46,6 +46,16 @@ export class ShortPlansComponent implements OnInit {
 
 	ngOnInit(): void {
 
+		// navegacion scroll
+		$(".botons").click(function (e) {
+			e.preventDefault();
+			var target = $(this).attr("href");
+			$("html, body").animate({
+				scrollTop: $(target).offset().top
+			}, 9000, "easeOutBack")
+
+			console.log("en botons")
+		})
 		/* SE RECIBEN DATOS DE NIVELES */
 		// alterno entre botones volumen o definicion, boolean
 		this.level.getData().subscribe(result => {

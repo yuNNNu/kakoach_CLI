@@ -1,0 +1,64 @@
+[
+   
+{
+    "type": "definicion",
+    "imagen": "assets/img/planes/deporte1.jpg",
+    "nombre": "Plan espalda def bas",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "nivel": "basico"
+},
+{
+    "type": "definicion",
+    "imagen": "assets/img/planes/deporte1.jpg",
+    "nombre": "Plan espalda def bas",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "nivel": "basico"
+},
+{
+    "type": "volumen",
+    "imagen": "assets/img/planes/deporte1.jpg",
+    "nombre": "Plan espalda def inter",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "nivel": "intermedio"
+},
+{
+    "type": "definicion",
+    "imagen": "assets/img/planes/deporte1.jpg",
+    "nombre": "Plan espalda def inter",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "nivel": "intermedio"
+},
+{
+    "type": "definicion",
+    "imagen": "assets/img/planes/deporte1.jpg",
+    "nombre": "Plan espalda def adv",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "nivel": "avanzado"
+},
+{
+    "type": "definicion",
+    "imagen": "assets/img/planes/deporte1.jpg",
+    "nombre": "Plan espalda def adv",
+    "descripcion": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "descripcion-larga": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil magni iure corporis minima quo incidunt!",
+    "precio": 16990,
+    "pros": ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?","Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?"],
+    "nivel": "avanzado"
+}
+]
+  
