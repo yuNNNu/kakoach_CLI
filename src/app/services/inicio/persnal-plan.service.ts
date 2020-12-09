@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Ruta } from '../../config';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class PersnalPlanService {
   public url: string;
   constructor(private http: HttpClient) {
-    this.url = "../../../assets/json/inicio/personalPlan.json"
+    this.url = Ruta.url;
   }
   getPersonalPlan() {
-    return this.http.get(this.url)
+    return this.http.get(`${this.url}/show-personal-plan`)
   }
 }

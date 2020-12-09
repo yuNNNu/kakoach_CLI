@@ -12,8 +12,8 @@ export class BenefitsComponent implements OnInit {
   ngOnInit(): void {
     this.ben.getBenefits()
       .subscribe(respuesta => {
-        this.benefitstJson = respuesta
-        // console.log(this.benefitstJson)
+        this.benefitstJson = respuesta["data"][0]
+                // console.log(this.benefitstJson)
       })
   }
 
