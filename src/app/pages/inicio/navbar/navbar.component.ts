@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LogoNavbarService } from '../../../services/inicio/logo-navbar.service';
 import { UserService } from '../../../services/usuario/user.service';
+import { Ruta } from '../../../config';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,6 +11,7 @@ import { UserService } from '../../../services/usuario/user.service';
 export class NavbarComponent implements OnInit {
   public login: boolean = false;
   public listaUsuario: any;
+  public url = Ruta.url;
   // devuelvo json
   public imageJson: any;
   constructor(private logo: LogoNavbarService, private user: UserService) {
@@ -18,8 +20,9 @@ export class NavbarComponent implements OnInit {
     ============================================== */
     this.logo.getLogo()
       .subscribe(respuesta => {
+        console.log("respuesta", respuesta);
         // pasamos la informacion recibida a la variable
-        this.imageJson = respuesta[0].logo
+        this.imageJson = respuesta["data"][0]
 
       })
 
