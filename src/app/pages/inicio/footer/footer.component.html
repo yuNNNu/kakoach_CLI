@@ -3,45 +3,38 @@
     <footer class="footer pt-10 pb-5 mt-auto bg-black footer-dark">
         <div class="container">
             <div class="row">
-                <!-- TITULO DUOC Y REDES SOCIALES -->
-                <div class="col-lg-3">
-                    <div class="footer-brand">Lorem ipsum dolor sit amet.</div>
-                    <div class="mb-3">Lorem ipsum dolor sit amet.</div>
-                    <app-socialmedia></app-socialmedia>
-                </div>
 
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <div class="row">
                         <!-- COLUMNA 1 -->
                         <!-- recorremos x item -->
-                        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" *ngFor="let item of datosFooter">
+                        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" *ngFor="let item of datosFooter; index as i">
+
                             <div class="text-uppercase-expanded text-xs mb-4">{{item.titulo}}</div>
                             <ul class="list-unstyled mb-0" *ngFor="let des of item.descripcion" >
                                 <li class="mb-2"><a href="javascript:void(0);">{{des}}</a></li>
-                                
-
                             </ul>
+                            
                         </div>
 
                             <!-- COLUMNA 3 -->
                         <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                            <div class="text-uppercase-expanded text-xs mb-4">Creadores web</div>
+                            <div class="text-uppercase-expanded text-xs mb-4">Developed By</div>
                             <ul class="list-unstyled mb-0">
-                                <li class="mb-2"><a href="javascript:void(0);">Informaticos Tulones</a></li>
-                                <li class="mb-2"><a href="javascript:void(0);">Nicolas Poblete</a></li>
+                                <li class="mb-2"><a href="javascript:void(0);">Nicolás Poblete</a></li>
                                 <li class="mb-2"><a href="javascript:void(0);">Luciano Molina</a></li>
 
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>
             <!-- FOOTER FINAL  -->
             
-            <div class="row align-items-center">
-                <div class="col-md-6 small">Copyright &copy;Proyecto 2020</div>
-                <div class="col-md-6 text-md-right small">
+            <div class="row align-items-center mt-4">
+                <div class="col-md-4 small">Copyright &copy;Proyecto 2020</div>
+                <app-socialmedia class="col-md-4 align-items-center"></app-socialmedia>
+                <div class="col-md-4 text-md-right small">
                     <a href="javascript:void(0);">Proyecto</a>
                     &middot;
                     <a href="javascript:void(0);">Terminos &amp; Condiciones</a>
