@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Ruta } from '../../config';
+
 @Injectable({
   providedIn: 'root'
 })
-export class CardsAboutMeService {
+export class BenefitsService {
   public url: string;
-  constructor(private http: HttpClient) {
-    this.url = Ruta.url;
+  constructor(private http: HttpClient) { 
+  	this.url = Ruta.url;
   }
-  getCard() {
-    return this.http.get(`${this.url}/mostrar-tarjetas-data`)
+  getBenefits() {
+    return this.http.get(`${this.url}/show-planbenefits`);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirstimageService } from '../../../services/inicio/firstimage.service';
+import { SocialMediaService } from '../../../services/herramienta/social-media.service';
 import { Ruta } from '../../../config';
 @Component({
   selector: 'app-principalimage',
@@ -9,8 +10,10 @@ import { Ruta } from '../../../config';
 export class PrincipalimageComponent implements OnInit {
   // devuelvo json
   public firstImageJson: any;
+  public instagram:any;
   public url = Ruta.url;
-  constructor(private firstImage: FirstimageService) {
+  constructor(private firstImage: FirstimageService,
+              private social: SocialMediaService) {
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
     ============================================== */
@@ -20,6 +23,11 @@ export class PrincipalimageComponent implements OnInit {
         this.firstImageJson = respuesta["data"][0];
         // console.log(this.firstImageJson.imagen)
       })
+
+    this.social.getUrl()
+    .subscribe(res => {
+      this.instagram = res["data"][0];
+    })
   }
 
   ngOnInit(): void {
