@@ -37,7 +37,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // metodo for log ou
+  salir() {
+    this.login = false;
+  }
   onSubmit(f: NgForm) {
     console.log(this.listaUsuario)
     this.user.GetUsers()
