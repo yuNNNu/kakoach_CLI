@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatalevelsService } from '../../../services/datalevels.service';
+import { CategoriasService } from '../../../services/planes/categorias.service';
 
 
 declare var jQuery: any;
@@ -30,21 +31,30 @@ export class ShortPlansComponent implements OnInit {
 	public array: any;
 	///////////////////////////////////
 	public nameNivel: any
-	public inLvl: boolean;
-	public defOrMass: boolean;
+	public inLvl: boolean = false;
+	public defOrMass: boolean = false;
 	///////////////////////////////////
 	public defToActive: boolean = true;
 	public hypToActive: boolean;
 	///////////////////////////////////
-	public planJson: any;
+	public planJsondef: any;
+	public planJsonvol: any;
+	public planJson:any;
 	// 
 	public backdef: boolean = true;
 	public backvol: boolean = true;
+	////////////
+	public inicio:boolean = true;
 
-	constructor(private level: DatalevelsService) {
+	constructor(private level: DatalevelsService,
+				private categories : CategoriasService) {
+
 	}
 
+
+
 	ngOnInit(): void {
+		
 
 		// navegacion scroll
 		$(".botons").click(function (e) {
@@ -54,45 +64,33 @@ export class ShortPlansComponent implements OnInit {
 				scrollTop: $(target).offset().top
 			}, 9000, "easeOutBack")
 
-			console.log("en botons")
 		})
-		/* SE RECIBEN DATOS DE NIVELES */
-		// alterno entre botones volumen o definicion, boolean
-		this.level.getData().subscribe(result => {
-			// Filtrado
-			if (!this.inLvl) {
+		
+		this.getDef(); 
+		this.getVol();
+
+	
+		if (!this.inLvl) {
 
 
-				if (!this.defOrMass) {
-
-					// GET DATA DE DEFINICION
-
-					this.planJson = result[0].nivel;
+			if (!this.defOrMass) {
 
 
-					// recepcion de planes 
-					this.array = result[0].planes;
-
-					return;
-
-				} else {
-
-					this.planJson = result[1].nivel;
-
-
-					// recepcion de planes 
-					this.array = result[1].planes;
-					console.log("array filtrado vol", this.array);
-					return;
-				}
+				this.planJson = this.planJsondef;
 
 			} else {
 
-				this.planJson = this.test;
 
-				return;
+				this.planJson = this.planJsonvol;
 			}
-		})
+
+		} else {
+			this.planJson = this.test;
+
+			return;
+		}
+
+		
 	}
 
 	// ALTERNADO ENTRE TARJETAS AL MOMENTO DE CARGAR JSON (IZQUIERDA A DERECHA HACIA ABAJO)
@@ -133,6 +131,7 @@ export class ShortPlansComponent implements OnInit {
 	// PRENDIDO O APAGADO DE UN BOTON, SE APAGA EL DE AL LADO
 
 	public showDef() {
+		this.inicio = false;
 		this.defOrMass = false;
 		this.inLvl = false;
 		this.defToActive = true;
@@ -148,6 +147,7 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	public showHyp() {
+		this.inicio = false;
 		this.defOrMass = true;
 		this.inLvl = false;
 		this.defToActive = false;
@@ -223,6 +223,29 @@ export class ShortPlansComponent implements OnInit {
 		);
 		this.backto();
 		this.update();
+	}
+
+	getDef(){
+		this.categories.getCategories()
+	      .subscribe((respuesta:any) => {
+	        let filterdef = respuesta["data"].filter(res => res.type == "def")
+	        this.planJsondef = filterdef;
+	      	return this.planJsondef;  
+	    })
+
+	}
+	
+	getVol(){
+		this.categories.getCategories()
+	      .subscribe((respuesta:any) => {
+	        let filtervol = respuesta["data"].filter(res => res.type == "vol")
+	        this.planJsonvol = filtervol;
+	        return this.planJsonvol;
+	    })
+	}
+
+	doClick(){
+		document.getElementById("deformass1").click();
 	}
 
 	update() {
