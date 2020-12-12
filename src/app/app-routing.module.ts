@@ -10,11 +10,20 @@ import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass
 import { HistoryComponent } from './pages/history/history.component';
 import { ContactmeComponent } from './pages/contactme/contactme.component';
 
+// Resolvers
+import { plansDataResolver } from './resolvers/ plansDataResolver';
+
+
 
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
-  { path: 'planes', component: PlanesComponent },
+
+  { path: 'planes', component: PlanesComponent,
+   resolve: {
+     data : plansDataResolver
+   }},
+
   { path: 'plan', component: PlanComponent },
   { path: 'coleccion', component: ColeccionHistoriaComponent },
   { path: 'historia', component: HistoryComponent},

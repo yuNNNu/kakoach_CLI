@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DatalevelsService } from '../../../services/datalevels.service';
 import { CategoriasService } from '../../../services/planes/categorias.service';
 
@@ -15,7 +15,7 @@ declare var $: any;
 
 export class ShortPlansComponent implements OnInit {
 
-
+	@Input() public parentData;
 	//////////////////////////////
 	//////////////////////////////
 	// (alternate = true) = (right = true) + (left = false)
@@ -44,18 +44,31 @@ export class ShortPlansComponent implements OnInit {
 	public backdef: boolean = true;
 	public backvol: boolean = true;
 	////////////
-	public inicio:boolean = true;
+	public iniciodef:boolean = false;
+	public iniciovol:boolean = false;
+	/////////
+	public tempdef:any;
+	public tempvol:any;
+
 
 	constructor(private level: DatalevelsService,
 				private categories : CategoriasService) {
+	}
+
+	ngOnChanges(){
+		if(!this.iniciodef){
+			this.iniciodef = true;
+			this.tempdef = this.getDef();
+		}
+
+		if(!this.iniciovol){
+			this.iniciovol = true;
+			this.tempvol = this.getVol();
+		}
 
 	}
 
-
-
 	ngOnInit(): void {
-		
-
 		// navegacion scroll
 		$(".botons").click(function (e) {
 			e.preventDefault();
@@ -65,23 +78,18 @@ export class ShortPlansComponent implements OnInit {
 			}, 9000, "easeOutBack")
 
 		})
-		
-		this.getDef(); 
-		this.getVol();
 
 	
 		if (!this.inLvl) {
 
 
 			if (!this.defOrMass) {
-
-
-				this.planJson = this.planJsondef;
+				
+				this.planJson = this.tempdef;
 
 			} else {
 
-
-				this.planJson = this.planJsonvol;
+				this.planJson = this.tempvol;
 			}
 
 		} else {
@@ -90,6 +98,10 @@ export class ShortPlansComponent implements OnInit {
 			return;
 		}
 
+
+	}
+
+	ngAfterContentInit(){
 		
 	}
 
@@ -131,7 +143,6 @@ export class ShortPlansComponent implements OnInit {
 	// PRENDIDO O APAGADO DE UN BOTON, SE APAGA EL DE AL LADO
 
 	public showDef() {
-		this.inicio = false;
 		this.defOrMass = false;
 		this.inLvl = false;
 		this.defToActive = true;
@@ -147,7 +158,6 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	public showHyp() {
-		this.inicio = false;
 		this.defOrMass = true;
 		this.inLvl = false;
 		this.defToActive = false;
@@ -225,24 +235,19 @@ export class ShortPlansComponent implements OnInit {
 		this.update();
 	}
 
-	getDef(){
-		this.categories.getCategories()
-	      .subscribe((respuesta:any) => {
-	        let filterdef = respuesta["data"].filter(res => res.type == "def")
-	        this.planJsondef = filterdef;
-	      	return this.planJsondef;  
-	    })
-
-	}
 	
 	getVol(){
-		this.categories.getCategories()
-	      .subscribe((respuesta:any) => {
-	        let filtervol = respuesta["data"].filter(res => res.type == "vol")
-	        this.planJsonvol = filtervol;
-	        return this.planJsonvol;
-	    })
+		let defCategorie = this.parentData.filter(res => res.type == "vol")
+		this.planJson = defCategorie;
+		return this.planJson;
 	}
+
+	getDef(){
+		let defCategorie = this.parentData.filter(res => res.type == "def")
+		this.planJson = defCategorie;
+		return this.planJson;
+	}
+
 
 	doClick(){
 		document.getElementById("deformass1").click();

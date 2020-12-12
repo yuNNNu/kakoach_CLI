@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-planes',
   templateUrl: './planes.component.html',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class PlanesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _ac : ActivatedRoute) { }
 
+  public data = this._ac.snapshot.data.data.data;
+  
   ngOnInit(): void {
+  	// console.log(this._ac.snapshot.data.data.data)
   }
 
 }

@@ -15,4 +15,5 @@ export class CategoriasService {
  getCategories(){
  	return this.http.get(`${this.url}/show-categories`);
  } 
+
 }
