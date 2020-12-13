@@ -8,7 +8,7 @@
                     <div class="row">
                         <!-- COLUMNA 1 -->
                         <!-- recorremos x item -->
-                        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" *ngFor="let item of datosFooter; index as i">
+                        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" style="word-wrap: break-word;" *ngFor="let item of datosFooter">
 
                             <div class="text-uppercase-expanded text-xs mb-4">{{item.titulo}}</div>
                             <ul class="list-unstyled mb-0" *ngFor="let des of item.descripcion" >

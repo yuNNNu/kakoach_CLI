@@ -6,12 +6,13 @@ import { CategoriasService } from '../services/planes/categorias.service';
 	providedIn: 'root'
 })
 
-export class plansDataResolver implements Resolve<Observable<any>>{
-	constructor(private _api : CategoriasService){
+export class plansCategoriesResolver implements Resolve<Observable<any>>{
+	constructor(private _categories : CategoriasService){
 
 	}
 	
 	resolve (){
-		return this._api.getCategories();
+		return this._categories.getCategories();
+		
 	}
 }

@@ -11,10 +11,12 @@ export class PlanesComponent implements OnInit {
 
   constructor(private _ac : ActivatedRoute) { }
 
-  public data = this._ac.snapshot.data.data.data;
+  public categories = this._ac.snapshot.data.categories.data;
+  public plans = this._ac.snapshot.data.plans.data;
+  
   
   ngOnInit(): void {
-  	// console.log(this._ac.snapshot.data.data.data)
+
   }
 
 }

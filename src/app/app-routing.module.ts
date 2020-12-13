@@ -11,8 +11,8 @@ import { HistoryComponent } from './pages/history/history.component';
 import { ContactmeComponent } from './pages/contactme/contactme.component';
 
 // Resolvers
-import { plansDataResolver } from './resolvers/ plansDataResolver';
-
+import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
+import { plansDataResolver } from './resolvers/plansDataResolver';
 
 
 
@@ -21,7 +21,8 @@ const routes: Routes = [
 
   { path: 'planes', component: PlanesComponent,
    resolve: {
-     data : plansDataResolver
+     categories : plansCategoriesResolver,
+     plans : plansDataResolver
    }},
 
   { path: 'plan', component: PlanComponent },
