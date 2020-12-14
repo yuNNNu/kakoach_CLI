@@ -16,11 +16,11 @@ export class PlanComponent implements OnInit {
   public plans = this._ac.snapshot.data.plans.data;
   public plan:any;
   public id = this._ac.snapshot.params["id"];
+  public url = Ruta.url;
 
   ngOnInit(): void {
 
   	this.planJson = this.filteredPlan();
-  	console.log("this.planJson", this.planJson);
   }
 
   filteredPlan(){

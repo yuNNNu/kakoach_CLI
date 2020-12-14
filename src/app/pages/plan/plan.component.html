@@ -3,13 +3,13 @@
 <!-- ESPECIFICACION DEL PRODUCTO-->
 <section class="bg-white py-10">
     <div class="container">
-        <div class="row align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center" *ngFor="let plan of planJson">
             <div class="col-md-9 col-lg-6 order-1 order-lg-0" data-aos="fade-right">
-                <div class="content-skewed content-skewed-right"><img class="content-skewed-item img-fluid shadow-lg rounded-lg" src="../../../assets/img/planes/deporte1.jpg" /></div>
+                <div class="content-skewed content-skewed-right"><img class="content-skewed-item img-fluid shadow-lg rounded-lg" src="{{url}}/show-plan/{{plan.imagen}}" /></div>
             </div>
             <div class="col-lg-6 order-0 order-lg-1 mb-5 mb-lg-0" data-aos="fade-left">
                 
-                <div class="row" *ngFor="let plan of planJson">
+                <div class="row" >
                   
                     <div class="col-md-12 card pricing h-100">
                         <div class="card-body p-5">
