@@ -43,7 +43,9 @@
                 <!-- FILA -->
                 <div class="row no-gutters">
                     <!-- COLUMNA IMAGEN ideal(800*500)-->
-                    <div class="col-md-6"><img class="img-fluid" src="{{url}}{{plan.imagen}}" alt="..." /></div>
+                    <div class="col-md-6" *ngIf="inLvl"><img class="img-fluid" src="{{url}}/show-plan/{{plan.imagen}}" alt="..." /></div>
+
+                    <div class="col-md-6" *ngIf="!inLvl"><img class="img-fluid" src="{{url}}/show-img-category/{{plan.imagen}}" alt="..." /></div>
                     <!-- COLUMNA TEXTO -->
                     <div class="col-md-6">
                         <div class="card-body d-flex align-items-center justify-content-center h-100 flex-column">
@@ -81,7 +83,9 @@
                         </div>
                     </div>
 
-                     <div class="col-md-6"><img class="img-fluid" src="{{plan.imagen}}" alt="..." /></div>
+                     <div class="col-md-6" *ngIf="inLvl"><img class="img-fluid" src="{{url}}/show-plan/{{plan.imagen}}" alt="..." /></div>
+
+                      <div class="col-md-6" *ngIf="!inLvl"><img class="img-fluid" src="{{url}}/show-img-category/{{plan.imagen}}" alt="..." /></div>
                 </div>
             </div>
         </div>
