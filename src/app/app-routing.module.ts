@@ -25,7 +25,11 @@ const routes: Routes = [
      plans : plansDataResolver
    }},
 
-  { path: 'plan', component: PlanComponent },
+  { path: 'plan/:id', component: PlanComponent,
+   resolve: {
+     plans : plansDataResolver
+   }
+  },
   { path: 'coleccion', component: ColeccionHistoriaComponent },
   { path: 'historia', component: HistoryComponent},
   { path: 'crear-usuario', component: CrearusuarioComponent },

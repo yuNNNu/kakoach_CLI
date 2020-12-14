@@ -4,7 +4,7 @@
 		<main>
             <app-navbar></app-navbar>
             <app-imagen-principal></app-imagen-principal>
-            <app-short-plans [Categories]="categories" [Plans]="plans"></app-short-plans>
+            <app-short-plans (sendId)="identifier=$event" [Categories]="categories" [Plans]="plans"></app-short-plans>
             <app-comenzamos></app-comenzamos>
             <app-footer></app-footer>
         </main>

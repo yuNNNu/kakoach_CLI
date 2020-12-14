@@ -9,39 +9,19 @@
             </div>
             <div class="col-lg-6 order-0 order-lg-1 mb-5 mb-lg-0" data-aos="fade-left">
                 
-                <div class="row">
+                <div class="row" *ngFor="let plan of planJson">
                   
                     <div class="col-md-12 card pricing h-100">
                         <div class="card-body p-5">
                             <div class="text-center">
-                                <h1 class=" text-primary">Lorem ipsum dolor sit amet.</h1>
+                                <h1 class=" text-primary">{{plan.nombre}}</h1>
 
-                                <div class="pricing-price"><sup>$</sup>15.000</div>
+                                <div class="pricing-price"><sup>$</sup>{{plan.precio}}</div>
                             </div>
                             <ul class="fa-ul pricing-list">
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                <li class="pricing-list-item">
-                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, facere?</span>
-                                </li>
-                                
-                                    
+                                <li class="pricing-list-item" *ngFor="let pros of plan.pros">
+                                    <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">{{pros}}</span>
+                                </li>        
                             </ul>
                             
                         </div>

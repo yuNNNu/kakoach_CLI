@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DatalevelsService } from '../../../services/datalevels.service';
 import { CategoriasService } from '../../../services/planes/categorias.service';
 import { PlanService } from '../../../services/planes/plan.service';
@@ -18,6 +18,8 @@ export class ShortPlansComponent implements OnInit {
 
 	@Input() public Categories;
 	@Input() public Plans;
+
+	@Output() public sendId = new EventEmitter();
 
 	public alternate: boolean = true;
 	public right: boolean;
@@ -177,6 +179,10 @@ export class ShortPlansComponent implements OnInit {
 			default:
 				break;
 		}
+	}
+
+	handleBuy(method : string){
+		this.sendId.emit(method);
 	}
 
 	backto() {
