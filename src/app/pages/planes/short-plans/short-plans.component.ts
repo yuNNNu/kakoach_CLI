@@ -181,10 +181,6 @@ export class ShortPlansComponent implements OnInit {
 		}
 	}
 
-	handleBuy(method : string){
-		this.sendId.emit(method);
-	}
-
 	backto() {
 		if (!this.defOrMass) {
 			this.backdef = false

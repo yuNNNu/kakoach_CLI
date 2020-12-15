@@ -13,7 +13,7 @@ import { ContactmeComponent } from './pages/contactme/contactme.component';
 // Resolvers
 import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
 import { plansDataResolver } from './resolvers/plansDataResolver';
-
+import { cardResolver } from './resolvers/cardDataresolver';
 
 
 const routes: Routes = [
@@ -31,7 +31,10 @@ const routes: Routes = [
    }
   },
   { path: 'coleccion', component: ColeccionHistoriaComponent },
-  { path: 'historia', component: HistoryComponent},
+  { path: 'historia/:id', component: HistoryComponent,
+    resolve: {
+      card : cardResolver
+    }},
   { path: 'crear-usuario', component: CrearusuarioComponent },
   { path: 'recuperar-password', component: RecuperarpassComponent },
   { path: 'contact', component: ContactmeComponent }

@@ -12,8 +12,7 @@ export class PlanesComponent implements OnInit {
   constructor(private _ac : ActivatedRoute) { }
 
   public categories = this._ac.snapshot.data.categories.data;
-  public plans = this._ac.snapshot.data.plans.data;
-  public identifier = "";
+  public plans = this._ac.snapshot.data.plans.data;;
   ngOnInit(): void {
   }
 

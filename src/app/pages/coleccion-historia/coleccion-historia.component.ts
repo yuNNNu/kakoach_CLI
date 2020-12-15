@@ -40,7 +40,6 @@ export class ColeccionHistoriaComponent implements OnInit {
         this.twitter = res["data"][3];
       })
   }
-
   ngOnInit(): void {
   }
 

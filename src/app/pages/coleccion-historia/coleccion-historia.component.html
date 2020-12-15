@@ -17,8 +17,8 @@
                     </div>
                 </div>
                 <div class="container">
-                <div class="card-columns card-columns-portfolio"  >
-                   <a class="card card-portfolio" data-aos="zoom-in" href="#!" *ngFor="let card of cardsJson"
+                <div class="card-columns card-columns-portfolio">
+                   <a class="card card-portfolio" *ngFor="let card of cardsJson" data-aos="zoom-in" href="/historia/{{card._id}}"
                         ><img class="card-img-top" src="{{url}}/mostrar-tarjeta-img/{{card.imagen}}" alt="..." />
                         <div class="card-body"><div class="card-title">{{card.titulo}}</div>
                         
@@ -26,12 +26,7 @@
                     </a
                     >
                 </div>
-                </div>
-                <!-- <div class="svg-border-rounded text-black">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
-                </div> -->
-                <!-- BORDE -->
-                
+                </div>                
                 <app-border-footer></app-border-footer>
                 </section>
                 <app-footer></app-footer>
