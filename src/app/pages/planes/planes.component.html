@@ -3,8 +3,8 @@
 		
 		<main>
             <app-navbar></app-navbar>
-            <app-imagen-principal></app-imagen-principal>
-            <app-short-plans [Categories]="categories" [Plans]="plans"></app-short-plans>
+            <app-imagen-principal [DOM]="deformass"></app-imagen-principal>
+            <app-short-plans (sendOption)="domIsChanged($event)" [Categories]="categories" [Plans]="plans"></app-short-plans>
             <app-comenzamos></app-comenzamos>
             <app-footer></app-footer>
         </main>

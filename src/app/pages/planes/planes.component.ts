@@ -13,7 +13,16 @@ export class PlanesComponent implements OnInit {
 
   public categories = this._ac.snapshot.data.categories.data;
   public plans = this._ac.snapshot.data.plans.data;
+  public deformass: Event;
+  
   ngOnInit(): void {
+
   }
+
+  domIsChanged(event: Event){
+  	this.deformass = event;
+  	
+  }
+
 
 }

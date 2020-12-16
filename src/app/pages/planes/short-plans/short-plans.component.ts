@@ -19,7 +19,7 @@ export class ShortPlansComponent implements OnInit {
 	@Input() public Categories;
 	@Input() public Plans;
 
-	@Output() public sendId = new EventEmitter();
+	@Output() public sendOption: EventEmitter<boolean> = new EventEmitter();
 
 	public alternate: boolean = true;
 	public right: boolean;
@@ -132,6 +132,7 @@ export class ShortPlansComponent implements OnInit {
 
 	public showDef() {
 		this.defOrMass = false;
+		this.sendOption.emit(this.defOrMass);
 		this.type = "def";
 		this.inLvl = false;
 		this.defToActive = true;
@@ -141,13 +142,13 @@ export class ShortPlansComponent implements OnInit {
 		this.backvol = true
 
 
-
 		return this.defToActive;
 
 	}
 
 	public showHyp() {
 		this.defOrMass = true;
+		this.sendOption.emit(this.defOrMass);
 		this.type = "vol;"
 		this.inLvl = false;
 		this.defToActive = false;
