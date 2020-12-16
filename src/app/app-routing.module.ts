@@ -14,10 +14,16 @@ import { ContactmeComponent } from './pages/contactme/contactme.component';
 import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
 import { plansDataResolver } from './resolvers/plansDataResolver';
 import { cardResolver } from './resolvers/cardDataresolver';
+import { secondaryPlanResolver } from './resolvers/secondaryPlanResolver';
 
 
 const routes: Routes = [
-  { path: '', component: InicioComponent },
+  { path: '', component: InicioComponent,
+    resolve: {
+
+     secondaryplans : secondaryPlanResolver,
+     plans : plansDataResolver
+   }},
 
   { path: 'planes', component: PlanesComponent,
    resolve: {

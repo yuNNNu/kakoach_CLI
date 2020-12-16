@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PersnalPlanService } from '../../../services/inicio/persnal-plan.service'
 import { Ruta } from '../../../config';
+
 
 @Component({
   selector: 'app-planes-estrellas',
@@ -9,8 +10,12 @@ import { Ruta } from '../../../config';
 })
 export class PlanesEstrellasComponent implements OnInit {
   // variable de obj
+  @Input() public Plans;
+  @Input() public Secondary;
   public personalPlan: any;
   public url = Ruta.url;
+  public secondaryPlansJson1:any;
+  public secondaryPlansJson2:any;
   constructor(private personal: PersnalPlanService) {
     /*=============================================
    RECIBIENDO DATOS DINAMICOS
@@ -25,6 +30,11 @@ export class PlanesEstrellasComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.secondaryPlansJson1 = this.Plans.find(res => res._id == this.Secondary[0].id);
+    console.log("this.secondaryPlansJson1", this.secondaryPlansJson1);
+    this.secondaryPlansJson2 = this.Plans.find(res => res._id == this.Secondary[1].id);
+
   }
 
 }

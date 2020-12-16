@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _ac : ActivatedRoute) { }
 
+  public plans = this._ac.snapshot.data.plans.data;
+  public secondary = this._ac.snapshot.data.secondaryplans.data;
+  
   ngOnInit(): void {
   }
 
