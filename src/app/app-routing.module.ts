@@ -15,7 +15,7 @@ import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
 import { plansDataResolver } from './resolvers/plansDataResolver';
 import { cardResolver } from './resolvers/cardDataresolver';
 import { secondaryPlanResolver } from './resolvers/secondaryPlanResolver';
-
+import { plansPersonalResolver } from './resolvers/planPersonalResolver'; 
 
 const routes: Routes = [
   { path: '', component: InicioComponent,
@@ -33,7 +33,8 @@ const routes: Routes = [
 
   { path: 'plan/:id', component: PlanComponent,
    resolve: {
-     plans : plansDataResolver
+     plans : plansDataResolver,
+     plan : plansPersonalResolver
    }
   },
   { path: 'coleccion', component: ColeccionHistoriaComponent },
