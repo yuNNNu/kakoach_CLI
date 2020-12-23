@@ -30,6 +30,8 @@ import { ContactmeComponent } from './pages/contactme/contactme.component';
 import { ContactBodyComponent } from './pages/contactme/contact-body/contact-body.component';
 import { SocialmediaComponent } from './pages/herramientas/socialmedia/socialmedia.component';
 import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-coleccion/imagen-coleccion.component';
+import { ReturnComponent } from './pages/webpay/return/return.component';
+import { VoucherComponent } from './pages/webpay/voucher/voucher.component';
 
 
 /* SERVICIOS */
@@ -58,7 +60,9 @@ import { ImagenColeccionComponent } from './pages/coleccion-historia/imagen-cole
     ContactmeComponent,
     ContactBodyComponent,
     SocialmediaComponent,
-    ImagenColeccionComponent
+    ImagenColeccionComponent,
+    ReturnComponent,
+    VoucherComponent
   ],
   imports: [
     BrowserModule,

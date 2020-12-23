@@ -1,0 +1,7 @@
+{
+	"/rswebpaytransaction/api/webpay/v1.0/transactions/*": {
+		"target": "https://webpay3gint.transbank.cl",
+		"secure": false,
+		"changeOrigin": true
+	}
+}

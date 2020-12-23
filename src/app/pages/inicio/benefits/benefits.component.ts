@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BenefitsService } from '../../../services/inicio/benefits.service'
 @Component({
   selector: 'app-benefits',
@@ -6,15 +6,13 @@ import { BenefitsService } from '../../../services/inicio/benefits.service'
   styleUrls: ['./benefits.component.css']
 })
 export class BenefitsComponent implements OnInit {
+  @Input() public Benefits;
   public benefitstJson: any;
   constructor(private ben: BenefitsService) { }
 
   ngOnInit(): void {
-    this.ben.getBenefits()
-      .subscribe(respuesta => {
-        this.benefitstJson = respuesta["data"][0]
-                // console.log(this.benefitstJson)
-      })
+    
+     this.benefitstJson = this.Benefits[0];
   }
 
 }

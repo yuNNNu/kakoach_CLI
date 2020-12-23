@@ -24,8 +24,6 @@ export class PlanesEstrellasComponent implements OnInit {
       .subscribe(respuesta => {
         // pasamos la informacion recibida a la variable
         this.personalPlan = respuesta["data"][0]
-        // console.log(this.personalPlan)
-
       })
   }
 

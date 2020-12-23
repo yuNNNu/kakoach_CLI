@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlanService } from '../../services/planes/plan.service';
 import { Ruta } from '../../config';
 import { ActivatedRoute } from '@angular/router';
+import { WebpayService } from '../../services/webpay/webpay.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-plan',
@@ -11,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class PlanComponent implements OnInit {
 
 
-  constructor(private _ac : ActivatedRoute) { }
+  constructor(private _ac : ActivatedRoute,
+              private webpay : WebpayService) { }
   public planJson:any;
   public plans = this._ac.snapshot.data.plans.data;
   public personalplan = this._ac.snapshot.data.plan.data;
@@ -19,11 +22,15 @@ export class PlanComponent implements OnInit {
   public id = this._ac.snapshot.params["id"];
   public url = Ruta.url;
   public personal:boolean;
+  public webpayurl:any;
+  public token:any;
+  public paid:any;
 
   ngOnInit(): void {
 
   	this.planJson = this.filteredPlan();
-    console.log("this.planJson", this.planJson);
+
+    console.log(this.paid);
   }
 
   filteredPlan(){
@@ -35,6 +42,24 @@ export class PlanComponent implements OnInit {
        this.plan = this.personalplan;
      }
   	return this.plan;
+  }
+
+  create(){
+     this.webpay.create().subscribe((res:any) => {
+       window.open(res.url);
+
+    })
+  }
+
+   commit(){
+   this.webpay.commit().subscribe((res:any) => {
+      console.log("datas", res.data);
+
+      if(res.data.response_code == 0){
+        this.paid = true;
+        console.log("dentro del commit", this.paid);
+      }
+   })
   }
 
 }

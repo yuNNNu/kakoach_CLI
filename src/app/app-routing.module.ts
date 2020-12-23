@@ -9,6 +9,7 @@ import { BorderFooterComponent } from './pages/herramientas/border-footer/border
 import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { ContactmeComponent } from './pages/contactme/contactme.component';
+import { ReturnComponent } from './pages/webpay/return/return.component';
 
 // Resolvers
 import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
@@ -16,13 +17,14 @@ import { plansDataResolver } from './resolvers/plansDataResolver';
 import { cardResolver } from './resolvers/cardDataresolver';
 import { secondaryPlanResolver } from './resolvers/secondaryPlanResolver';
 import { plansPersonalResolver } from './resolvers/planPersonalResolver'; 
-
+import { benefitInicioResolver } from './resolvers/benefitsInicioResolver';
 const routes: Routes = [
   { path: '', component: InicioComponent,
     resolve: {
 
      secondaryplans : secondaryPlanResolver,
-     plans : plansDataResolver
+     plans : plansDataResolver,
+     benefits : benefitInicioResolver
    }},
 
   { path: 'planes', component: PlanesComponent,
@@ -44,7 +46,8 @@ const routes: Routes = [
     }},
   { path: 'crear-usuario', component: CrearusuarioComponent },
   { path: 'recuperar-password', component: RecuperarpassComponent },
-  { path: 'contact', component: ContactmeComponent }
+  { path: 'contact', component: ContactmeComponent },
+  { path: 'return', component: ReturnComponent}
 ];
 
 @NgModule({
