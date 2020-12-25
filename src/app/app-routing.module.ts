@@ -9,7 +9,6 @@ import { BorderFooterComponent } from './pages/herramientas/border-footer/border
 import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { ContactmeComponent } from './pages/contactme/contactme.component';
-import { ReturnComponent } from './pages/webpay/return/return.component';
 
 // Resolvers
 import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
@@ -46,8 +45,7 @@ const routes: Routes = [
     }},
   { path: 'crear-usuario', component: CrearusuarioComponent },
   { path: 'recuperar-password', component: RecuperarpassComponent },
-  { path: 'contact', component: ContactmeComponent },
-  { path: 'return', component: ReturnComponent}
+  { path: 'contact', component: ContactmeComponent }
 ];
 
 @NgModule({
