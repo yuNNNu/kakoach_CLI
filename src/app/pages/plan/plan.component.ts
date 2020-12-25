@@ -4,6 +4,7 @@ import { Ruta } from '../../config';
 import { ActivatedRoute } from '@angular/router';
 import { WebpayService } from '../../services/webpay/webpay.service';
 import { NgForm } from '@angular/forms';
+import { PaidService } from './../../services/webpay/paid.service';
 
 @Component({
   selector: 'app-plan',
@@ -14,7 +15,8 @@ export class PlanComponent implements OnInit {
 
 
   constructor(private _ac : ActivatedRoute,
-              private webpay : WebpayService) { }
+              private webpay : WebpayService,
+              private _paid : PaidService) { }
   public planJson:any;
   public plans = this._ac.snapshot.data.plans.data;
   public personalplan = this._ac.snapshot.data.plan.data;
@@ -25,12 +27,19 @@ export class PlanComponent implements OnInit {
   public webpayurl:any;
   public token:any;
   public paid:any;
+  public transaction:any;
 
   ngOnInit(): void {
 
   	this.planJson = this.filteredPlan();
 
-    console.log(this.paid);
+    this._paid.paid.subscribe(data => {
+      this.paid = true;
+      console.log("his.paid", this.paid);
+      this.transaction = JSON.parse(data);
+      console.log("this.transaction", this.transaction);
+     
+    })
   }
 
   filteredPlan(){

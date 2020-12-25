@@ -36,6 +36,8 @@ import { VoucherComponent } from './pages/webpay/voucher/voucher.component';
 
 /* SERVICIOS */
 
+import { PaidService } from './services/webpay/paid.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,7 @@ import { VoucherComponent } from './pages/webpay/voucher/voucher.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PaidService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

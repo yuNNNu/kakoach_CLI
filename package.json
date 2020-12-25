@@ -21,6 +21,10 @@
     "@angular/router": "~10.1.4",
     "cors": "^2.8.5",
     "rxjs": "~6.6.0",
+    "socket.io": "^3.0.4",
+    "socket.io-adapter": "^2.0.3",
+    "socket.io-client": "^3.0.4",
+    "socket.io-parser": "^4.0.2",
     "tslib": "^2.0.0",
     "xmlhttprequest-ssl": "^1.6.0",
     "zone.js": "~0.10.2"
