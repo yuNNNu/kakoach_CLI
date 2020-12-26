@@ -33,6 +33,10 @@ export class PlanComponent implements OnInit {
   public paid:any;
   public transaction:any;
   public price:any;
+  public status:boolean;
+
+  // status true = transaccion aceptada
+  // status false = transaccion rechazada
 
   ngOnInit(): void {
 
@@ -43,9 +47,17 @@ export class PlanComponent implements OnInit {
       console.log("his.paid", this.paid);
       this.transaction = JSON.parse(data);
       console.log("this.transaction", this.transaction);
+
+      // Condicion si la venta fue realizada con exito o fue rechazada
+      if(this.transaction.response_code == 0){
+        this.status = true;
+      }else{
+        this.status = false;
+      }
+      
      
     })
-
+    console.log("this.status", this.status);
     this.price = this.planJson[0].precio;
 
   }

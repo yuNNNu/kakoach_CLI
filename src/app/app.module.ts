@@ -35,6 +35,7 @@ import { VoucherComponent } from './pages/plan/voucher/voucher.component';
 /* SERVICIOS */
 
 import { PaidService } from './services/webpay/paid.service';
+import { CancelledComponent } from './pages/plan/cancelled/cancelled.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { PaidService } from './services/webpay/paid.service';
     ContactBodyComponent,
     SocialmediaComponent,
     ImagenColeccionComponent,
-    VoucherComponent
+    VoucherComponent,
+    CancelledComponent
   ],
   imports: [
     BrowserModule,
