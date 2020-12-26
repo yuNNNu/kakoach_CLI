@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PlanService } from '../../services/planes/plan.service';
 import { Ruta } from '../../config';
 import { ActivatedRoute } from '@angular/router';
@@ -17,6 +17,8 @@ export class PlanComponent implements OnInit {
   constructor(private _ac : ActivatedRoute,
               private webpay : WebpayService,
               private _paid : PaidService) { }
+
+
   public planJson:any;
   public plans = this._ac.snapshot.data.plans.data;
   public personalplan = this._ac.snapshot.data.plan.data;

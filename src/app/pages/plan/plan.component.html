@@ -47,7 +47,7 @@
 </section>
 
 <main *ngIf="paid">
-    <app-voucher></app-voucher>
+    <app-voucher *ngFor="let plan of planJson" [Transaction]="transaction" [Precio]="plan.precio"></app-voucher>
     <section>
         <app-border-footer></app-border-footer>
     </section>

@@ -7,41 +7,41 @@
 			<div class="card-body">
 		
 		        <div class="form-row mt-3">
-		        	<div class="col-lg-2"></div>
-		        	<div class="col-lg-8">
+		        	<div class="col-lg-1"></div>
+		        	<div class="col-lg-9">
 			        	<ul>
 			        		<li>
 			        			
 				                <div class="form-group">
-				                	<label class="small mb-1" for="inputFirstName">Orden de Compra N°: 1608672951962</label>
+				                	<label class="small mb-1">Orden de Compra N°: {{transaction.buy_order}}</label>
 				                </div>
 				    
 			        		</li>	
 							<li>
 								
 				                <div class="form-group">
-				                	<label class="small mb-1" for="inputFirstName">Monto: 12000</label>
+				                	<label class="small mb-1">Monto: {{precio}}</label>
 				                </div>
 					        	
 							</li>
 					        <li>
 							
 				                <div class="form-group">
-				                	<label class="small mb-1" for="inputFirstName">Número de Tarjeta: ********1234 </label>
+				                	<label class="small mb-1">Número de Tarjeta: ********{{transaction.card_detail.card_number}} </label>
 				                </div>
 				           	      	
 					        </li> 
 					        <li>
 					      		
 				                <div class="form-group">
-				                	<label class="small mb-1" for="inputFirstName">Fecha de Pago: 12331 </label>
+				                	<label class="small mb-1">Fecha de Pago: {{transaction.transaction_date}} </label>
 				                </div>
 				            	 	
 					        </li>
 				          	<li>
 				          		
 				                <div class="form-group">
-				                	<label class="small mb-1" for="inputFirstName">Tipo de Pago: Tarjeta de Débito </label>
+				                	<label class="small mb-1">Tipo de Pago: {{transaction.payment_type_code}} </label>
 				                </div>
 				           		
 				          	</li>
@@ -49,7 +49,7 @@
 
 			        </div>
 
-		        	<div class="col-lg-2"></div>
+		        	<div class="col-lg-2 mr-2"></div>
 		        </div>
 			</div>
 
