@@ -13,12 +13,6 @@ export class WebpayService {
  private socket;
  public webpayEndPoint: string;
  public url = "/rswebpaytransaction/api/webpay/v1.0/transactions";
- public testData = {
- 	"buy_order": "ordenCompra12345678",
- 	"session_id": "sesion1234557545",
- 	"amount": 13999,
- 	"return_url": "http://localhost:4000/commit"
- }
 
  public rutaApi = Ruta.url;
 
@@ -50,9 +44,14 @@ export class WebpayService {
         return Rx.Subject.create(observer, observable);
     }
 
-  create(){
-
-  	return this.http.post(`${this.rutaApi}/pagar`, this.testData);
+  create(precio){
+    let testData = {
+     "buy_order": "ordenCompra12345678",
+     "session_id": "sesion1234557545",
+     "amount": precio,
+     "return_url": "http://localhost:4000/commit"
+    }
+  	return this.http.post(`${this.rutaApi}/pagar`, testData);
  
   }
 

@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { PlanService } from '../../services/planes/plan.service';
 import { Ruta } from '../../config';
 import { ActivatedRoute } from '@angular/router';
 import { WebpayService } from '../../services/webpay/webpay.service';
 import { NgForm } from '@angular/forms';
 import { PaidService } from './../../services/webpay/paid.service';
+
+declare var $:any;
 
 @Component({
   selector: 'app-plan',
@@ -30,6 +32,7 @@ export class PlanComponent implements OnInit {
   public token:any;
   public paid:any;
   public transaction:any;
+  public price:any;
 
   ngOnInit(): void {
 
@@ -42,6 +45,9 @@ export class PlanComponent implements OnInit {
       console.log("this.transaction", this.transaction);
      
     })
+
+    this.price = this.planJson[0].precio;
+
   }
 
   filteredPlan(){
@@ -56,7 +62,8 @@ export class PlanComponent implements OnInit {
   }
 
   create(){
-     this.webpay.create().subscribe((res:any) => {
+     
+     this.webpay.create(this.price).subscribe((res:any) => {
        window.open(res.url);
 
     })
