@@ -41,7 +41,7 @@ export class PlanComponent implements OnInit {
   ngOnInit(): void {
 
     this.planJson = this.filteredPlan();
-
+    console.log("planJson", this.planJson)
     this._paid.paid.subscribe(data => {
       this.paid = true;
       console.log("his.paid", this.paid);
@@ -89,7 +89,10 @@ export class PlanComponent implements OnInit {
 
       })
     } else {
+
       this.login = false
+      window.location.reload();
+
     }
   }
 

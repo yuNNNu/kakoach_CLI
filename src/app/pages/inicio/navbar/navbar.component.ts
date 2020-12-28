@@ -47,6 +47,7 @@ export class NavbarComponent implements OnInit {
     this.login = false;
     localStorage.removeItem("email");
     localStorage.removeItem("login");
+    window.location.reload();
 
   }
   onSubmit(f: NgForm) {
@@ -64,8 +65,10 @@ export class NavbarComponent implements OnInit {
           this.login = true;
           localStorage.setItem("email", this.listaUsuario["mail"])
           localStorage.setItem("login", "true")
+          window.location.reload();
         } else {
           this.login = false;
+          window.location.reload();
         }
       })
   }
