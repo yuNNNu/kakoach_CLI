@@ -9,6 +9,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DolarvalueService } from '../../services/dolar/dolarvalue.service';
 declare var $:any;
 
+
 @Component({
   selector: 'app-plan',
   templateUrl: './plan.component.html',
@@ -24,11 +25,11 @@ export class PlanComponent implements OnInit {
               private usd : DolarvalueService) {
               }
 
-
-  public planJson:any;
+  public login: boolean = false;
+  public planJson: any;
   public plans = this._ac.snapshot.data.plans.data;
   public personalplan = this._ac.snapshot.data.plan.data;
-  public plan:any;
+  public plan: any;
   public id = this._ac.snapshot.params["id"];
   public url = Ruta.url;
   public personal:boolean;
@@ -41,10 +42,11 @@ export class PlanComponent implements OnInit {
   public moneyType:boolean = true;
 
 
+
   ngOnInit(): void {
 
-  	this.planJson = this.filteredPlan();
-
+    this.planJson = this.filteredPlan();
+    console.log("planJson", this.planJson)
     this._paid.paid.subscribe(data => {
       this.paid = true;
       console.log("his.paid", this.paid);
@@ -55,11 +57,11 @@ export class PlanComponent implements OnInit {
       // status true = transaccion aceptada
       // status false = transaccion rechazada
       if(this.transaction.response_code == 0){
+
         this.status = true;
-      }else{
+      } else {
         this.status = false;
       }
-     
     })
 
     // moneyType: true = CLP
@@ -76,6 +78,12 @@ export class PlanComponent implements OnInit {
           this.update();
           console.log("this.price", this.price);
        })
+    }
+
+     if (localStorage.getItem("email")) {
+      this.login = true
+    } else {
+      this.login = false
     }
   }
 
@@ -105,34 +113,43 @@ export class PlanComponent implements OnInit {
                 })
   }
 
-  filteredPlan(){
-  	let filteredPlan = this.plans.filter(res => res._id == this.id)
-  	this.plan = filteredPlan;
+
+
+  filteredPlan() {
+    let filteredPlan = this.plans.filter(res => res._id == this.id)
+    this.plan = filteredPlan;
     this.personal = false;
-     if(this.plan.length == 0){
-       this.personal = true;
-       this.plan = this.personalplan;
-     }
-  	return this.plan;
+    if (this.plan.length == 0) {
+      this.personal = true;
+      this.plan = this.personalplan;
+    }
+    return this.plan;
   }
 
-  create(){
-     
-     this.webpay.create(this.price).subscribe((res:any) => {
-       window.open(res.url);
+  create() {
 
-    })
+    if (localStorage.getItem("email")) {
+      this.webpay.create(this.price).subscribe((res: any) => {
+        window.open(res.url);
+
+      })
+    } else {
+
+      this.login = false
+      window.location.reload();
+
+    }
   }
 
-   commit(){
-   this.webpay.commit().subscribe((res:any) => {
+  commit() {
+    this.webpay.commit().subscribe((res: any) => {
       console.log("datas", res.data);
 
-      if(res.data.response_code == 0){
+      if (res.data.response_code == 0) {
         this.paid = true;
         console.log("dentro del commit", this.paid);
       }
-   })
+    })
   }
 
   update(){
