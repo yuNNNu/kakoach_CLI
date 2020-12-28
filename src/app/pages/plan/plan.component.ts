@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { WebpayService } from '../../services/webpay/webpay.service';
 import { NgForm } from '@angular/forms';
 import { PaidService } from './../../services/webpay/paid.service';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { DolarvalueService } from '../../services/dolar/dolarvalue.service';
 declare var $:any;
 
 @Component({
@@ -15,10 +16,13 @@ declare var $:any;
 })
 export class PlanComponent implements OnInit {
 
+  public usdValue:any;
 
   constructor(private _ac : ActivatedRoute,
               private webpay : WebpayService,
-              private _paid : PaidService) { }
+              private _paid : PaidService,
+              private usd : DolarvalueService) {
+              }
 
 
   public planJson:any;
@@ -34,9 +38,8 @@ export class PlanComponent implements OnInit {
   public transaction:any;
   public price:any;
   public status:boolean;
+  public moneyType:boolean = true;
 
-  // status true = transaccion aceptada
-  // status false = transaccion rechazada
 
   ngOnInit(): void {
 
@@ -49,17 +52,57 @@ export class PlanComponent implements OnInit {
       console.log("this.transaction", this.transaction);
 
       // Condicion si la venta fue realizada con exito o fue rechazada
+      // status true = transaccion aceptada
+      // status false = transaccion rechazada
       if(this.transaction.response_code == 0){
         this.status = true;
       }else{
         this.status = false;
       }
-      
      
     })
-    console.log("this.status", this.status);
-    this.price = this.planJson[0].precio;
 
+    // moneyType: true = CLP
+    // moneyType: false = USD
+    if(this.moneyType){
+      this.price = this.planJson[0].precio
+      console.log("this.price", this.price);
+    }else{
+      this.usd.getDolarValue().subscribe(value => {
+          let n;
+          this.usdValue = value["serie"][0].valor
+          n = this.planJson[0].precio/this.usdValue;     
+          this.price = n.toFixed(2);   
+          this.update();
+          console.log("this.price", this.price);
+       })
+    }
+  }
+
+  letClp(){
+    this.moneyType ? this.moneyType = true : this.moneyType = true;
+    this.price = this.planJson[0].precio
+    this.update();
+  }
+
+  letUsd(){
+    !this.moneyType ? this.moneyType = false : this.moneyType = false;
+     this.usd.getDolarValue().subscribe(value => {
+        let n;
+        this.usdValue = value["serie"][0].valor
+        n = this.planJson[0].precio/this.usdValue;     
+        // this.price = n.toFixed(2);
+        this.price = 1,41;   
+        this.update();
+        console.log("this.price", this.price);
+     })
+  }
+
+  returnUsd(){
+    return this.usd.getDolarValue().subscribe(value => {
+                  this.usdValue = value["serie"][0].valor
+                  
+                })
   }
 
   filteredPlan(){
@@ -90,6 +133,10 @@ export class PlanComponent implements OnInit {
         console.log("dentro del commit", this.paid);
       }
    })
+  }
+
+  update(){
+    this.ngOnInit();
   }
 
 }

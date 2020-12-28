@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //Importamos los modulos para trabajar con formularios en angular
 import { FormsModule } from '@angular/forms';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 /* COMPONENTES */
 
 import { NavbarComponent } from './pages/inicio/navbar/navbar.component';
@@ -36,6 +36,7 @@ import { VoucherComponent } from './pages/plan/voucher/voucher.component';
 
 import { PaidService } from './services/webpay/paid.service';
 import { CancelledComponent } from './pages/plan/cancelled/cancelled.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,9 @@ import { CancelledComponent } from './pages/plan/cancelled/cancelled.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonToggleModule
   ],
   providers: [PaidService],
   bootstrap: [AppComponent]
