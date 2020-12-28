@@ -36,17 +36,25 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem("email")) {
+      this.login = true
+    } else {
+      this.login = false
+    }
   }
   // metodo for log ou
   salir() {
     this.login = false;
+    localStorage.removeItem("email");
+    localStorage.removeItem("login");
+
   }
   onSubmit(f: NgForm) {
     console.log(this.listaUsuario)
-    this.user.GetUsers()
-      .subscribe(res => {
-        console.log("res del getUser", res)
-      })
+    // this.user.GetUsers()
+    //   .subscribe(res => {
+    //     console.log("res del getUser", res)
+    //   })
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
@@ -54,6 +62,8 @@ export class NavbarComponent implements OnInit {
         let usr = res;
         if (usr["mensaje"] == "ok") {
           this.login = true;
+          localStorage.setItem("email", this.listaUsuario["mail"])
+          localStorage.setItem("login", "true")
         } else {
           this.login = false;
         }

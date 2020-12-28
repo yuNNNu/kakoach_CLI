@@ -28,12 +28,17 @@
                             </ul>
                             
                         </div>
-                        <div class="d-flex justify-content-center mt-n2 mb-5">
+                        <div class="d-flex justify-content-center mt-n2 mb-5" *ngIf="login">
                             <form (ngSubmit)="create()" action="webpayurl" method="POST">
                                 <input type="hidden" name="token_ws" value="token">
                                 <button type="submit" class="btn-black btn rounded-pill px-4 ml-lg-4">Comprar<i
                                 class="fas fa-arrow-right ml-1"></i></button>      
                             </form>
+                          
+                        </div>
+                        <div class="d-flex justify-content-center mt-n2 mb-5" *ngIf="!login">
+                                <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" href="/crear-usuario" >Inicia sesion y/o registrate<i
+                                 class="fas fa-arrow-right ml-1"></i></a>
                           
                         </div>
                     </div>
