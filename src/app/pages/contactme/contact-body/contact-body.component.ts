@@ -56,11 +56,15 @@ export class ContactBodyComponent implements OnInit {
 
             } else {
 
-              Swal.fire(
-                'Mensaje enviado',
-                'Su mensaje será respondido lo antes posible, gracias por la espera!.',
-                'success'
-              )
+              Swal.fire({
+
+                title: 'Mensaje enviado',
+                text: 'Su mensaje será respondido lo antes posible, gracias por la espera!.',
+                icon: 'success',
+                confirmButtonText: 'OK!'
+              }).then((result) => {
+                window.location.href = "/";
+              })
 
             }
           })

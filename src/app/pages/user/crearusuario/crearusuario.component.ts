@@ -48,13 +48,18 @@ export class CrearusuarioComponent implements OnInit {
             'error'
           )
 
+
+
         } else {
 
-          Swal.fire(
-            'Cuenta creada con éxito',
-            'Se le ha enviado un mail para confirmar la verificación de usuario',
-            'success'
-          )
+          Swal.fire({
+             title: 'Cuenta creada con éxito',
+            text: 'Se le ha enviado un mail para confirmar la verificación de usuario',
+            icon: 'success',
+            confirmButtonText: 'OK!'
+          }).then((result) => {
+            window.location.href = "/";
+          })
         }
       })
       
