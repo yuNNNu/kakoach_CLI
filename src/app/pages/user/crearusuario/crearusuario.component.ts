@@ -29,17 +29,13 @@ export class CrearusuarioComponent implements OnInit {
       .subscribe(res => {
         this.allUser = res["data"]
         // RECIBE USERS
-        console.log("users", this.allUser)
       })
 
   }
   onSubmit(f: NgForm) {
-    console.log("lista usuario en onsubmit", this.listaUsuario)
-
 
     this.user.create(this.listaUsuario)
       .subscribe(res => {
-        console.log("res form user", res["status"])
         if (res["status"] !== 200) {
 
           Swal.fire(

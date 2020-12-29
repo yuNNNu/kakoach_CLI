@@ -13,9 +13,7 @@ export class ComenzamosComponent implements OnInit {
   ngOnInit(): void {
   	this.benef.getBenefits()
       .subscribe(respuesta => {
-        // console.log(respuesta)
         this.benefitsJson = respuesta["data"][0];
-        // console.log(this.firstImageJson.imagen)
       })
   }
 

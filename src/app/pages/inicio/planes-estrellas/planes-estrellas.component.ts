@@ -30,7 +30,6 @@ export class PlanesEstrellasComponent implements OnInit {
   ngOnInit(): void {
 
     this.secondaryPlansJson1 = this.Plans.find(res => res._id == this.Secondary[0].id);
-    console.log("this.secondaryPlansJson1", this.secondaryPlansJson1);
     this.secondaryPlansJson2 = this.Plans.find(res => res._id == this.Secondary[1].id);
 
   }

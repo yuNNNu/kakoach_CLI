@@ -15,10 +15,8 @@ export class VoucherComponent implements OnInit {
 	constructor(private _email: EmailService) { }
 
 	ngOnInit(): void {
-		console.log("En el pdf", this.Pdf)
 		this.transaction = this.Transaction;
 		this.precio = this.Precio;
-		console.log("this.precio", this.precio);
 		switch (this.transaction.payment_type_code) {
 			case 'VD': this.transaction.payment_type_code = "Venta Débito";
 				break;
@@ -37,7 +35,6 @@ export class VoucherComponent implements OnInit {
 				break;
 		}
 		this._email.sendPdf(this.Pdf).subscribe(res => {
-			console.log("res mail", res)
 		})
 
 

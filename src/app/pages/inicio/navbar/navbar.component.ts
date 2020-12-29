@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
     ============================================== */
     this.logo.getLogo()
       .subscribe(respuesta => {
-        console.log("respuesta", respuesta);
         // pasamos la informacion recibida a la variable
         this.imageJson = respuesta["data"][0]
 
@@ -53,14 +52,10 @@ export class NavbarComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     console.log(this.listaUsuario)
-    // this.user.GetUsers()
-    //   .subscribe(res => {
-    //     console.log("res del getUser", res)
-    //   })
+
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
-        console.log("Res del login", res)
         let usr = res;
         if (usr["mensaje"] == "ok") {
           this.login = true;

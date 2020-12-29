@@ -27,9 +27,7 @@ export class ImagenPrincipalComponent implements OnInit {
     ============================================== */
     this.principal.getPrincipalPlanImage()
       .subscribe(respuesta => {
-        // console.log(respuesta)
         this.firstImageJson = respuesta["data"][this.number];
-        // console.log(this.firstImageJson.imagen)
       })
   }
 
@@ -40,9 +38,7 @@ export class ImagenPrincipalComponent implements OnInit {
     ============================================== */
     this.principal.getPrincipalPlanImage()
       .subscribe(respuesta => {
-        // console.log(respuesta)
         this.firstImageJson = respuesta["data"][0];
-        // console.log(this.firstImageJson.imagen)
       })
   }
 

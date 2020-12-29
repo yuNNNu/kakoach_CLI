@@ -25,12 +25,6 @@ export class ContactBodyComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log("lista usuario en onsubmit", this.datosContactMe)
-    // this.user.GetUsers()
-    //   .subscribe(res => {
-    //     console.log("res del getUser", res)
-    //   })
-
 
     Swal.fire({
       title: '¿Está seguro de realizar esta acción?',
@@ -40,12 +34,10 @@ export class ContactBodyComponent implements OnInit {
       confirmButtonText: 'Si',
       cancelButtonText: 'No'
     }).then((result) => {
-      console.log("result", result);
 
       if (result.isConfirmed) {
         this._contact.contactMe(this.datosContactMe)
           .subscribe(res => {
-            console.log("res form user", res["status"])
             if (res["status"] !== 200) {
 
               Swal.fire(

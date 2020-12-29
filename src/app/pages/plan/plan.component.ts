@@ -46,13 +46,9 @@ export class PlanComponent implements OnInit {
   ngOnInit(): void {
 
     this.planJson = this.filteredPlan();
-    console.log("planJson", this.planJson)
     this._paid.paid.subscribe(data => {
       this.paid = true;
-      console.log("his.paid", this.paid);
       this.transaction = JSON.parse(data);
-      console.log("this.transaction", this.transaction);
-
       // Condicion si la venta fue realizada con exito o fue rechazada
       // status true = transaccion aceptada
       // status false = transaccion rechazada
@@ -68,7 +64,6 @@ export class PlanComponent implements OnInit {
     // moneyType: false = USD
     if(this.moneyType){
       this.price = this.planJson[0].precio
-      console.log("this.price", this.price);
     }else{
       this.usd.getDolarValue().subscribe(value => {
           let n;
@@ -76,7 +71,6 @@ export class PlanComponent implements OnInit {
           n = this.planJson[0].precio/this.usdValue;     
           this.price = n.toFixed(2);   
           this.update();
-          console.log("this.price", this.price);
        })
     }
 
@@ -99,10 +93,8 @@ export class PlanComponent implements OnInit {
         let n;
         this.usdValue = value["serie"][0].valor
         n = this.planJson[0].precio/this.usdValue;     
-        // this.price = n.toFixed(2);
         this.price = 1,41;   
         this.update();
-        console.log("this.price", this.price);
      })
   }
 
@@ -143,11 +135,9 @@ export class PlanComponent implements OnInit {
 
   commit() {
     this.webpay.commit().subscribe((res: any) => {
-      console.log("datas", res.data);
 
       if (res.data.response_code == 0) {
         this.paid = true;
-        console.log("dentro del commit", this.paid);
       }
     })
   }

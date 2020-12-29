@@ -13,7 +13,6 @@ export class ImagenColeccionComponent implements OnInit {
     this.imag.getPrincipalImage()
       .subscribe(res => {
         this.imgDate = res["data"][0];
-        // console.log(res)
       })
   }
 
