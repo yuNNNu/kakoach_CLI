@@ -35,10 +35,7 @@ export class CrearusuarioComponent implements OnInit {
   }
   onSubmit(f: NgForm) {
     console.log("lista usuario en onsubmit", this.listaUsuario)
-    // this.user.GetUsers()
-    //   .subscribe(res => {
-    //     console.log("res del getUser", res)
-    //   })
+
 
     this.user.create(this.listaUsuario)
       .subscribe(res => {

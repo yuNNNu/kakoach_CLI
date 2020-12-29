@@ -5,27 +5,26 @@
 			<div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Enviar Mensaje</h3>
 			</div>
 			<div class="card-body">
-			    <form>
+			    <form (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
 			        <div class="form-row">
 			            <div class="col-md-6">
-			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nombre</label><input class="form-control py-4" id="inputFirstName" type="text" placeholder="Ingresar Nombre" />
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nombre</label><input  [(ngModel)]= "datosContactMe.nombre" #nombre="ngModel" name="nombre" class="form-control py-4" id="inputFirstName" type="text" placeholder="Ingresar Nombre" />
 			                </div>
 			            </div>
 			            <div class="col-md-6">
-			                <div class="form-group"><label class="small mb-1" for="inputLastName">Apellido</label><input class="form-control py-4" id="inputLastName" type="text" placeholder="Ingresar Apellido" /></div>
+			                <div class="form-group"><label class="small mb-1" for="inputLastName">Apellido</label><input  [(ngModel)]= "datosContactMe.apellido" #apellido="ngModel" name="apellido" class="form-control py-4" id="inputLastName" type="text" placeholder="Ingresar Apellido" /></div>
 			            </div>
 			        </div>
-			        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Ingresar Email" /></div>
+			        <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input  [(ngModel)]= "datosContactMe.mail" #mail="ngModel" name="mail" class="form-control py-4" id="inputEmailAddress" type="email" aria-describedby="emailHelp" placeholder="Ingresar Email" /></div>
 
 			        <div class="form-group">
 			        	<label for="#">Mensaje</label>
-    					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    					<textarea  [(ngModel)]= "datosContactMe.mensaje" #mensaje="ngModel" name="mensaje"  class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 			        </div>
 			        
 
 			        
-			        <div class="form-group mt-4 mb-0"><a class="btn btn-primary btn-block" href="login-basic.html">Enviar</a>
-			        </div>
+			        <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Enviar</button>
 			    </form>
 			</div>
 
