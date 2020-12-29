@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ContactMeService } from '../../../services/contacto/contact-me.service'
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-contact-body',
   templateUrl: './contact-body.component.html',
@@ -30,10 +31,41 @@ export class ContactBodyComponent implements OnInit {
     //     console.log("res del getUser", res)
     //   })
 
-    this._contact.contactMe(this.datosContactMe)
-      .subscribe(res => {
-        console.log("res form user", res)
-      })
+
+    Swal.fire({
+      title: 'Esta correcto el correo?',
+      text: 'Si no lo está... Puede cancelar esta acción!',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result) {
+        this._contact.contactMe(this.datosContactMe)
+          .subscribe(res => {
+            console.log("res form user", res["status"])
+            if (res["status"] !== 200) {
+
+              Swal.fire(
+                'Error al enviar el correo!',
+                'El correo no se ha enviado',
+                'error'
+              )
+
+            } else {
+
+              Swal.fire(
+                'Mensaje enviado',
+                'Si la direccion de correo existe, revisa tu bandeja',
+                'success'
+              )
+            }
+          })
+      }
+
+    })
+
+
   }
 
 }
