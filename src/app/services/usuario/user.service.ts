@@ -20,5 +20,18 @@ export class UserService {
     const headers = new HttpHeaders();
     return this.http.post(`${this.url}/login-usuario`, listaCliente, { headers })
   }
+  create(datos) {
+
+    console.log("datos en create service", datos)
+    let testData = {
+      "nombre": datos.nombre,
+      "apellido": datos.apellido,
+      "mail": datos.mail,
+      "password": datos.password
+
+    }
+    return this.http.post(`${this.url}/crear-cliente`, testData);
+
+  }
 
 }
