@@ -36,38 +36,30 @@ export class CrearusuarioComponent implements OnInit {
   onSubmit(f: NgForm) {
     console.log("lista usuario en onsubmit", this.listaUsuario)
 
-    Swal.fire({
-      title: 'Esta correcto el correo?',
-      text: 'Si no lo está... Puede cancelar esta acción!',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Si',
-      cancelButtonText: 'No'
-    }).then((result) => {
-      if (result) {
-        this.user.create(this.listaUsuario)
-          .subscribe(res => {
-            console.log("res form user", res["status"])
-            if (res["status"] !== 200) {
 
-              Swal.fire(
-                'Error al crear cuenta!',
-                'intentelo mas tarde',
-                'error'
-              )
+    this.user.create(this.listaUsuario)
+      .subscribe(res => {
+        console.log("res form user", res["status"])
+        if (res["status"] !== 200) {
 
-            } else {
+          Swal.fire(
+            'Error al crear cuenta!',
+            'Intentélo más tarde.',
+            'error'
+          )
 
-              Swal.fire(
-                'Cuenta creada con exito',
-                'Vea confirmacion en su bandeja del email',
-                'success'
-              )
-            }
-          })
-      }
-    })
+        } else {
+
+          Swal.fire(
+            'Cuenta creada con éxito',
+            'Se le ha enviado un mail para confirmar la verificación de usuario',
+            'success'
+          )
+        }
+      })
+      
   }
-
-
 }
+
+
+

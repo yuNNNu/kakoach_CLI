@@ -33,14 +33,16 @@ export class ContactBodyComponent implements OnInit {
 
 
     Swal.fire({
-      title: 'Esta correcto el correo?',
-      text: 'Si no lo está... Puede cancelar esta acción!',
+      title: '¿Está seguro de realizar esta acción?',
+      text: 'Si no lo está... Puede cancelar esta acción!, asegúrese que el correo sea válido',
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Si',
       cancelButtonText: 'No'
     }).then((result) => {
-      if (result) {
+      console.log("result", result);
+
+      if (result.isConfirmed) {
         this._contact.contactMe(this.datosContactMe)
           .subscribe(res => {
             console.log("res form user", res["status"])
@@ -48,7 +50,7 @@ export class ContactBodyComponent implements OnInit {
 
               Swal.fire(
                 'Error al enviar el correo!',
-                'El correo no se ha enviado',
+                'Ha existido un error del servidor, no ha sido posible enviar el correo.',
                 'error'
               )
 
@@ -56,12 +58,20 @@ export class ContactBodyComponent implements OnInit {
 
               Swal.fire(
                 'Mensaje enviado',
-                'Si la direccion de correo existe, revisa tu bandeja',
+                'Su mensaje será respondido lo antes posible, gracias por la espera!.',
                 'success'
               )
 
             }
           })
+      }else{
+
+        Swal.fire(
+                'Mensaje no enviado',
+                'Acción cancelada!.',
+                'error'
+              )
+
       }
 
     })
