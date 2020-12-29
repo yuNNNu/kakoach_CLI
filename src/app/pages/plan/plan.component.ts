@@ -136,7 +136,7 @@ export class PlanComponent implements OnInit {
     } else {
 
       this.login = false
-      window.location.reload();
+      alert("Para realizar la compra, por favor iniciar sesión o crearse una cuenta!");
 
     }
   }

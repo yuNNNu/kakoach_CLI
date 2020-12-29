@@ -259,5 +259,13 @@ export class ShortPlansComponent implements OnInit {
 		this.ngOnInit();
 	}
 
+	scroll(){
+		let el = document.getElementById("topShow");
+		$("html, body").animate({
+			scrollTop: $(el).offset().top
+		}, 500)
+		// el.scrollIntoView();
+	}
+
 
 }
