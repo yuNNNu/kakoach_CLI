@@ -59,6 +59,7 @@ export class ContactBodyComponent implements OnInit {
                 'Si la direccion de correo existe, revisa tu bandeja',
                 'success'
               )
+
             }
           })
       }
@@ -67,5 +68,6 @@ export class ContactBodyComponent implements OnInit {
 
 
   }
+
 
 }

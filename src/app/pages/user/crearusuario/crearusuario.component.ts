@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BorderFooterComponent } from '../../herramientas/border-footer/border-footer.component';
 import { NgForm } from '@angular/forms';
-
+import Swal from 'sweetalert2'
 import { UserService } from '../../../services/usuario/user.service'
 @Component({
   selector: 'app-crearusuario',
@@ -36,11 +36,37 @@ export class CrearusuarioComponent implements OnInit {
   onSubmit(f: NgForm) {
     console.log("lista usuario en onsubmit", this.listaUsuario)
 
+    Swal.fire({
+      title: 'Esta correcto el correo?',
+      text: 'Si no lo está... Puede cancelar esta acción!',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result) {
+        this.user.create(this.listaUsuario)
+          .subscribe(res => {
+            console.log("res form user", res["status"])
+            if (res["status"] !== 200) {
 
-    this.user.create(this.listaUsuario)
-      .subscribe(res => {
-        console.log("res form user", res)
-      })
+              Swal.fire(
+                'Error al crear cuenta!',
+                'intentelo mas tarde',
+                'error'
+              )
+
+            } else {
+
+              Swal.fire(
+                'Cuenta creada con exito',
+                'Vea confirmacion en su bandeja del email',
+                'success'
+              )
+            }
+          })
+      }
+    })
   }
 
 
