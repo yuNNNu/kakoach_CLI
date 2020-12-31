@@ -37,6 +37,7 @@ import { VoucherComponent } from './pages/plan/voucher/voucher.component';
 import { PaidService } from './services/webpay/paid.service';
 import { CancelledComponent } from './pages/plan/cancelled/cancelled.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NuevapassComponent } from './pages/user/nuevapass/nuevapass.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SocialmediaComponent,
     ImagenColeccionComponent,
     VoucherComponent,
-    CancelledComponent
+    CancelledComponent,
+    NuevapassComponent
   ],
   imports: [
     BrowserModule,

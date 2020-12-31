@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 //Importamos ruta global de la API
 import { Ruta } from '../../config';
 @Injectable({
@@ -32,6 +33,14 @@ export class UserService {
     }
     return this.http.post(`${this.url}/crear-cliente`, testData);
 
+  }
+
+  updatePass(newpass, id){
+    let newPass = {
+      "password": newpass
+    }
+
+    return this.http.put(`${this.url}/editar-cliente/${id}`, newpass);
   }
 
 }

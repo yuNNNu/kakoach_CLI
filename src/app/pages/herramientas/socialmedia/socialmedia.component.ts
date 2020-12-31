@@ -12,7 +12,10 @@ export class SocialmediaComponent implements OnInit {
   public youtube:any;
   public twitter:any;
   constructor(private social: SocialMediaService) {
-  	  this.social.getUrl()
+  }
+
+  ngOnInit(): void {
+          this.social.getUrl()
       .subscribe(res => {
         this.instagram = res["data"][0];
       })
@@ -31,9 +34,6 @@ export class SocialmediaComponent implements OnInit {
       .subscribe(res => {
         this.twitter = res["data"][3];
       })
-  }
-
-  ngOnInit(): void {
   }
 
 }

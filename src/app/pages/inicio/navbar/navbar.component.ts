@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { LogoNavbarService } from '../../../services/inicio/logo-navbar.service';
 import { UserService } from '../../../services/usuario/user.service';
 import { Ruta } from '../../../config';
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,16 +16,11 @@ export class NavbarComponent implements OnInit {
   public url = Ruta.url;
   // devuelvo json
   public imageJson: any;
+  public imagen:any;
   constructor(private logo: LogoNavbarService, private user: UserService) {
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
     ============================================== */
-    this.logo.getLogo()
-      .subscribe(respuesta => {
-        // pasamos la informacion recibida a la variable
-        this.imageJson = respuesta["data"][0]
-
-      })
 
     /*=========================================
    OBJETO LISTA USUARIO
@@ -35,6 +32,14 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+       this.logo.getLogo()
+      .subscribe(respuesta => {
+        // pasamos la informacion recibida a la variable
+        this.imageJson = respuesta["data"][0]
+
+      })
+
     if (localStorage.getItem("email")) {
       this.login = true
     } else {
@@ -56,12 +61,30 @@ export class NavbarComponent implements OnInit {
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
+        console.log("res", res);
         let usr = res;
         if (usr["mensaje"] == "ok") {
-          this.login = true;
-          localStorage.setItem("email", this.listaUsuario["mail"])
-          localStorage.setItem("login", "true")
+          if(usr["verified"] == true){
+            this.login = true;
+            localStorage.setItem("email", this.listaUsuario["mail"])
+            localStorage.setItem("login", "true")
+          }else{
+            Swal.fire(
+            'No ha sido posible logearse!',
+            'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
+            'error')
+
+            this.login = false;
+
+
+          }
+          
         } else {
+          Swal.fire(
+            'No ha sido posible logearse!',
+            usr["mensaje"],
+            'error')
+
           this.login = false;
         }
       })

@@ -35,16 +35,16 @@
                             </div>
                             <!-- plan N2(plan personal) -->
                             <div class="col-lg-4 mb-5 mb-lg-0" >
-                                <a class="card lift" href="/plan/{{personalPlan._id}}"><img class="card-img-top"
-                                        src="{{url}}/show-personal-plan-img/{{personalPlan.imagen}}" alt="..." />
+                                <a class="card lift" href="/plan/{{personalPlan?._id}}"><img class="card-img-top"
+                                        src="{{url}}/show-personal-plan-img/{{personalPlan?.imagen}}" alt="..." />
                                     <div class="card-body text-center py-3">
-                                        <h6 class="card-title mb-0">{{personalPlan.nombre}}</h6>
+                                        <h6 class="card-title mb-0">{{personalPlan?.nombre}}</h6>
                                         <div class="text-yellow"  data-aos="flip-left" data-aos-easing="ease-out-cubic"
                                         data-aos-duration="850"><i class="fas fa-star"></i><i
                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                 class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
 
-                                        <div class="small">{{personalPlan.descripcion}}</div>
+                                        <div class="small">{{personalPlan?.descripcion}}</div>
                                     </div>
                                     <div class="card-footer text-center text-xs"><i
                                             class="fas fa-calendar-check mr-1"></i>@Ka.Koach</div>
@@ -55,13 +55,13 @@
                                 <a class="card lift" href="/plan/{{secondaryPlansJson2._id}}"><img class="card-img-top" src="{{url}}/show-plan/{{secondaryPlansJson2.imagen}}"
                                         alt="..." />
                                     <div class="card-body text-center py-3">
-                                        <h6 class="card-title mb-0">{{secondaryPlansJson2.nombre}}</h6>
+                                        <h6 class="card-title mb-0">{{secondaryPlansJson2?.nombre}}</h6>
                                         <div class="text-yellow" data-aos="flip-left" data-aos-easing="ease-out-cubic"
                                         data-aos-duration="850"><i class="fas fa-star"></i><i
                                                 class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                 class="fas fa-star-half-alt"></i><i class="far fa-star"></i></div>
 
-                                        <div class="small">{{secondaryPlansJson2.descripcion}}</div>
+                                        <div class="small">{{secondaryPlansJson2?.descripcion}}</div>
                                     </div>
                                     <div class="card-footer text-center text-xs"><i
                                             class="fas fa-biking mr-1"></i>@Ka.Koach</div>

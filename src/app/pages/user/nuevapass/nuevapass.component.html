@@ -1,0 +1,41 @@
+ <app-navbar></app-navbar>
+
+ <div class="row mb-10">
+    <div class="col-lg-2"></div>
+	<div class="col-lg-8">
+		<div class="card shadow-lg border-0 rounded-lg mt-5">
+			<div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Cambiar contraseña</h3>
+			</div>
+			<div class="card-body">
+			    <form (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
+			        <div class="form-row">
+			            <div class="col-md-12">
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nueva contraseña</label><input [(ngModel)]= "listaPass.pass" #pass="ngModel" name="pass" class="form-control py-4" id="inputFirstName" type="password" placeholder="Ingresar Nueva Contraseña" />
+			                </div>
+			            </div>
+			        </div>
+			        <div class="form-row">
+			            <div class="col-md-12">
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Confirmar contraseña</label><input [(ngModel)]= "listaPass.pass2" #pass2="ngModel" name="pass2" class="form-control py-4" id="inputFirstName" type="password" placeholder="Ingresar Confirmación Nueva Contraseña" />
+			                </div>
+			            </div>
+			        </div>
+			       
+			        
+			            <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Confirmar cambios</button>
+			    </form>
+			</div>
+
+			<div class="card-footer text-center">
+			</div>
+		</div>
+    </div>
+    <div class="col-lg-2"></div>
+
+</div>
+
+<section>
+	<app-border-footer></app-border-footer>
+</section>
+
+<app-footer></app-footer>
