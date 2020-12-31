@@ -27,14 +27,14 @@
 			        <div class="form-row">
 			            <div class="col-md-6">
 							<div class="form-group"><label class="small mb-1" for="inputPasswordRegister">Password</label><input  [(ngModel)]= "listaUsuario.password1" #password1="ngModel" name="password1" class="form-control py-4" id="inputPasswordRegister" type="password" placeholder="Ingresar Contraseña" required />
-							<div class="valid-feedback"></div>
-        					<div class="invalid-feedback"></div>	
+							
+        					<div class="invalid-feedback invalid-pass1"></div>	
 							</div>
 			            </div>
 			            <div class="col-md-6">
 							<div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirm Password</label><input [(ngModel)]= "listaUsuario.password" #password="ngModel" name="password" class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirmar Contraseña" required />
-							<div class="valid-feedback"></div>
-        					<div class="invalid-feedback"></div>	
+						
+        					<div class="invalid-feedback invalid-pass2"></div>	
 							</div>
 			            </div>
 			        </div>
