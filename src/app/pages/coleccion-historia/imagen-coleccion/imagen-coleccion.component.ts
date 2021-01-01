@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirstImageAboutMeService } from '../../../services/sobre-mi/first-image-about-me.service'
 import { Ruta } from '../../../config';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-imagen-coleccion',
   templateUrl: './imagen-coleccion.component.html',
@@ -9,14 +11,12 @@ import { Ruta } from '../../../config';
 export class ImagenColeccionComponent implements OnInit {
   public imgDate: any;
   public url = Ruta.url;
-  constructor(private imag: FirstImageAboutMeService) {
-    this.imag.getPrincipalImage()
-      .subscribe(res => {
-        this.imgDate = res["data"][0];
-      })
+  constructor(private _ac : ActivatedRoute) {
   }
 
+  public imgJson = this._ac.snapshot.data.image.data[0];
   ngOnInit(): void {
+
   }
 
 }

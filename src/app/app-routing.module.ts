@@ -18,6 +18,7 @@ import { cardResolver } from './resolvers/cardDataresolver';
 import { secondaryPlanResolver } from './resolvers/secondaryPlanResolver';
 import { plansPersonalResolver } from './resolvers/planPersonalResolver'; 
 import { benefitInicioResolver } from './resolvers/benefitsInicioResolver';
+import { FirstImageSobreMiResolver } from './resolvers/PrincipalImageSobreMiResolver';
 
 
 const routes: Routes = [
@@ -41,7 +42,12 @@ const routes: Routes = [
      plan : plansPersonalResolver
    }
   },
-  { path: 'coleccion', component: ColeccionHistoriaComponent },
+  { path: 'coleccion', component: ColeccionHistoriaComponent,
+    resolve: {
+      image: FirstImageSobreMiResolver,
+      card : cardResolver
+    } 
+  },
   { path: 'historia/:id', component: HistoryComponent,
     resolve: {
       card : cardResolver
