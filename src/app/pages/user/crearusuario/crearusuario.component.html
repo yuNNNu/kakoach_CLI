@@ -1,6 +1,6 @@
  <app-navbar></app-navbar>
 
- <div class="row mb-10">
+ <div class="row mb-10 m-1">
     <div class="col-lg-2"></div>
 	<div class="col-lg-8">
 		<div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -32,18 +32,21 @@
 							</div>
 			            </div>
 			            <div class="col-md-6">
-							<div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirm Password</label><input [(ngModel)]= "listaUsuario.password" #password="ngModel" name="password" class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirmar Contraseña" required />
+							<div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirmar Password</label><input [(ngModel)]= "listaUsuario.password" #password="ngModel" name="password" class="form-control py-4" id="inputConfirmPassword" type="password" placeholder="Confirmar Contraseña" required />
 						
         					<div class="invalid-feedback invalid-pass2"></div>	
 							</div>
 			            </div>
 			        </div>
 			        
-			            <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Crear cuenta</button>
+			            
 			    </form>
 			</div>
 
 			<div class="card-footer text-center">
+
+				<button [disabled]="!f.valid" class="btn btn-primary btn-block" >Crear cuenta</button>
+
 			</div>
 		</div>
     </div>

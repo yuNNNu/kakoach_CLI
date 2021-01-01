@@ -61,7 +61,6 @@ export class NavbarComponent implements OnInit {
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
-        console.log("res", res);
         let usr = res;
         if (usr["mensaje"] == "ok") {
           if(usr["verified"] == true){

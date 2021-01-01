@@ -19,7 +19,7 @@
                 </li>
                
                  <!-- ITEM SOBRE MI -->
-                 <li class="nav-item"><a class="nav-link" href="/coleccion">Sobre mi </a>
+                 <li class="nav-item"><a class="nav-link" href="/coleccion">Sobre mí </a>
                  </li>
 
                  <!-- ITEM CONTACTO -->
@@ -51,33 +51,34 @@
                         <!-- form -->
                         <form class="m-3" (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
 
-                        <div class="form-row">
-                                <div class="form-group"><label class="small mb-1" for="inputMail">Mail</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
-                        </div>
-                        <div class="form-row">
-                                <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input
-                                    name="password"
-                                    [(ngModel)]= "listaUsuario.password" #password="ngModel"  style="font-size: smaller;" class="form-control" id="inputPassword" type="password" placeholder="Ingresar Password"/></div>
-                        </div>
-
-                        <!-- <div class="form-group mt-2 mb-0"><a class="btn btn-primary btn-block" href="login-basic.html">Logearse</a>
-                        </div> -->
-                        <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Entrar</button>
+                          <div class="form-row">
+                                  <div class="form-group"><label class="small mb-1" for="inputMail">Email</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
+                          </div>
+                          <div class="form-row">
+                                  <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input
+                                      name="password"
+                                      [(ngModel)]= "listaUsuario.password" #password="ngModel"  style="font-size: smaller;" class="form-control" id="inputPassword" type="password" placeholder="Ingresar Password"/></div>
+                          </div>
+                          
+                          <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Ingresar</button>
                         </form>
                         
-                        
+                          
                         <div class="card-footer text-center">
-                            <div class="small"><a href="/recuperar-password">¿Olvidaste la contraseña? Recuperar contraseña!</a></div>
+                            <div class="small"><a href="/recuperar-password">¿Olvidaste tu contraseña? Recuperar contraseña!</a></div>
                         </div>
                     </div>
                 </li>
             </ul>
-            <!-- BOTON REGISTRAR -->
-            <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" href="/crear-usuario" *ngIf="!login" >Registrar<i
-                    class="fas fa-arrow-right ml-1"></i></a>
-                     <!-- BOTON REGISTRAR -->
-            <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in"  *ngIf="login" (click)="salir()" >Log out<i
-                    class="fas fa-sign-out-alt ml-1" ></i></a>
+            <div class="row">
+                <div class="col-sm-12">
+                  <!-- BOTON REGISTRAR -->
+                      <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" href="/crear-usuario" *ngIf="!login" >Registrar<i class="fas fa-arrow-right ml-1"></i></a>
+                               <!-- BOTON REGISTRAR -->
+
+                      <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>

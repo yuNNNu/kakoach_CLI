@@ -7,6 +7,9 @@ import { NgForm } from '@angular/forms';
 import { PaidService } from './../../services/webpay/paid.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { DolarvalueService } from '../../services/dolar/dolarvalue.service';
+import Swal from 'sweetalert2'
+
+
 declare var $:any;
 
 
@@ -62,10 +65,13 @@ export class PlanComponent implements OnInit {
 
     // moneyType: true = CLP
     // moneyType: false = USD
+
+    // Valores de inicializacion del componente
     if(this.moneyType){
       this.price = this.planJson[0].precio
     }else{
       this.usd.getDolarValue().subscribe(value => {
+
           let n;
           this.usdValue = value["serie"][0].valor
           n = this.planJson[0].precio/this.usdValue;     
@@ -81,6 +87,7 @@ export class PlanComponent implements OnInit {
     }
   }
 
+  // Alternado entre valores en la vista
   letClp(){
     this.moneyType ? this.moneyType = true : this.moneyType = true;
     this.price = this.planJson[0].precio
@@ -90,11 +97,20 @@ export class PlanComponent implements OnInit {
   letUsd(){
     !this.moneyType ? this.moneyType = false : this.moneyType = false;
      this.usd.getDolarValue().subscribe(value => {
-        let n;
-        this.usdValue = value["serie"][0].valor
-        n = this.planJson[0].precio/this.usdValue;     
-        this.price = 1,41;   
-        this.update();
+       if(value == undefined || value == null){
+           Swal.fire(
+            'Ha ocurrido un error!',
+            'De momento el tipo de pago en USD no está disponible, inténtelo más tarde.',
+            'error')
+
+           this.letClp();
+        }else{
+          let n;
+          this.usdValue = value["serie"][0].valor
+          n = this.planJson[0].precio/this.usdValue;     
+          this.price = n.toFixed(2);   
+          this.update();
+        }
      })
   }
 

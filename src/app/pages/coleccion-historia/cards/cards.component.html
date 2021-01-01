@@ -1,0 +1,21 @@
+<div class="row justify-content-center ">
+    <div class="icon-list-social mb-5" style="font-size: 2.25rem; margin-right: 0.5rem;">
+    <a style="margin-left: 0.5rem;" href="{{instagram.url}}" target="_blank"><i
+    class="fab fa-instagram"></i></a><a style="margin-left: 0.5rem;"
+    href="{{facebook.url}}" target="_blank"><i class="fab fa-facebook" ></i></a><a
+    style="margin-left: 0.5rem;" href="{{youtube.url}}" target="_blank"><i
+    class="fab fa-youtube"></i></a><a style="margin-left: 0.5rem;"
+    href="{{twitter.url}}" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+</div>
+<div class="container">
+	<div class="card-columns card-columns-portfolio">
+	   <a class="card card-portfolio" *ngFor="let card of cardsJson" data-aos="zoom-in" href="/historia/{{card._id}}"
+	        ><img class="card-img-top" src="{{url}}/mostrar-tarjeta-img/{{card.imagen}}" alt="..." />
+	        <div class="card-body"><div class="card-title">{{card.titulo}}</div>
+	        
+	        </div>
+	    </a
+	    >
+	</div>
+</div> 

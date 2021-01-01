@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./imagen-coleccion.component.css']
 })
 export class ImagenColeccionComponent implements OnInit {
-  public imgDate: any;
   public url = Ruta.url;
   constructor(private _ac : ActivatedRoute) {
   }
