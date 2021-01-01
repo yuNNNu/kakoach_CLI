@@ -78,21 +78,27 @@ export class CrearusuarioComponent implements OnInit {
         if (this.listaUsuario["password"] === this.listaUsuario["password1"]) {
           this.user.create(this.listaUsuario)
             .subscribe(res => {
-              if (res["status"] !== 200) {
+              console.log("res en creacion del user", res)
+              if (res["status"] == 400) {
 
                 Swal.fire(
-                  'Error al crear cuenta!',
-                  'Intentélo más tarde.',
+                  'Error',
+                  res["mensaje"],
                   'error'
                 )
+              } else if (res["status"] == 500) {
 
-
+                Swal.fire(
+                  'Error',
+                  res["mensaje"],
+                  'error'
+                )
 
               } else {
 
                 Swal.fire({
                   title: 'Cuenta creada con éxito',
-                  text: 'Se le ha enviado un mail para confirmar la verificación de usuario',
+                  text: res["mensaje"],
                   icon: 'success',
                   confirmButtonText: 'OK!'
                 }).then((result) => {
@@ -100,13 +106,19 @@ export class CrearusuarioComponent implements OnInit {
                 })
               }
             })
-        } else {
+
+
+        }
+        if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
           Swal.fire(
             'Contraseñas no coinciden!',
             'Intenté nuevamente.',
             'error'
           )
+          this.listaUsuario["password"] = "";
+          this.listaUsuario["password1"] = "";
           return
+
         }
 
       }

@@ -23,7 +23,7 @@ export class UserService {
   }
   create(datos) {
 
-    console.log("datos en create service", datos)
+
     let testData = {
       "nombre": datos.nombre,
       "apellido": datos.apellido,
@@ -35,7 +35,7 @@ export class UserService {
 
   }
 
-  updatePass(newpass, id){
+  updatePass(newpass, id) {
     let newPass = {
       "password": newpass
     }
