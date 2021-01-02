@@ -144,7 +144,10 @@ export class PlanComponent implements OnInit {
     } else {
 
       this.login = false
-      alert("Para realizar la compra, por favor iniciar sesión o crearse una cuenta!");
+       Swal.fire(
+            'Ha ocurrido un error!',
+            'Para realizar la compra, por favor iniciar sesión o crearse una cuenta!.',
+            'error')
 
     }
   }
