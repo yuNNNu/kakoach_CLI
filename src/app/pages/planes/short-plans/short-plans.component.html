@@ -8,7 +8,7 @@
                 <button *ngIf="backdef && !inLvl" data-aos="fade-zoom-in"
                 (click)="showDef()" 
                 [ngClass]="{'active': defToActive}"
-                 class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4 active" id="deformass1">PLANES DE DEFINICIÓN</button>
+                 class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 mb-sm-2 col-md-4 active" id="deformass1">PLANES DE DEFINICIÓN</button>
 
                 <button *ngIf="!backdef && inLvl" data-aos="fade-right"
                 (click)="showDef()" 
@@ -17,9 +17,9 @@
                 VOLVER A PLANES DE DEFINICIÓN</button>
                 <div class=" col-sm-2 col-md-1 mt-2 mt-lg-2" *ngIf="!inLvl"></div> 
             
-                <div class="col-sm-2 col-md-1" *ngIf="!inLvl"></div>
+                <div class="col-sm-2 col-md-1 mt-md-2" *ngIf="!inLvl"></div>
                 <button *ngIf="backvol && !inLvl" data-aos="fade-zoom-in"
-                [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4" id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
+                [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-4 mb-sm-2 " id="deformass2"(click)="showHyp()">PLANES DE VOLUMEN</button>   
 
                 <button *ngIf="!backvol && inLvl" data-aos="fade-left"
                 [ngClass]="{'active': hypToActive}" class="btn btn-outline-light btn-marketing rounded-pill col-12 col-sm-8 col-md-8" id="deformass2"(click)="showHyp()">
@@ -33,7 +33,7 @@
 </div>
 
   <!-- CARTAS -->
-<section class="bg-black py-2 pb-5">  
+<section class="bg-black py-5 pb-5">  
     <div class="container z-1 pb-4" style="left: 9px;" *ngFor="let plan of planJson; ">
         {{ changingSide()}}
 

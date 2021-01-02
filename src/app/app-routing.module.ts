@@ -20,6 +20,7 @@ import { plansPersonalResolver } from './resolvers/planPersonalResolver';
 import { benefitInicioResolver } from './resolvers/benefitsInicioResolver';
 import { FirstImageSobreMiResolver } from './resolvers/PrincipalImageSobreMiResolver';
 import { socialMediaResolver } from './resolvers/socialMediaResolver';
+import { PrincipalImagePlansResolver } from './resolvers/PrincipalImagePlanesResolver';
 
 const routes: Routes = [
   { path: '', component: InicioComponent,
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'planes', component: PlanesComponent,
    resolve: {
      categories : plansCategoriesResolver,
-     plans : plansDataResolver
+     plans : plansDataResolver,
+     image : PrincipalImagePlansResolver
    }},
 
   { path: 'plan/:id', component: PlanComponent,
