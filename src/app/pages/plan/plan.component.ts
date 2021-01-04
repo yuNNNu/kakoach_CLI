@@ -5,9 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { WebpayService } from '../../services/webpay/webpay.service';
 import { NgForm } from '@angular/forms';
 import { PaidService } from './../../services/webpay/paid.service';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DolarvalueService } from '../../services/dolar/dolarvalue.service';
-declare var $:any;
+declare var $: any;
 
 
 @Component({
@@ -17,13 +17,13 @@ declare var $:any;
 })
 export class PlanComponent implements OnInit {
 
-  public usdValue:any;
+  public usdValue: any;
 
-  constructor(private _ac : ActivatedRoute,
-              private webpay : WebpayService,
-              private _paid : PaidService,
-              private usd : DolarvalueService) {
-              }
+  constructor(private _ac: ActivatedRoute,
+    private webpay: WebpayService,
+    private _paid: PaidService,
+    private usd: DolarvalueService) {
+  }
 
   public login: boolean = false;
   public planJson: any;
@@ -32,27 +32,28 @@ export class PlanComponent implements OnInit {
   public plan: any;
   public id = this._ac.snapshot.params["id"];
   public url = Ruta.url;
-  public personal:boolean;
-  public webpayurl:any;
-  public token:any;
-  public paid:any;
-  public transaction:any;
-  public price:any;
-  public status:boolean;
-  public moneyType:boolean = true;
+  public personal: boolean;
+  public webpayurl: any;
+  public token: any;
+  public paid: any;
+  public transaction: any;
+  public price: any;
+  public status: boolean;
+  public moneyType: boolean = true;
 
 
 
   ngOnInit(): void {
 
     this.planJson = this.filteredPlan();
+    console.log("this.planJson", this.planJson)
     this._paid.paid.subscribe(data => {
       this.paid = true;
       this.transaction = JSON.parse(data);
       // Condicion si la venta fue realizada con exito o fue rechazada
       // status true = transaccion aceptada
       // status false = transaccion rechazada
-      if(this.transaction.response_code == 0){
+      if (this.transaction.response_code == 0) {
 
         this.status = true;
       } else {
@@ -62,47 +63,47 @@ export class PlanComponent implements OnInit {
 
     // moneyType: true = CLP
     // moneyType: false = USD
-    if(this.moneyType){
+    if (this.moneyType) {
       this.price = this.planJson[0].precio
-    }else{
+    } else {
       this.usd.getDolarValue().subscribe(value => {
-          let n;
-          this.usdValue = value["serie"][0].valor
-          n = this.planJson[0].precio/this.usdValue;     
-          this.price = n.toFixed(2);   
-          this.update();
-       })
+        let n;
+        this.usdValue = value["serie"][0].valor
+        n = this.planJson[0].precio / this.usdValue;
+        this.price = n.toFixed(2);
+        this.update();
+      })
     }
 
-     if (localStorage.getItem("email")) {
+    if (localStorage.getItem("email")) {
       this.login = true
     } else {
       this.login = false
     }
   }
 
-  letClp(){
+  letClp() {
     this.moneyType ? this.moneyType = true : this.moneyType = true;
     this.price = this.planJson[0].precio
     this.update();
   }
 
-  letUsd(){
+  letUsd() {
     !this.moneyType ? this.moneyType = false : this.moneyType = false;
-     this.usd.getDolarValue().subscribe(value => {
-        let n;
-        this.usdValue = value["serie"][0].valor
-        n = this.planJson[0].precio/this.usdValue;     
-        this.price = 1,41;   
-        this.update();
-     })
+    this.usd.getDolarValue().subscribe(value => {
+      let n;
+      this.usdValue = value["serie"][0].valor
+      n = this.planJson[0].precio / this.usdValue;
+      this.price = 1, 41;
+      this.update();
+    })
   }
 
-  returnUsd(){
+  returnUsd() {
     return this.usd.getDolarValue().subscribe(value => {
-                  this.usdValue = value["serie"][0].valor
-                  
-                })
+      this.usdValue = value["serie"][0].valor
+
+    })
   }
 
 
@@ -121,7 +122,9 @@ export class PlanComponent implements OnInit {
   create() {
 
     if (localStorage.getItem("email")) {
+      localStorage.removeItem("token")
       this.webpay.create(this.price).subscribe((res: any) => {
+        localStorage.setItem("token", res.token);
         window.open(res.url);
 
       })
@@ -142,7 +145,7 @@ export class PlanComponent implements OnInit {
     })
   }
 
-  update(){
+  update() {
     this.ngOnInit();
   }
 

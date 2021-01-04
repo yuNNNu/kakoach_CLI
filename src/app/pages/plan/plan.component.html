@@ -64,7 +64,7 @@
 <main *ngIf="paid">
 
     <div *ngIf="status">
-    <app-voucher *ngFor="let plan of planJson" [Transaction]="transaction" [Precio]="plan.precio" [Pdf]="plan.pdf"></app-voucher>    
+<app-voucher *ngFor="let plan of planJson" [Plan]="plan" [Transaction]="transaction" [Precio]="plan.precio" [Pdf]="plan.pdf"></app-voucher>    
     </div>
     <div *ngIf="!status">
     <app-cancelled></app-cancelled>    
