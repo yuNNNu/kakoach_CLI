@@ -27,18 +27,18 @@
 
 			        <div class="form-group">
 			        	<label for="#">Mensaje</label>
-    					<textarea minlength="10"  [(ngModel)]= "datosContactMe.mensaje" #mensaje="ngModel" name="mensaje"  class="form-control" placeholder="Minimo de largo 10" rows="3" required></textarea>
+    					<textarea minlength="10"  [(ngModel)]= "datosContactMe.mensaje" #mensaje="ngModel" name="mensaje"  class="form-control" placeholder="Ingrese aquí su mensaje, duda o problema." rows="3" required></textarea>
 						<div class="valid-feedback"></div>
         				<div class="invalid-feedback"></div>
 					</div>
-			        
-
-			        
-			        <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Enviar</button>
+			      
 			    </form>
 			</div>
 
 			<div class="card-footer text-center">
+
+				 <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Enviar</button>
+
 			</div>
 		</div>
     </div>

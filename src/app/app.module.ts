@@ -38,6 +38,7 @@ import { PaidService } from './services/webpay/paid.service';
 import { CancelledComponent } from './pages/plan/cancelled/cancelled.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NuevapassComponent } from './pages/user/nuevapass/nuevapass.component';
+import { CardsComponent } from './pages/coleccion-historia/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { NuevapassComponent } from './pages/user/nuevapass/nuevapass.component';
     ImagenColeccionComponent,
     VoucherComponent,
     CancelledComponent,
-    NuevapassComponent
+    NuevapassComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

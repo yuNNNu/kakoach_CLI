@@ -3502,7 +3502,7 @@ textarea.form-control.is-invalid {
 .btn {
   display: inline-block;
   font-weight: 400;
-  color: #687281;
+  color: #fff;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -3528,7 +3528,7 @@ textarea.form-control.is-invalid {
 }
 
 .btn:hover {
-  color: #687281;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -6350,7 +6350,7 @@ fieldset:disabled a.btn {
 
 .btn-link:disabled,
 .btn-link.disabled {
-  color: #687281;
+  color: #fff;
   pointer-events: none;
 }
 

@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 })
 export class NavbarComponent implements OnInit {
   public login: boolean = false;
+  public animated: boolean = false;
   public listaUsuario: any;
   public url = Ruta.url;
   // devuelvo json
@@ -48,7 +49,7 @@ export class NavbarComponent implements OnInit {
   }
   // metodo for log ou
   salir() {
-    window.location.reload();
+    this.animated = true;
     this.login = false;
     localStorage.removeItem("email");
     localStorage.removeItem("login");
@@ -56,15 +57,15 @@ export class NavbarComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log(this.listaUsuario)
 
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
-        console.log("res", res);
         let usr = res;
+
         if (usr["mensaje"] == "ok") {
           if(usr["verified"] == true){
+            this.animated = true;
             this.login = true;
             localStorage.setItem("email", this.listaUsuario["mail"])
             localStorage.setItem("login", "true")
