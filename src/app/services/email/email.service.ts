@@ -20,4 +20,14 @@ export class EmailService {
 
   }
 
+  recoverPass(mail, token){
+
+    let data = {
+      "mail": mail
+    }
+
+    return this.http.post(`${this.url}/recover-pass/${token}`, data);
+
+  }
+
 }

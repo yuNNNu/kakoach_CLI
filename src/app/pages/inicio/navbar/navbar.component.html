@@ -9,8 +9,117 @@
             class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation"><i  class="fas fa-bars"></i></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto mr-lg-3">
+
+
+            <!--           -->
+            <!--   LOGIN   -->
+            <!--   LOGIN   -->
+            <!--           -->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="login">
+
+            <!--             -->
+            <!--   ANIMATED  -->
+            <!--   ANIMATED  -->
+            <!--             -->
+
+
+            <ul class="navbar-nav ml-auto mr-lg-3" data-aos="fade-right" *ngIf="animated">
+                <!-- INCIO -->
+                <li class="nav-item"><a class="nav-link" href="">Inicio</a>
+                </li>
+                <!-- ITEM PLANES -->
+                <li class="nav-item"><a class="nav-link" href="/planes">Planes</a>
+                </li>
+               
+                 <!-- ITEM SOBRE MI -->
+                 <li class="nav-item"><a class="nav-link" href="/coleccion">Sobre mí </a>
+                 </li>
+
+                 <!-- ITEM CONTACTO -->
+                 <li class="nav-item"><a class="nav-link" href="/contact">Contáctame</a>
+                 </li>
+
+                 <!-- SEPARATOR -->
+                <div class="row grid-divider">
+                    <div class="col-sm-4">
+                      <div class="col-padding">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="col-padding">
+                      </div>
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="col-sm-12">
+                          <button class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
+                    </div>
+                </div>
+            </ul>
+
+            <!--              -->
+            <!--   !ANIMATED  -->
+            <!--   !ANIMATED  -->
+            <!--              -->
+
+
+            <ul class="navbar-nav ml-auto mr-lg-3" *ngIf="!animated">
+
+
+                <!-- INCIO -->
+                <li class="nav-item"><a class="nav-link" href="">Inicio</a>
+                </li>
+                <!-- ITEM PLANES -->
+                <li class="nav-item"><a class="nav-link" href="/planes">Planes</a>
+                </li>
+               
+                 <!-- ITEM SOBRE MI -->
+                 <li class="nav-item"><a class="nav-link" href="/coleccion">Sobre mí </a>
+                 </li>
+
+                 <!-- ITEM CONTACTO -->
+                 <li class="nav-item"><a class="nav-link" href="/contact">Contáctame</a>
+                 </li>
+
+                 <!-- SEPARATOR -->
+                <div class="row grid-divider">
+                    <div class="col-sm-4">
+                      <div class="col-padding">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="col-padding">
+                      </div>
+                    </div>
+                </div>
+              
+     
+                <div class="row">
+                    <div class="col-sm-12">
+                          <button class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
+                    </div>
+                </div>
+            </ul>
+
+        </div>
+
+
+          <!--            -->
+          <!--   !LOGIN   -->
+          <!--   !LOGIN   -->
+          <!--            -->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="!login">
+
+            <!--             -->
+            <!--   ANIMATED  -->
+            <!--   ANIMATED  -->
+            <!--             -->
+
+
+            <ul class="navbar-nav ml-auto mr-lg-3" data-aos="fade-left" *ngIf="animated">
                 <!-- INCIO -->
                 <li class="nav-item"><a class="nav-link" href="">Inicio</a>
                 </li>
@@ -39,8 +148,78 @@
                 </div>
                 
             
-                   <!-- LOG IN  -->
-                <li class="nav-item dropdown  dropdown-user" *ngIf="!login">
+                 
+                <li class="nav-item dropdown  dropdown-user">
+
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownUserImage" href="#!" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Log in
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-left border-0 shadow animated--fade-in-up">
+                        
+                        <!-- form -->
+                        <form class="m-3" (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
+
+                          <div class="form-row">
+                                  <div class="form-group"><label class="small mb-1" for="inputMail">Email</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
+                          </div>
+                          <div class="form-row">
+                                  <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input
+                                      name="password"
+                                      [(ngModel)]= "listaUsuario.password" #password="ngModel"  style="font-size: smaller;" class="form-control" id="inputPassword" type="password" placeholder="Ingresar Password"/></div>
+                          </div>
+                          
+                          <button [disabled]="!f.valid" class="btn btn-primary btn-block" >Ingresar</button>
+                        </form>
+                        
+                          
+                        <div class="card-footer text-center">
+                            <div class="small"><a href="/recuperar-password">¿Olvidaste tu contraseña? Recuperar contraseña!</a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!--              -->
+            <!--   !ANIMATED  -->
+            <!--   !ANIMATED  -->
+            <!--              -->
+
+
+            <ul class="navbar-nav ml-auto mr-lg-3" *ngIf="!animated">
+
+
+                <!-- INCIO -->
+                <li class="nav-item"><a class="nav-link" href="">Inicio</a>
+                </li>
+                <!-- ITEM PLANES -->
+                <li class="nav-item"><a class="nav-link" href="/planes">Planes</a>
+                </li>
+               
+                 <!-- ITEM SOBRE MI -->
+                 <li class="nav-item"><a class="nav-link" href="/coleccion">Sobre mí </a>
+                 </li>
+
+                 <!-- ITEM CONTACTO -->
+                 <li class="nav-item"><a class="nav-link" href="/contact">Contáctame</a>
+                 </li>
+
+                 <!-- SEPARATOR -->
+                <div class="row grid-divider">
+                    <div class="col-sm-4">
+                      <div class="col-padding">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="col-padding">
+                      </div>
+                    </div>
+                </div>
+                
+            
+                  
+                <li class="nav-item dropdown  dropdown-user">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownUserImage" href="#!" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Log in
@@ -70,15 +249,26 @@
                     </div>
                 </li>
             </ul>
+
+
+
+             
             <div class="row">
                 <div class="col-sm-12">
                   <!-- BOTON REGISTRAR -->
-                      <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" href="/crear-usuario" *ngIf="!login" >Registrar<i class="fas fa-arrow-right ml-1"></i></a>
-                               <!-- BOTON REGISTRAR -->
+                      <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" href="/crear-usuario">Registrar<i class="fas fa-arrow-right ml-1"></i></a>
 
-                      <button class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
                 </div>
             </div>
+
         </div>
+
+
+
+
+
+
+
+
     </div>
 </nav>
