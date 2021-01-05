@@ -13,23 +13,66 @@ export class BodyRecuperarPwComponent implements OnInit {
   constructor(private user: UserService) { }
 
   ngOnInit(): void {
+
+      (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    
   }
 
   onSubmit(f : NgForm){
-  	this.user.sendRecoverPassEmail(this.mail).subscribe(res => {
-      console.log("res", res);
-      if(res["status"] == 200){
-         Swal.fire({
-                  title: 'Mail enviado con éxito!',
-                  text: 'Se ha enviado un link con la recuperación de contraseña al mail ingresado.',
-                  icon: 'success',
-                  confirmButtonText: 'OK!'
-                }).then((result) => {
-                  window.location.href = "/";
-                })
-      }  
-    })
-    
+
+    var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
+    if(this.mail == ""){
+      return;
+    }else{
+
+      var esValido = expReg.test(this.mail);
+      if(!esValido){
+          Swal.fire(
+          'Formato de email inválido!',
+          'Intente nuevamente.',
+          'error'
+        )
+      }else{
+        this.user.sendRecoverPassEmail(this.mail).subscribe(res => {
+
+          console.log("res", res);
+          if(res["status"] == 200){
+             Swal.fire({
+                      title: 'Mail enviado con éxito!',
+                      text: 'Se ha enviado un link con la recuperación de contraseña al mail ingresado.',
+                      icon: 'success',
+                      confirmButtonText: 'OK!'
+                    }).then((result) => {
+                      window.location.href = "/";
+                    })
+          }else{
+                Swal.fire(
+                  'Ha ocurrido un problema',
+                  res["mensaje"],
+                  'error'
+                )
+          }  
+
+        })
+      }
+    }    
   } 
 
 }

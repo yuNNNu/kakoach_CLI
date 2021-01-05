@@ -68,8 +68,8 @@ export class CrearusuarioComponent implements OnInit {
       var esValido = expReg.test(this.listaUsuario["mail"]);
       if (!esValido) {
         Swal.fire(
-          'Formato de email invalido!',
-          'Intenté nuevamente.',
+          'Formato de email inválido!',
+          'Intente nuevamente.',
           'error'
         )
       }
@@ -112,7 +112,7 @@ export class CrearusuarioComponent implements OnInit {
         if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
           Swal.fire(
             'Contraseñas no coinciden!',
-            'Intenté nuevamente.',
+            'Intente nuevamente.',
             'error'
           )
           this.listaUsuario["password"] = "";

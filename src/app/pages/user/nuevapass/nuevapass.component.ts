@@ -9,42 +9,60 @@ import Swal from 'sweetalert2';
   styleUrls: ['./nuevapass.component.css']
 })
 export class NuevapassComponent implements OnInit {
-  public listaUsuario: any;
   public password:any;
+  public password2:any;
   constructor(private user : UserService,
               private _ac : ActivatedRoute) {
-  /*=========================================
-  OBJETO LISTA USUARIO
-  ===========================================*/
-    this.listaUsuario = {
-      password: null,
-      password2: null
-
-    }
   }
 
   public token = this._ac.snapshot.params["token"];
 
   ngOnInit(): void {
 
+    
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+
   }
 
   onSubmit(f: NgForm){
 
-     console.log("this.password", this.password);
-     console.log("token", this.token);
-    this.user.updatePass(this.token, this.password).subscribe( res => {
-      console.log("res", res);
-      Swal.fire({
-                  title: 'Cambio de contraseña realizada con éxito!',
-                  icon: 'success',
-                  confirmButtonText: 'OK!'
-                }).then((result) => {
-                  window.location.href = "/";
-                })
+     if(this.password !== this.password2){
+        Swal.fire(
+            'Contraseñas no coinciden!',
+            'Intente nuevamente.',
+            'error'
+          )
+        this.password = "";
+        this.password2 = "";
+        return;
+        }else{
+        this.user.updatePass(this.token, this.password).subscribe( res => {
+        Swal.fire({
+                    title: 'Cambio de contraseña realizada con éxito!',
+                    icon: 'success',
+                    confirmButtonText: 'OK!'
+                  }).then((result) => {
+                    window.location.href = "/";
+                  })
 
     })
-
+      }
   }
 
 }

@@ -7,16 +7,16 @@
 			<div class="card-header justify-content-center"><h3 class="font-weight-light my-4">Cambiar contraseña</h3>
 			</div>
 			<div class="card-body">
-			    <form (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
+			    <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="needs-validation" novalidate>
 			        <div class="form-row">
 			            <div class="col-md-12">
-			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nueva contraseña</label><input [(ngModel)]= "password" name="Userpassword" class="form-control py-4" id="inputPass" type="password" placeholder="Ingresar Nueva Contraseña" />
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nueva contraseña</label><input [(ngModel)]= "password" name="Userpassword" class="form-control py-4" id="inputPass" type="password" placeholder="Ingresar Nueva Contraseña" required />
 			                </div>
 			            </div>
 			        </div>
 			        <div class="form-row">
 			            <div class="col-md-12">
-			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Confirmar contraseña</label><input [(ngModel)]= "listaUsuario.password2" #password2="ngModel" name="password2" class="form-control py-4" id="inputPass2" type="password" placeholder="Ingresar Confirmación Nueva Contraseña" />
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Confirmar contraseña</label><input [(ngModel)]= "password2" name="Userpassword2" class="form-control py-4" id="inputPass2" type="password" placeholder="Ingresar Confirmación Nueva Contraseña" required />
 			                </div>
 			            </div>
 			        </div>
