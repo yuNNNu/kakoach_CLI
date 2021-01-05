@@ -40,23 +40,24 @@ export class VoucherComponent implements OnInit {
 		}
 		this._email.sendPdf(this.Pdf).subscribe(res => {
 		}).closed
-
+		console.log("this.Plan", this.Plan)
 		let datosVenta = ({
 			mail: localStorage.getItem("email"),
-			id: this.Plan[0]._id,
+			id: this.Plan._id,
 			nro_venta: this.transaction.buy_order,
 			fecha_venta: this.transaction.transaction_date,
 			session_id: this.transaction.session_id,
 			token: localStorage.getItem("token"),
-			nombre_plan: this.Plan[0].descripcion,
+			nombre_plan: this.Plan.descripcion,
 			precio: this.transaction.amount
 		})
 		console.log("datosVenta", datosVenta)
 		this._venta.registrarVenta(datosVenta)
 			.subscribe(res => {
-
+				console.log("res ts:", res)
 			}).closed
 		localStorage.removeItem("token");
+
 
 
 
