@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   public animated: boolean = false;
   public listaUsuario: any;
   public url = Ruta.url;
+  public nombrecli:any;
   // devuelvo json
   public imageJson: any;
   public imagen:any;
@@ -53,6 +54,7 @@ export class NavbarComponent implements OnInit {
     this.login = false;
     localStorage.removeItem("email");
     localStorage.removeItem("login");
+    localStorage.clear();
 
   }
 

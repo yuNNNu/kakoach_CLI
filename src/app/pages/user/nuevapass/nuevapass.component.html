@@ -10,13 +10,13 @@
 			    <form (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
 			        <div class="form-row">
 			            <div class="col-md-12">
-			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nueva contraseña</label><input [(ngModel)]= "listaPass.pass" #pass="ngModel" name="pass" class="form-control py-4" id="inputFirstName" type="password" placeholder="Ingresar Nueva Contraseña" />
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Nueva contraseña</label><input [(ngModel)]= "password" name="Userpassword" class="form-control py-4" id="inputPass" type="password" placeholder="Ingresar Nueva Contraseña" />
 			                </div>
 			            </div>
 			        </div>
 			        <div class="form-row">
 			            <div class="col-md-12">
-			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Confirmar contraseña</label><input [(ngModel)]= "listaPass.pass2" #pass2="ngModel" name="pass2" class="form-control py-4" id="inputFirstName" type="password" placeholder="Ingresar Confirmación Nueva Contraseña" />
+			                <div class="form-group"><label class="small mb-1" for="inputFirstName">Confirmar contraseña</label><input [(ngModel)]= "listaUsuario.password2" #password2="ngModel" name="password2" class="form-control py-4" id="inputPass2" type="password" placeholder="Ingresar Confirmación Nueva Contraseña" />
 			                </div>
 			            </div>
 			        </div>

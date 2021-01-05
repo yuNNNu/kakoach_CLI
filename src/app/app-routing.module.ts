@@ -59,7 +59,7 @@ const routes: Routes = [
   { path: 'crear-usuario', component: CrearusuarioComponent },
   { path: 'recuperar-password', component: RecuperarpassComponent },
   { path: 'contact', component: ContactmeComponent },
-  { path: 'nueva-password', component: NuevapassComponent}
+  { path: 'nueva-password/:token', component: NuevapassComponent}
 ];
 
 @NgModule({

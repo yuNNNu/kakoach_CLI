@@ -35,12 +35,20 @@ export class UserService {
 
   }
 
-  updatePass(newpass, id) {
-    let newPass = {
-      "password": newpass
+  sendRecoverPassEmail(usermail){
+       let data = {
+         mail: usermail
+       }
+
+       return this.http.post(`${this.url}/recover-pass-mail/`, data);
+  }
+
+  updatePass(token, password){
+    let data = {
+      password: password
     }
 
-    return this.http.put(`${this.url}/editar-cliente/${id}`, newpass);
+    return this.http.put(`${this.url}/editar-cliente/${token}`, data)
   }
 
 }
