@@ -48,7 +48,7 @@ export class VoucherComponent implements OnInit {
 			fecha_venta: this.transaction.transaction_date,
 			session_id: this.transaction.session_id,
 			token: localStorage.getItem("token"),
-			nombre_plan: this.Plan.descripcion,
+			nombre_plan: this.Plan.nombre,
 			precio: this.transaction.amount
 		})
 		console.log("datosVenta", datosVenta)
