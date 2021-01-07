@@ -9,6 +9,8 @@ import Swal from 'sweetalert2'
 })
 export class ContactBodyComponent implements OnInit {
   public datosContactMe: any;
+  public login: boolean = false;
+  public email: string;
   constructor(private _contact: ContactMeService) {
     /*=========================================
     OBJETO LISTA USUARIO
@@ -22,6 +24,7 @@ export class ContactBodyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     /*=============================================
     VALIDAR FORMULARIO
     =============================================*/
@@ -43,6 +46,14 @@ export class ContactBodyComponent implements OnInit {
         });
       }, false);
     })();
+
+    if (localStorage.getItem("email")) {
+      this.datosContactMe["mail"] = localStorage.getItem("email");
+    } else {
+      this.datosContactMe["mail"] = "";
+    }
+
+
 
   }
 
