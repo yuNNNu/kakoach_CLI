@@ -38,7 +38,7 @@ const routes: Routes = [
      image : PrincipalImagePlansResolver
    }},
 
-  { path: 'plan/:id', component: PlanComponent,
+  { path: 'plan/:url', component: PlanComponent,
    resolve: {
      plans : plansDataResolver,
      plan : plansPersonalResolver

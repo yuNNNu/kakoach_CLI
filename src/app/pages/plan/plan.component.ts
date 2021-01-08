@@ -33,7 +33,7 @@ export class PlanComponent implements OnInit {
   public plans = this._ac.snapshot.data.plans.data;
   public personalplan = this._ac.snapshot.data.plan.data;
   public plan: any;
-  public id = this._ac.snapshot.params["id"];
+  public urlPlan = this._ac.snapshot.params["url"];
   public url = Ruta.url;
   public personal: boolean;
   public webpayurl: any;
@@ -125,7 +125,7 @@ export class PlanComponent implements OnInit {
 
 
   filteredPlan() {
-    let filteredPlan = this.plans.filter(res => res._id == this.id)
+    let filteredPlan = this.plans.filter(res => res.url == this.urlPlan)
     this.plan = filteredPlan;
     this.personal = false;
     if (this.plan.length == 0) {

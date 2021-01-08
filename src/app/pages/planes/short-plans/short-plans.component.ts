@@ -77,10 +77,12 @@ export class ShortPlansComponent implements OnInit {
 			if (!this.defOrMass) {
 				
 				this.planJson = this.tempdef;
+				console.log("this.planJson", this.planJson);
 
 			} else {
 
 				this.planJson = this.tempvol;
+				console.log("this.planJson", this.planJson);
 			}
 
 		} else {
