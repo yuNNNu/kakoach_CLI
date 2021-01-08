@@ -21,6 +21,7 @@ import { benefitInicioResolver } from './resolvers/benefitsInicioResolver';
 import { FirstImageSobreMiResolver } from './resolvers/PrincipalImageSobreMiResolver';
 import { socialMediaResolver } from './resolvers/socialMediaResolver';
 import { PrincipalImagePlansResolver } from './resolvers/PrincipalImagePlanesResolver';
+import { dolarResolver } from './resolvers/dolarResolver';
 
 const routes: Routes = [
   { path: '', component: InicioComponent,
@@ -41,7 +42,8 @@ const routes: Routes = [
   { path: 'plan/:url', component: PlanComponent,
    resolve: {
      plans : plansDataResolver,
-     plan : plansPersonalResolver
+     plan : plansPersonalResolver,
+     dolar : dolarResolver
    }
   },
   { path: 'coleccion', component: ColeccionHistoriaComponent,

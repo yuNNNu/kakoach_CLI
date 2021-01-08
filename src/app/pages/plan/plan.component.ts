@@ -43,7 +43,7 @@ export class PlanComponent implements OnInit {
   public price: any;
   public status: boolean;
   public moneyType: boolean = true;
-
+  public dolarValue: any = this._ac.snapshot.data.dolar["serie"][0].valor;
 
 
   ngOnInit(): void {
@@ -71,14 +71,11 @@ export class PlanComponent implements OnInit {
     if (this.moneyType) {
       this.price = this.planJson[0].precio
     } else {
-      this.usd.getDolarValue().subscribe(value => {
 
         let n;
-        this.usdValue = value["serie"][0].valor
-        n = this.planJson[0].precio / this.usdValue;
+        n = this.planJson[0].precio / this.dolarValue;
         this.price = n.toFixed(2);
         this.update();
-      })
     }
 
     if (localStorage.getItem("email")) {
@@ -97,22 +94,19 @@ export class PlanComponent implements OnInit {
 
   letUsd() {
     !this.moneyType ? this.moneyType = false : this.moneyType = false;
-    this.usd.getDolarValue().subscribe(value => {
-      if (value == undefined || value == null) {
+      if (this.dolarValue == undefined || this.dolarValue == null) {
         Swal.fire(
           'Ha ocurrido un error!',
-          'De momento el tipo de pago en USD no está disponible, inténtelo más tarde.',
+          'De momento el tipo de pago en USD no está disponible, vuelva a elegir la opción CLP o inténtelo más tarde.',
           'error')
 
         this.letClp();
       } else {
         let n;
-        this.usdValue = value["serie"][0].valor
-        n = this.planJson[0].precio / this.usdValue;
+        n = this.planJson[0].precio / this.dolarValue;
         this.price = n.toFixed(2);
         this.update();
       }
-    })
   }
 
   returnUsd() {
