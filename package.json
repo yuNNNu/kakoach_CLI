@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~10.1.4",
     "@angular/router": "~10.1.4",
     "cors": "^2.8.5",
+    "ng-recaptcha": "^7.0.1",
     "rxjs": "~6.6.0",
     "socket.io": "^3.0.4",
     "socket.io-adapter": "^2.0.3",

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ContactMeService } from '../../../services/contacto/contact-me.service'
-import Swal from 'sweetalert2'
+import { ContactMeService } from '../../../services/contacto/contact-me.service';
+import Swal from 'sweetalert2';
+import { CaptchaService } from '../../../services/captcha/captcha.service';
+
 @Component({
   selector: 'app-contact-body',
   templateUrl: './contact-body.component.html',
@@ -9,7 +11,9 @@ import Swal from 'sweetalert2'
 })
 export class ContactBodyComponent implements OnInit {
   public datosContactMe: any;
-  constructor(private _contact: ContactMeService) {
+  public captcha:boolean = false;
+  constructor(private _contact: ContactMeService,
+              private Captchaservice: CaptchaService) {
     /*=========================================
     OBJETO LISTA USUARIO
     ===========================================*/
@@ -46,6 +50,30 @@ export class ContactBodyComponent implements OnInit {
 
   }
 
+    async resolved(captchaResponse: string){
+    console.log(`Resolved response token: ${captchaResponse}`)
+    await this.sendTokenToBackend(captchaResponse);
+  }
+
+  sendTokenToBackend(tok){
+  //calling the service and passing the token to the service
+    this.Captchaservice.sendToken(tok).subscribe(
+      data => {
+        console.log(data["success"])
+        if(data["success"]){
+          this.captcha = true;
+          console.log("this.captcha en subscribe", this.captcha);
+          return this.captcha;
+        }
+      },
+      err => {
+        console.log(err)
+      },
+      () => {}
+    );
+  }
+  
+
   onSubmit(f: NgForm) {
 
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -57,55 +85,64 @@ export class ContactBodyComponent implements OnInit {
       return
 
     } else {
-      var esValido = expReg.test(this.datosContactMe["mail"]);
-      if (!esValido) { return }
-      else {
-        Swal.fire({
-          title: '¿Está seguro de realizar esta acción?',
-          text: 'Si no lo está... Puede cancelar esta acción!, asegúrese que el correo sea válido',
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'Si',
-          cancelButtonText: 'No'
-        }).then((result) => {
+      if(this.captcha){
 
-          if (result.isConfirmed) {
-            this._contact.contactMe(this.datosContactMe)
-              .subscribe(res => {
-                if (res["status"] !== 200) {
+        var esValido = expReg.test(this.datosContactMe["mail"]);
+        if (!esValido) { return }
+        else {
+          Swal.fire({
+            title: '¿Está seguro de realizar esta acción?',
+            text: 'Si no lo está... Puede cancelar esta acción!, asegúrese que el correo sea válido',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No'
+          }).then((result) => {
 
-                  Swal.fire(
-                    'Error al enviar el correo!',
-                    'Ha existido un error del servidor, no ha sido posible enviar el correo.',
-                    'error'
-                  )
+            if (result.isConfirmed) {
+              this._contact.contactMe(this.datosContactMe)
+                .subscribe(res => {
+                  if (res["status"] !== 200) {
 
-                } else {
+                    Swal.fire(
+                      'Error al enviar el correo!',
+                      'Ha existido un error del servidor, no ha sido posible enviar el correo.',
+                      'error'
+                    )
 
-                  Swal.fire({
+                  } else {
 
-                    title: 'Mensaje enviado',
-                    text: 'Su mensaje será respondido lo antes posible, gracias por la espera!.',
-                    icon: 'success',
-                    confirmButtonText: 'OK!'
-                  }).then((result) => {
-                    window.location.href = "/";
-                  })
+                    Swal.fire({
 
-                }
-              })
-          } else {
+                      title: 'Mensaje enviado',
+                      text: 'Su mensaje será respondido lo antes posible, gracias por la espera!.',
+                      icon: 'success',
+                      confirmButtonText: 'OK!'
+                    }).then((result) => {
+                      window.location.href = "/";
+                    })
 
-            Swal.fire(
-              'Mensaje no enviado',
-              'Acción cancelada!.',
+                  }
+                })
+            } else {
+
+              Swal.fire(
+                'Mensaje no enviado',
+                'Acción cancelada!.',
+                'error'
+              )
+
+            }
+
+          })
+
+        }
+      }else{
+           Swal.fire(
+              'Ha ocurrido un problema!',
+              'Antes de registrarse, necesita validar el captcha solicitado.',
               'error'
             )
-
-          }
-
-        })
-
       }
     }
 

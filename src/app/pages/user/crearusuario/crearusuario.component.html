@@ -39,13 +39,16 @@
 			            </div>
 			        </div>
 			        	
-			        <div class="card-footer text-center">
+		          <re-captcha (resolved)="resolved($event)" 
+				              siteKey="6LdBviQaAAAAAAo93OzLhfx_cmhr4K82UuZDR8gV">  
+				  </re-captcha>
+
+				  <div class="mt-2 card-footer text-center">
 
 						<button [disabled]="!f.valid" class="btn btn-primary btn-block" >Crear cuenta</button>
 
 					</div>
-			            
-			    </form>
+			    </form>          
 			</div>
 
 			

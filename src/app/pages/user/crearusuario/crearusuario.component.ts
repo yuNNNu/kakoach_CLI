@@ -4,15 +4,18 @@ import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2'
 import { UserService } from '../../../services/usuario/user.service'
 import { $ } from 'protractor';
+import { CaptchaService } from '../../../services/captcha/captcha.service';
+
 @Component({
   selector: 'app-crearusuario',
   templateUrl: './crearusuario.component.html',
   styleUrls: ['./crearusuario.component.css']
 })
 export class CrearusuarioComponent implements OnInit {
-  public allUser
   public listaUsuario: any;
-  constructor(private user: UserService) {
+  public captcha:boolean = false;
+  constructor(private user: UserService,
+              private Captchaservice: CaptchaService) {
     /*=========================================
   OBJETO LISTA USUARIO
   ===========================================*/
@@ -52,6 +55,29 @@ export class CrearusuarioComponent implements OnInit {
 
   }
 
+  async resolved(captchaResponse: string){
+    console.log(`Resolved response token: ${captchaResponse}`)
+    await this.sendTokenToBackend(captchaResponse);
+  }
+
+  sendTokenToBackend(tok){
+  //calling the service and passing the token to the service
+    this.Captchaservice.sendToken(tok).subscribe(
+      data => {
+        console.log(data["success"])
+        if(data["success"]){
+          this.captcha = true;
+          console.log("this.captcha en subscribe", this.captcha);
+          return this.captcha;
+        }
+      },
+      err => {
+        console.log(err)
+      },
+      () => {}
+    );
+  }
+  
 
 
   onSubmit(f: NgForm) {
@@ -74,53 +100,62 @@ export class CrearusuarioComponent implements OnInit {
         )
       }
       else {
-        console.log("En on submit", this.listaUsuario)
-        if (this.listaUsuario["password"] === this.listaUsuario["password1"]) {
-          this.user.create(this.listaUsuario)
-            .subscribe(res => {
-              console.log("res en creacion del user", res)
-              if (res["status"] == 400) {
+        console.log("this.captcha en el if", this.captcha);
+        if(this.captcha){ 
 
-                Swal.fire(
-                  'Error',
-                  res["mensaje"],
-                  'error'
-                )
-              } else if (res["status"] == 500) {
+          if (this.listaUsuario["password"] === this.listaUsuario["password1"]) {
+            this.user.create(this.listaUsuario)
+              .subscribe(res => {
+                console.log("res en creacion del user", res)
+                if (res["status"] == 400) {
 
-                Swal.fire(
-                  'Error',
-                  res["mensaje"],
-                  'error'
-                )
+                  Swal.fire(
+                    'Error',
+                    res["mensaje"],
+                    'error'
+                  )
+                } else if (res["status"] == 500) {
 
-              } else {
+                  Swal.fire(
+                    'Error',
+                    res["mensaje"],
+                    'error'
+                  )
 
-                Swal.fire({
-                  title: 'Cuenta creada con éxito',
-                  text: res["mensaje"],
-                  icon: 'success',
-                  confirmButtonText: 'OK!'
-                }).then((result) => {
-                  window.location.href = "/";
-                })
-              }
-            })
+                } else {
+
+                  Swal.fire({
+                    title: 'Cuenta creada con éxito',
+                    text: res["mensaje"],
+                    icon: 'success',
+                    confirmButtonText: 'OK!'
+                  }).then((result) => {
+                    window.location.href = "/";
+                  })
+                }
+              })
 
 
+          }
+
+          if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
+            Swal.fire(
+              'Contraseñas no coinciden!',
+              'Intente nuevamente.',
+              'error'
+            )
+            this.listaUsuario["password"] = "";
+            this.listaUsuario["password1"] = "";
+            return
+
+          }
+        }else{
+           Swal.fire(
+              'Ha ocurrido un problema!',
+              'Antes de registrarse, necesita validar el captcha solicitado.',
+              'error'
+            )
         }
-        if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
-          Swal.fire(
-            'Contraseñas no coinciden!',
-            'Intente nuevamente.',
-            'error'
-          )
-          this.listaUsuario["password"] = "";
-          this.listaUsuario["password1"] = "";
-          return
-
-        }
-
       }
 
 

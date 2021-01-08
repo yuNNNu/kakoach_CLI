@@ -3,6 +3,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// ReCaptcha
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 //Importamos los modulos para trabajar con formularios en angular
 import { FormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -76,7 +78,9 @@ import { CardsComponent } from './pages/coleccion-historia/cards/cards.component
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [PaidService],
   bootstrap: [AppComponent]
