@@ -15,10 +15,10 @@ export class NavbarComponent implements OnInit {
   public animated: boolean = false;
   public listaUsuario: any;
   public url = Ruta.url;
-  public nombrecli:any;
+  public nombrecli: any;
   // devuelvo json
   public imageJson: any;
-  public imagen:any;
+  public imagen: any;
   constructor(private logo: LogoNavbarService, private user: UserService) {
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
@@ -34,8 +34,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("login nav oninit", this.login)
 
-       this.logo.getLogo()
+    this.logo.getLogo()
       .subscribe(respuesta => {
         // pasamos la informacion recibida a la variable
         this.imageJson = respuesta["data"][0]
@@ -55,6 +56,13 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("email");
     localStorage.removeItem("login");
     localStorage.clear();
+    console.log("window", window.location.pathname)
+
+    if (window.location.pathname !== "/") {
+      window.location.replace("/");
+    }
+
+
 
   }
 
@@ -66,22 +74,28 @@ export class NavbarComponent implements OnInit {
         let usr = res;
 
         if (usr["mensaje"] == "ok") {
-          if(usr["verified"] == true){
+          if (usr["verified"] == true) {
             this.animated = true;
             this.login = true;
+            if (window.location.pathname !== "/") {
+              window.location.replace("/");
+            }
             localStorage.setItem("email", this.listaUsuario["mail"])
-            localStorage.setItem("login", "true")
-          }else{
+
+
+
+
+          } else {
             Swal.fire(
-            'No ha sido posible logearse!',
-            'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
-            'error')
+              'No ha sido posible logearse!',
+              'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
+              'error')
 
             this.login = false;
 
 
           }
-          
+
         } else {
           Swal.fire(
             'No ha sido posible logearse!',

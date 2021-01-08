@@ -11,9 +11,12 @@ import { CaptchaService } from '../../../services/captcha/captcha.service';
 })
 export class ContactBodyComponent implements OnInit {
   public datosContactMe: any;
+  public login: boolean = false;
+  public email: string;
   public captcha:boolean = false;
   constructor(private _contact: ContactMeService,
               private Captchaservice: CaptchaService) {
+
     /*=========================================
     OBJETO LISTA USUARIO
     ===========================================*/
@@ -26,6 +29,7 @@ export class ContactBodyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     /*=============================================
     VALIDAR FORMULARIO
     =============================================*/
@@ -47,6 +51,14 @@ export class ContactBodyComponent implements OnInit {
         });
       }, false);
     })();
+
+    if (localStorage.getItem("email")) {
+      this.datosContactMe["mail"] = localStorage.getItem("email");
+    } else {
+      this.datosContactMe["mail"] = "";
+    }
+
+
 
   }
 
