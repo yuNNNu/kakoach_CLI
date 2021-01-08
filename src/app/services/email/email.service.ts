@@ -10,17 +10,19 @@ export class EmailService {
     this.url = Ruta.url;
   }
 
-  sendPdf(pdf) {
+  sendPdf(data) {
+    console.log("data en service", data)
     let testData = {
       "emailUser": localStorage.getItem("email"),
-      "pdf": pdf
+      "pdf": data.pdf,
+      "data": data.datosVenta
 
     }
     return this.http.post(`${this.url}/send-mail`, testData);
 
   }
 
-  recoverPass(mail, token){
+  recoverPass(mail, token) {
 
     let data = {
       "mail": mail
