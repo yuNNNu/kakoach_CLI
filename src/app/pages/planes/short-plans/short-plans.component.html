@@ -52,7 +52,7 @@
                             <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
                             <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
                             <button *ngIf="!inLvl" class="btn btn-outline-dark btn-marketing rounded-pill up" href="#topShow" 
-                            (click)="handleClick(plan.click); scroll();"
+                            (click)="handleClick(plan.click);"
                             >Ver más</button>
 
                             <a href="/plan/{{plan._id}}" *ngIf="inLvl"><button class="btn btn-outline-dark btn-marketing rounded-pill up"
@@ -75,7 +75,7 @@
                             <h3 class="card-title font-weight-bold text-uppercase mb-2">{{plan.nombre}}</h3>
                             <p class="card-text font-weight-light mb-4">{{plan.descripcion}}</p>
                             <button *ngIf="!inLvl" class="btn btn-outline-dark btn-marketing rounded-pill up" href="#botons" 
-                            (click)="handleClick(plan.click); scroll();"
+                            (click)="handleClick(plan.click);"
                             >Ver más</button>
 
                              <a href="/plan/{{plan.url}}" *ngIf="inLvl"><button class="btn btn-outline-dark btn-marketing rounded-pill up"

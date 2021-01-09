@@ -45,7 +45,6 @@ export class PlanComponent implements OnInit {
   public moneyType: boolean = true;
   public dolarValue: any = this._ac.snapshot.data.dolar["serie"][0].valor;
 
-
   ngOnInit(): void {
 
     this.planJson = this.filteredPlan();
