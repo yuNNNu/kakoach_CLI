@@ -1,13 +1,14 @@
 <!--PRESENTACION-->
-<header class="page-header page-header-light bg-white">
+<header class="page-header-light bg-white">
     <div class="page-header-content">
         <div class="container" *ngFor="let card of cardJson">
-            <div class="row justify-content-center"></div>
-                
-            <div class="mb-4" style="word-wrap: break-word;">
-                   <img class="mb-4 rounded mx-auto d-block" src="{{url}}/mostrar-tarjeta-img/{{card.imagen}}" />
-                    <h1 class="page-header-title text-center">{{card.titulo}}</h1>
-            </div>  
+            <div class="row mt-5 align-items-center justify-content-center">
+                <div class="mb-4 col-12 text-center" style="word-wrap: break-word;">
+                   <img class="content-skewed-item img-fluid shadow-lg rounded-lg" style="height: auto; width: auto" src="{{url}}/mostrar-tarjeta-img/{{card.imagen}}" />
+                    <h1 class="mt-4 page-header-title text-center">{{card.titulo}}</h1>
+                </div>  
+            </div>
+            
             <div class="col-xl-12 col-lg-12 text-justify" style="word-wrap: break-word;">
                 <p class="page-header-text">{{card.descripcion}}
                 </p> 
