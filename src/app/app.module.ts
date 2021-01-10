@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 //Importamos los modulos para trabajar con formularios en angular
 import { FormsModule } from '@angular/forms';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 /* COMPONENTES */
 
 import { NavbarComponent } from './pages/inicio/navbar/navbar.component';
