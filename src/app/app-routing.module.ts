@@ -31,7 +31,13 @@ const routes: Routes = [
      plans : plansDataResolver,
      benefits : benefitInicioResolver
    }},
+   { path: 'login/:token', component: InicioComponent,
+    resolve: {
 
+     secondaryplans : secondaryPlanResolver,
+     plans : plansDataResolver,
+     benefits : benefitInicioResolver
+   }},
   { path: 'planes', component: PlanesComponent,
    resolve: {
      categories : plansCategoriesResolver,

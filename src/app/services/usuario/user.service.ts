@@ -21,6 +21,11 @@ export class UserService {
     const headers = new HttpHeaders();
     return this.http.post(`${this.url}/login-usuario`, listaCliente, { headers })
   }
+
+  loginToken(token){
+    return this.http.post(`${this.url}/login-usuario-token/${token}`, null);
+  }
+
   create(datos) {
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LogoNavbarService } from '../../../services/inicio/logo-navbar.service';
 import { UserService } from '../../../services/usuario/user.service';
@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   // devuelvo json
   public imageJson: any;
   public imagen: any;
+  @Input() public Token;
   constructor(private logo: LogoNavbarService, private user: UserService) {
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
@@ -48,6 +49,11 @@ export class NavbarComponent implements OnInit {
     } else {
       this.login = false
     }
+
+    if(this.Token != undefined){
+      this.logIn(this.Token);
+    }
+
   }
   // metodo for log ou
   salir() {
@@ -64,6 +70,44 @@ export class NavbarComponent implements OnInit {
 
 
 
+  }
+
+  logIn(token){
+    this.user.loginToken(token).subscribe(res => {
+         let usr = res;
+
+        if (usr["mensaje"] == "ok") {
+          if (usr["verified"] == true) {
+            this.animated = true;
+            this.login = true;
+            if (window.location.pathname !== "/") {
+              window.location.replace("/");
+            }
+            localStorage.setItem("email", this.listaUsuario["mail"])
+
+
+
+
+          } else {
+            Swal.fire(
+              'No ha sido posible logearse!',
+              'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
+              'error')
+
+            this.login = false;
+
+
+          }
+
+        } else {
+          Swal.fire(
+            'No ha sido posible logearse!',
+            usr["mensaje"],
+            'error')
+
+          this.login = false;
+        }
+    })
   }
 
   onSubmit(f: NgForm) {
