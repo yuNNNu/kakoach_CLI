@@ -50,8 +50,9 @@ export class NavbarComponent implements OnInit {
       this.login = false
     }
 
-    if(this.Token != undefined){
+    if (this.Token != undefined) {
       this.logIn(this.Token);
+      console.log("token", this.Token)
     }
 
   }
@@ -72,41 +73,28 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  logIn(token){
+  logIn(token) {
     this.user.loginToken(token).subscribe(res => {
-         let usr = res;
+      console.log("res", res)
 
-        if (usr["mensaje"] == "ok") {
-          if (usr["verified"] == true) {
-            this.animated = true;
-            this.login = true;
-            if (window.location.pathname !== "/") {
-              window.location.replace("/");
-            }
-            localStorage.setItem("email", this.listaUsuario["mail"])
-
-
-
-
-          } else {
-            Swal.fire(
-              'No ha sido posible logearse!',
-              'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
-              'error')
-
-            this.login = false;
-
-
-          }
-
-        } else {
-          Swal.fire(
-            'No ha sido posible logearse!',
-            usr["mensaje"],
-            'error')
-
-          this.login = false;
-        }
+      if (res["status"] == 200) {
+        // if ()
+        console.log("client", res["cliente"]["mail"])
+        localStorage.setItem("email", res["cliente"]["mail"]);
+        localStorage.setItem("nombre", res["cliente"]["nombre"]);
+        localStorage.setItem("apellido", res["cliente"]["apellido"]);
+        this.animated = true;
+        this.login = true;
+        Swal.fire(
+          'Bienvenido a Ka Koach!',
+          'Cuenta Validada!',
+          'success')
+      } else {
+        Swal.fire(
+          'No ha sido posible logearse!',
+          'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
+          'error')
+      }
     })
   }
 
