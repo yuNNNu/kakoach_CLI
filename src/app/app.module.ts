@@ -41,6 +41,8 @@ import { CancelledComponent } from './pages/plan/cancelled/cancelled.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NuevapassComponent } from './pages/user/nuevapass/nuevapass.component';
 import { CardsComponent } from './pages/coleccion-historia/cards/cards.component';
+import { TerminosycondicionesComponent } from './pages/terminosycondiciones/terminosycondiciones.component';
+import { BodyTerminosComponent } from './pages/terminosycondiciones/body-terminos/body-terminos.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { CardsComponent } from './pages/coleccion-historia/cards/cards.component
     VoucherComponent,
     CancelledComponent,
     NuevapassComponent,
-    CardsComponent
+    CardsComponent,
+    TerminosycondicionesComponent,
+    BodyTerminosComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { RecuperarpassComponent } from './pages/user/recuperarpass/recuperarpass
 import { HistoryComponent } from './pages/history/history.component';
 import { ContactmeComponent } from './pages/contactme/contactme.component';
 import { NuevapassComponent } from './pages/user/nuevapass/nuevapass.component';
+import { TerminosycondicionesComponent } from './pages/terminosycondiciones/terminosycondiciones.component';
 
 // Resolvers
 import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
@@ -22,6 +23,7 @@ import { FirstImageSobreMiResolver } from './resolvers/PrincipalImageSobreMiReso
 import { socialMediaResolver } from './resolvers/socialMediaResolver';
 import { PrincipalImagePlansResolver } from './resolvers/PrincipalImagePlanesResolver';
 import { dolarResolver } from './resolvers/dolarResolver';
+import { termsResolver } from './resolvers/termsResolver';
 
 const routes: Routes = [
   { path: '', component: InicioComponent,
@@ -67,7 +69,11 @@ const routes: Routes = [
   { path: 'crear-usuario', component: CrearusuarioComponent },
   { path: 'recuperar-password', component: RecuperarpassComponent },
   { path: 'contact', component: ContactmeComponent },
-  { path: 'nueva-password/:token', component: NuevapassComponent}
+  { path: 'nueva-password/:token', component: NuevapassComponent},
+  { path: 'terminos-y-condiciones', component: TerminosycondicionesComponent,
+    resolve: {
+      terms : termsResolver
+    }}
 ];
 
 @NgModule({
