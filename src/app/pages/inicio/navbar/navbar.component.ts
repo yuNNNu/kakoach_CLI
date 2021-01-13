@@ -89,8 +89,13 @@ export class NavbarComponent implements OnInit {
           'Bienvenido a Ka Koach!',
           'Cuenta Validada!',
           'success')
-      } else {
+      } else if(res["status"] == 400){
         Swal.fire(
+          'No ha sido posible logearse!',
+          'El link ha caducado.',
+          'error')
+      }else{
+           Swal.fire(
           'No ha sido posible logearse!',
           'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
           'error')
