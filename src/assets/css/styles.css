@@ -21943,8 +21943,8 @@ body {
 .navbar-marketing {
   -webkit-transition: background-color 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out;
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
+  padding-top: 0.25px;
+  padding-bottom: 0.25px;
 }
 
 .navbar-marketing .navbar-toggler {

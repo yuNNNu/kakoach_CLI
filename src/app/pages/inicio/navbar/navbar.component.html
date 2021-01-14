@@ -53,8 +53,8 @@
                 </div>
                 
                  <div class="row">
-                    <div class="col-sm-12">
-                          <button class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
+                    <div class="col-sm-12 mt-2 mt-lg-0">
+                          <button class="btn-black btn rounded-pill px-4 ml-lg-4 ml-0" style="width: 100%" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
                     </div>
                 </div>
             </ul>
@@ -97,8 +97,8 @@
               
      
                 <div class="row">
-                    <div class="col-sm-12">
-                          <button class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
+                    <div class="col-sm-12 mt-2 mt-lg-0">
+                          <button class="btn-black btn rounded-pill px-4 ml-lg-4 ml-0" style="width: 100%" data-aos="zoom-in" *ngIf="login" (click)="salir()">Log out<i class="fas fa-sign-out-alt ml-1"></i></button>
                     </div>
                 </div>
             </ul>
@@ -162,7 +162,7 @@
                         <form class="m-3" (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
 
                           <div class="form-row">
-                                  <div class="form-group"><label class="small mb-1" for="inputMail">Email</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
+                                  <div class="form-group"><label class="small mb-1" for="inputMail">Mail</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
                           </div>
                           <div class="form-row">
                                   <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input
@@ -231,7 +231,7 @@
                         <form class="m-3" (ngSubmit)="onSubmit(f)" #f="ngForm"   novalidate>
 
                           <div class="form-row">
-                                  <div class="form-group"><label class="small mb-1" for="inputMail">Email</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
+                                  <div class="form-group"><label class="small mb-1" for="inputMail">Mail</label><input [(ngModel)]= "listaUsuario.mail" #mail="ngModel" name="mail" style="font-size: smaller;" class="form-control" id="inputMail" type="email" placeholder="Ingresar Mail"/></div>
                           </div>
                           <div class="form-row">
                                   <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input
@@ -254,9 +254,9 @@
 
              
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 pb-4 pb-lg-0">
                   <!-- BOTON REGISTRAR -->
-                      <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" href="/crear-usuario">Registrar<i class="fas fa-arrow-right ml-1"></i></a>
+                      <a class="btn-black btn rounded-pill px-4 ml-lg-4" data-aos="zoom-in" style="width: 100%" href="/crear-usuario">Registrar<i class="fas fa-arrow-right ml-1"></i></a>
 
                 </div>
             </div>

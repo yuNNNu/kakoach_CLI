@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("login");
     localStorage.clear();
 
-    if (window.location.pathname !== "/") {
+    if (window.location.pathname == "/contact" || window.location.pathname == "/crear-usuario") {
       window.location.replace("/");
     }
 
@@ -109,7 +109,7 @@ export class NavbarComponent implements OnInit {
           if (usr["verified"] == true) {
             this.animated = true;
             this.login = true;
-            if (window.location.pathname !== "/") {
+            if (window.location.pathname == "/contact" || window.location.pathname == "/crear-usuario") {
               window.location.replace("/");
             }
             localStorage.setItem("email", this.listaUsuario["mail"])
