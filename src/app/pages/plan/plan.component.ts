@@ -6,6 +6,7 @@ import { WebpayService } from '../../services/webpay/webpay.service';
 import { NgForm } from '@angular/forms';
 import { PaidService } from './../../services/webpay/paid.service';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DolarvalueService } from '../../services/dolar/dolarvalue.service';
 import Swal from 'sweetalert2'
 
@@ -44,6 +45,7 @@ export class PlanComponent implements OnInit {
   public status: boolean;
   public moneyType: boolean = true;
   public dolarValue: any = this._ac.snapshot.data.dolar["serie"][0].valor;
+  public spinner:boolean = false;
 
   ngOnInit(): void {
 
@@ -73,7 +75,6 @@ export class PlanComponent implements OnInit {
       let n;
       n = this.planJson[0].precio / this.dolarValue;
       this.price = n.toFixed(2);
-      this.update();
     }
 
     if (localStorage.getItem("email")) {
@@ -91,6 +92,7 @@ export class PlanComponent implements OnInit {
   }
 
   letUsd() {
+    this.spinner = true;
     !this.moneyType ? this.moneyType = false : this.moneyType = false;
     if (this.dolarValue == undefined || this.dolarValue == null) {
       Swal.fire(
@@ -103,6 +105,7 @@ export class PlanComponent implements OnInit {
       let n;
       n = this.planJson[0].precio / this.dolarValue;
       this.price = n.toFixed(2);
+      this.spinner = false;
       this.update();
     }
   }

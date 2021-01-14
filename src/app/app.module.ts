@@ -8,6 +8,8 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 //Importamos los modulos para trabajar con formularios en angular
 import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 /* COMPONENTES */
 
 import { NavbarComponent } from './pages/inicio/navbar/navbar.component';
@@ -86,7 +88,8 @@ import { BodyTerminosComponent } from './pages/terminosycondiciones/body-termino
     BrowserAnimationsModule,
     MatButtonToggleModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [PaidService],
   bootstrap: [AppComponent]

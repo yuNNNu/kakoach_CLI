@@ -3,7 +3,6 @@
 <!-- ESPECIFICACION DEL PRODUCTO-->
 <section class="bg-white py-4" *ngIf="!paid">
 
-
     <div class="container mb-5">
        <div class="row">
             <div class="card-header mb-5 rounded">
@@ -32,19 +31,19 @@
                         <div class="card-body p-5">
                             <div class="text-center">
                                 <h1 class=" text-primary">{{plan.nombre}}</h1>
-
                                 <div class="pricing-price" id="precio" *ngIf="moneyType"><sup>CLP $</sup>{{price}}</div>
 
                                 <div class="pricing-price" id="precio" *ngIf="!moneyType"><sup>USD $</sup>{{price}}</div>
+                                <div class="uploader-status">
+                                        <mat-spinner *ngIf="spinner" style="margin:0 auto; position: absolute; z-index: 999; overflow: show; margin: auto; top: 0; left: 0; bottom: 0; right: 0;"></mat-spinner>
+                                </div>
                             </div>
                             <ul class="fa-ul pricing-list">
                                 <li class="pricing-list-item" *ngFor="let pros of plan.pros">
                                     <span class="fa-li"><i class="far fa-check-circle text-teal"></i></span><span class="text-dark">{{pros}}</span>
                                 </li>        
                             </ul>
-                            
                         </div>
-
                         <div class="row">
 
                             <p class="d-flex justify-content-center mt-n2 mb-5 col-lg-6">
