@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PersnalPlanService } from '../../../services/inicio/persnal-plan.service'
+import { DescripcionService } from '../../../services/inicio/descripcion.service'
 import { Ruta } from '../../../config';
 
 
@@ -14,9 +15,11 @@ export class PlanesEstrellasComponent implements OnInit {
   @Input() public Secondary;
   public personalPlan: any;
   public url = Ruta.url;
-  public secondaryPlansJson1:any;
-  public secondaryPlansJson2:any;
-  constructor(private personal: PersnalPlanService) {
+  public secondaryPlansJson1: any;
+  public secondaryPlansJson2: any;
+  public tituloDesc: any;
+  public descripcionDesc: any;
+  constructor(private personal: PersnalPlanService, private descripcion: DescripcionService) {
     /*=============================================
    RECIBIENDO DATOS DINAMICOS
    ============================================== */
@@ -25,6 +28,14 @@ export class PlanesEstrellasComponent implements OnInit {
         // pasamos la informacion recibida a la variable
         this.personalPlan = respuesta["data"][0]
       })
+
+
+    this.descripcion.getDescripcion()
+      .subscribe(respuesta => {
+        this.tituloDesc = respuesta["data"][0].titulo;
+        this.descripcionDesc = respuesta["data"][0].descripcion;
+      })
+
   }
 
   ngOnInit(): void {

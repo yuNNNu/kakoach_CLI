@@ -3,60 +3,60 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Ruta } from '../../config';
 import { map, filter, scan } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import {io} from 'socket.io/client-dist/socket.io';
+import { io } from 'socket.io/client-dist/socket.io';
 import * as Rx from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebpayService {
- private socket;
- public webpayEndPoint: string;
- public url = "/rswebpaytransaction/api/webpay/v1.0/transactions";
+  private socket;
+  public webpayEndPoint: string;
+  public url = "/rswebpaytransaction/api/webpay/v1.0/transactions";
 
- public rutaApi = Ruta.url;
+  public rutaApi = Ruta.url;
+  public rutaSocket = Ruta.urlSocket
 
 
+  constructor(private http: HttpClient) {
 
-  constructor(private http:HttpClient) {
-  
-  	this.webpayEndPoint = Ruta.webpayroute;
+    this.webpayEndPoint = Ruta.webpayroute;
   }
 
-   connect(): Rx.Subject<MessageEvent>{
-        this.socket = io('http://localhost:3000');
+  connect(): Rx.Subject<MessageEvent> {
+    this.socket = io(this.rutaSocket);
 
-        let observable = new Observable(observer => {
-            this.socket.on('paid', (data) => {
-                observer.next(data)
-            });
-            return () => {
-                this.socket.disconnect();
-            }
-        });
+    let observable = new Observable(observer => {
+      this.socket.on('paid', (data) => {
+        observer.next(data)
+      });
+      return () => {
+        this.socket.disconnect();
+      }
+    });
 
-        let observer= {
-            next: (data: Object) => {
-                this.socket.emit('paid', data)
-            }
-        };
+    let observer = {
+      next: (data: Object) => {
+        this.socket.emit('paid', data)
+      }
+    };
 
-        return Rx.Subject.create(observer, observable);
-    }
+    return Rx.Subject.create(observer, observable);
+  }
 
-  create(precio){
+  create(precio) {
     let testData = {
-     "buy_order": "ordenCompra12345678",
-     "session_id": "sesion1234557545",
-     "amount": precio,
-     "return_url": "http://localhost:4000/commit"
+      "buy_order": "ordenCompra12345678",
+      "session_id": "sesion1234557545",
+      "amount": precio,
+      "return_url": "http://localhost:4000/commit"
     }
-  	return this.http.post(`${this.rutaApi}/pagar`, testData);
- 
+    return this.http.post(`${this.rutaApi}/pagar`, testData);
+
   }
 
-  commit(){
-    
+  commit() {
+
     return this.http.put(`${this.rutaApi}/commit`, null);
   }
 }

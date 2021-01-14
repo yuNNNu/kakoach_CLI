@@ -44,6 +44,7 @@ import { CardsComponent } from './pages/coleccion-historia/cards/cards.component
 import { TerminosycondicionesComponent } from './pages/terminosycondiciones/terminosycondiciones.component';
 import { BodyTerminosComponent } from './pages/terminosycondiciones/body-terminos/body-terminos.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { BodyTerminosComponent } from './pages/terminosycondiciones/body-termino
     NuevapassComponent,
     CardsComponent,
     TerminosycondicionesComponent,
-    BodyTerminosComponent
+    BodyTerminosComponent,
+
   ],
   imports: [
     BrowserModule,

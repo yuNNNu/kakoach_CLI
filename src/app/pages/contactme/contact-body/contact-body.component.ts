@@ -13,9 +13,9 @@ export class ContactBodyComponent implements OnInit {
   public datosContactMe: any;
   public login: boolean = false;
   public email: string;
-  public captcha:boolean = false;
+  public captcha: boolean = false;
   constructor(private _contact: ContactMeService,
-              private Captchaservice: CaptchaService) {
+    private Captchaservice: CaptchaService) {
 
     /*=========================================
     OBJETO LISTA USUARIO
@@ -62,29 +62,26 @@ export class ContactBodyComponent implements OnInit {
 
   }
 
-    async resolved(captchaResponse: string){
-    console.log(`Resolved response token: ${captchaResponse}`)
+  async resolved(captchaResponse: string) {
     await this.sendTokenToBackend(captchaResponse);
   }
 
-  sendTokenToBackend(tok){
-  //calling the service and passing the token to the service
+  sendTokenToBackend(tok) {
+    //calling the service and passing the token to the service
     this.Captchaservice.sendToken(tok).subscribe(
       data => {
-        console.log(data["success"])
-        if(data["success"]){
+        if (data["success"]) {
           this.captcha = true;
-          console.log("this.captcha en subscribe", this.captcha);
           return this.captcha;
         }
       },
       err => {
         console.log(err)
       },
-      () => {}
+      () => { }
     );
   }
-  
+
 
   onSubmit(f: NgForm) {
 
@@ -97,7 +94,7 @@ export class ContactBodyComponent implements OnInit {
       return
 
     } else {
-      if(this.captcha){
+      if (this.captcha) {
 
         var esValido = expReg.test(this.datosContactMe["mail"]);
         if (!esValido) { return }
@@ -149,12 +146,12 @@ export class ContactBodyComponent implements OnInit {
           })
 
         }
-      }else{
-           Swal.fire(
-              'Ha ocurrido un problema!',
-              'Antes de registrarse, necesita validar el captcha solicitado.',
-              'error'
-            )
+      } else {
+        Swal.fire(
+          'Ha ocurrido un problema!',
+          'Antes de registrarse, necesita validar el captcha solicitado.',
+          'error'
+        )
       }
     }
 

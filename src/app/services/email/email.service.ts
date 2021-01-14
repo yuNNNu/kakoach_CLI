@@ -11,7 +11,6 @@ export class EmailService {
   }
 
   sendPdf(data) {
-    console.log("data en service", data)
     let testData = {
       "emailUser": localStorage.getItem("email"),
       "pdf": data.pdf,

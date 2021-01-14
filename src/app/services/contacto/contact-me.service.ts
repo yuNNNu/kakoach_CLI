@@ -12,7 +12,6 @@ export class ContactMeService {
 
   contactMe(datos) {
 
-    console.log("datos en create service", datos)
     let testData = {
       "nombre": datos.nombre,
       "apellido": datos.apellido,

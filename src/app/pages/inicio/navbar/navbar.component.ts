@@ -35,7 +35,6 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("login nav oninit", this.login)
 
     this.logo.getLogo()
       .subscribe(respuesta => {
@@ -52,7 +51,6 @@ export class NavbarComponent implements OnInit {
 
     if (this.Token != undefined) {
       this.logIn(this.Token);
-      console.log("token", this.Token)
     }
 
   }
@@ -63,7 +61,6 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("email");
     localStorage.removeItem("login");
     localStorage.clear();
-    console.log("window", window.location.pathname)
 
     if (window.location.pathname !== "/") {
       window.location.replace("/");
@@ -75,11 +72,9 @@ export class NavbarComponent implements OnInit {
 
   logIn(token) {
     this.user.loginToken(token).subscribe(res => {
-      console.log("res", res)
 
       if (res["status"] == 200) {
         // if ()
-        console.log("client", res["cliente"]["mail"])
         localStorage.setItem("email", res["cliente"]["mail"]);
         localStorage.setItem("nombre", res["cliente"]["nombre"]);
         localStorage.setItem("apellido", res["cliente"]["apellido"]);
@@ -89,13 +84,13 @@ export class NavbarComponent implements OnInit {
           'Bienvenido a Ka Koach!',
           'Cuenta Validada!',
           'success')
-      } else if(res["status"] == 400){
+      } else if (res["status"] == 400) {
         Swal.fire(
           'No ha sido posible logearse!',
           'El link ha caducado.',
           'error')
-      }else{
-           Swal.fire(
+      } else {
+        Swal.fire(
           'No ha sido posible logearse!',
           'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
           'error')
