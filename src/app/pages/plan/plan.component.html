@@ -2,17 +2,21 @@
 <app-navbar></app-navbar>
 <!-- ESPECIFICACION DEL PRODUCTO-->
 <section class="bg-white py-4" *ngIf="!paid">
-    <div class="row">
-        <div class="col-2"></div>
-         <div class="card-header mb-5 col-8">
-            <div class="row pt-2">
-                  <i class="fas fa-question-circle fa-3x col-1"></i>
-                  <p class="col-11" style="top: 2px">En caso de comprar la asesoría, una vez cancelado se enviará un mail al correo registrado en su cuenta KaKoach donde vendrá el plan adjuntado como archivo PDF con todos los instructivos para llevar tu transformación física al siguiente nivel!.</p>
-            </div>
-         </div>   
-        <div class="col-2"></div>     
-    </div>
+
+
     <div class="container mb-5">
+       <div class="row">
+            <div class="card-header mb-5 rounded">
+                <div class="row pt-lg-3 pt-0">
+                    <div class="col-12 col-lg-1 pr-lg-3 justify-content-center align-items-center pb-2 pb-lg-3">
+                        <i class="fas fa-question-circle fa-3x" style="display: block; margin: auto"></i> 
+                    </div>  
+                    <div class="col-12 col-lg-11 pl-lg-0" style="top: 2px;">
+                      <p class="text-justify">En caso de comprar la asesoría, una vez cancelado se enviará un mail al correo registrado en su cuenta KaKoach donde vendrá el plan adjuntado como archivo PDF con todos los instructivos para llevar tu transformación física al siguiente nivel!.</p>
+                    </div>         
+                </div>
+            </div>     
+        </div>        
         <div class="row align-items-center justify-content-center" *ngFor="let plan of planJson">
             <div class="col-md-9 col-lg-6 order-1 order-lg-0" data-aos="fade-right">
                 <div class="content-skewed content-skewed-right">
