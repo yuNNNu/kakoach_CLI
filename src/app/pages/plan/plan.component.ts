@@ -135,7 +135,7 @@ export class PlanComponent implements OnInit {
         localStorage.setItem("token", res.token);
         window.open(res.url);
 
-      })
+      }).closed
     } else {
 
       this.login = false

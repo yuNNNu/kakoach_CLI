@@ -46,10 +46,7 @@ export class WebpayService {
 
   create(precio) {
     let testData = {
-      "buy_order": "ordenCompra12345678",
-      "session_id": "sesion1234557545",
-      "amount": precio,
-      "return_url": "http://localhost:4000/commit"
+      "amount": precio
     }
     return this.http.post(`${this.rutaApi}/pagar`, testData);
 
