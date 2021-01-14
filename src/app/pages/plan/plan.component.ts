@@ -44,8 +44,8 @@ export class PlanComponent implements OnInit {
   public price: any;
   public status: boolean;
   public moneyType: boolean = true;
-  public dolarValue: any = this._ac.snapshot.data.dolar["serie"][0].valor;
   public spinner:boolean = false;
+  public dolarValue:any;
 
   ngOnInit(): void {
 
@@ -93,21 +93,25 @@ export class PlanComponent implements OnInit {
 
   letUsd() {
     this.spinner = true;
-    !this.moneyType ? this.moneyType = false : this.moneyType = false;
-    if (this.dolarValue == undefined || this.dolarValue == null) {
+    this.usd.getDolarValue().subscribe(res => {
+      let dolar = res["serie"][0].valor;
+       if (dolar == undefined || dolar == null) {
       Swal.fire(
         'Ha ocurrido un error!',
         'De momento el tipo de pago en USD no está disponible, vuelva a elegir la opción CLP o inténtelo más tarde.',
         'error')
 
-      this.letClp();
-    } else {
-      let n;
-      n = this.planJson[0].precio / this.dolarValue;
-      this.price = n.toFixed(2);
-      this.spinner = false;
-      this.update();
-    }
+        this.letClp();
+      } else {
+        let n;
+        n = this.planJson[0].precio / dolar;
+        this.dolarValue = dolar;
+        this.price = n.toFixed(2);
+        this.spinner = false;
+        this.update();
+      }
+    })
+    !this.moneyType ? this.moneyType = false : this.moneyType = false;
   }
 
   returnUsd() {
