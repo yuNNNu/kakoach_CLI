@@ -13,7 +13,8 @@ export class PlanesEstrellasComponent implements OnInit {
   // variable de obj
   @Input() public Plans;
   @Input() public Secondary;
-  public personalPlan: any;
+  @Input() public planPrincipal;
+
   public url = Ruta.url;
   public secondaryPlansJson1: any;
   public secondaryPlansJson2: any;
@@ -21,13 +22,9 @@ export class PlanesEstrellasComponent implements OnInit {
   public descripcionDesc: any;
   constructor(private personal: PersnalPlanService, private descripcion: DescripcionService) {
     /*=============================================
-   RECIBIENDO DATOS DINAMICOS
-   ============================================== */
-    this.personal.getPersonalPlan()
-      .subscribe(respuesta => {
-        // pasamos la informacion recibida a la variable
-        this.personalPlan = respuesta["data"][0]
-      })
+    RECIBIENDO DATOS DINAMICOS
+    ============================================== */
+
 
 
     this.descripcion.getDescripcion()
@@ -42,6 +39,7 @@ export class PlanesEstrellasComponent implements OnInit {
 
     this.secondaryPlansJson1 = this.Plans.find(res => res._id == this.Secondary[0].id);
     this.secondaryPlansJson2 = this.Plans.find(res => res._id == this.Secondary[1].id);
+
 
   }
 

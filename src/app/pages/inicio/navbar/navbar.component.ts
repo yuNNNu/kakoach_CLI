@@ -2,46 +2,46 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LogoNavbarService } from '../../../services/inicio/logo-navbar.service';
 import { UserService } from '../../../services/usuario/user.service';
+import { ActivatedRoute } from '@angular/router';
 import { Ruta } from '../../../config';
 import Swal from 'sweetalert2'
 import $ from 'jquery'
+
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+
 })
 export class NavbarComponent implements OnInit {
-  public login: boolean = false;
-  public animated: boolean = false;
-  public listaUsuario: any;
-  public url = Ruta.url;
-  public nombrecli: any;
-  // devuelvo json
-  public imageJson: any;
-  public imagen: any;
-  @Input() public Token;
-  constructor(private logo: LogoNavbarService, private user: UserService) {
-    /*=============================================
-    RECIBIENDO DATOS DINAMICOS
-    ============================================== */
+  constructor(private user: UserService, private _ac: ActivatedRoute) {
+
     /*=========================================
-   OBJETO LISTA USUARIO
+    OBJETO LISTA USUARIO
     ===========================================*/
     this.listaUsuario = {
       mail: null,
       password: null
     }
   }
+  public probando = this._ac.snapshot.data.lg;
+  @Input() Logo;
+
+  public navbarLogo = '4891.png';
+  public login: boolean = false;
+  public animated: boolean = false;
+  public listaUsuario: any;
+  public url = Ruta.url;
+  public nombrecli: any;
+  // devuelvo json
+  public imagen: any;
+  @Input() public Token;
 
   ngOnInit(): void {
-
-    this.logo.getLogo()
-      .subscribe(respuesta => {
-        // pasamos la informacion recibida a la variable
-        this.imageJson = respuesta["data"][0]
+    console.log("🚀 ~ file: navbar.component.ts ~ line 29 ~ NavbarComponent ~ probando", this.probando)
 
 
-      })
 
     if (localStorage.getItem("email")) {
       this.login = true

@@ -11,67 +11,84 @@ import { HistoryComponent } from './pages/history/history.component';
 import { ContactmeComponent } from './pages/contactme/contactme.component';
 import { NuevapassComponent } from './pages/user/nuevapass/nuevapass.component';
 import { TerminosycondicionesComponent } from './pages/terminosycondiciones/terminosycondiciones.component';
-
+import { NavbarComponent } from './pages/inicio/navbar/navbar.component';
 // Resolvers
 import { plansCategoriesResolver } from './resolvers/plansCategoriesResolver';
 import { plansDataResolver } from './resolvers/plansDataResolver';
 import { cardResolver } from './resolvers/cardDataresolver';
 import { secondaryPlanResolver } from './resolvers/secondaryPlanResolver';
-import { plansPersonalResolver } from './resolvers/planPersonalResolver'; 
+import { plansPersonalResolver } from './resolvers/planPersonalResolver';
 import { benefitInicioResolver } from './resolvers/benefitsInicioResolver';
 import { FirstImageSobreMiResolver } from './resolvers/PrincipalImageSobreMiResolver';
 import { socialMediaResolver } from './resolvers/socialMediaResolver';
 import { PrincipalImagePlansResolver } from './resolvers/PrincipalImagePlanesResolver';
 import { termsResolver } from './resolvers/termsResolver';
+import { PrincipalImageInicioResolver } from './resolvers/PrincipalImageInicioResolver';
+import { LogoNavbarResolver } from './resolvers/LogoNavbarResolver';
 
 const routes: Routes = [
-  { path: '', component: InicioComponent,
+
+
+  {
+    path: '', component: InicioComponent,
     resolve: {
-
-     secondaryplans : secondaryPlanResolver,
-     plans : plansDataResolver,
-     benefits : benefitInicioResolver
-   }},
-   { path: 'login/:token', component: InicioComponent,
-    resolve: {
-
-     secondaryplans : secondaryPlanResolver,
-     plans : plansDataResolver,
-     benefits : benefitInicioResolver
-   }},
-  { path: 'planes', component: PlanesComponent,
-   resolve: {
-     categories : plansCategoriesResolver,
-     plans : plansDataResolver,
-     image : PrincipalImagePlansResolver
-   }},
-
-  { path: 'plan/:url', component: PlanComponent,
-   resolve: {
-     plans : plansDataResolver,
-     plan : plansPersonalResolver
-   }
+      principalImage: PrincipalImageInicioResolver,
+      secondaryplans: secondaryPlanResolver,
+      plans: plansDataResolver,
+      benefits: benefitInicioResolver,
+      planPersonal: plansPersonalResolver
+    }
   },
-  { path: 'coleccion', component: ColeccionHistoriaComponent,
+  {
+    path: 'login/:token', component: InicioComponent,
+    resolve: {
+
+      secondaryplans: secondaryPlanResolver,
+      plans: plansDataResolver,
+      benefits: benefitInicioResolver
+    }
+  },
+  {
+    path: 'planes', component: PlanesComponent,
+    resolve: {
+      categories: plansCategoriesResolver,
+      plans: plansDataResolver,
+      image: PrincipalImagePlansResolver
+    }
+  },
+
+  {
+    path: 'plan/:url', component: PlanComponent,
+    resolve: {
+      plans: plansDataResolver,
+      plan: plansPersonalResolver
+    }
+  },
+  {
+    path: 'coleccion', component: ColeccionHistoriaComponent,
     resolve: {
       image: FirstImageSobreMiResolver,
-      cards : cardResolver,
-      social : socialMediaResolver
+      cards: cardResolver,
+      social: socialMediaResolver
 
-    } 
+    }
   },
-  { path: 'historia/:id', component: HistoryComponent,
+  {
+    path: 'historia/:id', component: HistoryComponent,
     resolve: {
-      card : cardResolver
-    }},
+      card: cardResolver
+    }
+  },
   { path: 'crear-usuario', component: CrearusuarioComponent },
   { path: 'recuperar-password', component: RecuperarpassComponent },
   { path: 'contact', component: ContactmeComponent },
-  { path: 'nueva-password/:token', component: NuevapassComponent},
-  { path: 'terminos-y-condiciones', component: TerminosycondicionesComponent,
+  { path: 'nueva-password/:token', component: NuevapassComponent },
+  {
+    path: 'terminos-y-condiciones', component: TerminosycondicionesComponent,
     resolve: {
-      terms : termsResolver
-    }}
+      terms: termsResolver
+    }
+  }
 ];
 
 @NgModule({
