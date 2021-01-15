@@ -15,7 +15,8 @@ import $ from 'jquery'
 
 })
 export class NavbarComponent implements OnInit {
-  constructor(private user: UserService, private _ac: ActivatedRoute) {
+  public navbarLogo = '4891.png';
+  constructor(private user: UserService, private _ac: ActivatedRoute, private _lg: LogoNavbarService) {
 
     /*=========================================
     OBJETO LISTA USUARIO
@@ -24,11 +25,13 @@ export class NavbarComponent implements OnInit {
       mail: null,
       password: null
     }
+    this._lg.getLogo().subscribe(x => {
+      this.navbarLogo = x["data"][0]["imagen"];
+    })
   }
   public probando = this._ac.snapshot.data.lg;
-  @Input() Logo;
 
-  public navbarLogo = '4891.png';
+
   public login: boolean = false;
   public animated: boolean = false;
   public listaUsuario: any;
@@ -39,7 +42,6 @@ export class NavbarComponent implements OnInit {
   @Input() public Token;
 
   ngOnInit(): void {
-    console.log("🚀 ~ file: navbar.component.ts ~ line 29 ~ NavbarComponent ~ probando", this.probando)
 
 
 
