@@ -4,7 +4,7 @@ import { LogoNavbarService } from '../../../services/inicio/logo-navbar.service'
 import { UserService } from '../../../services/usuario/user.service';
 import { Ruta } from '../../../config';
 import Swal from 'sweetalert2'
-
+import $ from 'jquery'
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -24,7 +24,6 @@ export class NavbarComponent implements OnInit {
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
     ============================================== */
-
     /*=========================================
    OBJETO LISTA USUARIO
     ===========================================*/
@@ -40,6 +39,7 @@ export class NavbarComponent implements OnInit {
       .subscribe(respuesta => {
         // pasamos la informacion recibida a la variable
         this.imageJson = respuesta["data"][0]
+
 
       })
 

@@ -7,9 +7,9 @@
                 <!-- GALERIA DE HISTORIAS (400*300, 400*500, 400*400)-->
                 <section class="bg-white py-5">               
                  <app-cards (cardsRendered)="cardsIsRendered($event)"></app-cards>
-                 <app-border-footer *ngIf="cardsRendered"></app-border-footer>
+                 <app-border-footer ></app-border-footer>
                 </section>
-                <app-footer *ngIf="cardsRendered"></app-footer>
+                <app-footer ></app-footer>
             </main>
         </div>
   </div>

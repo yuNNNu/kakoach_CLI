@@ -31,30 +31,30 @@ export class ShortPlansComponent implements OnInit {
 	public defOrMass: boolean = false;
 	public defToActive: boolean = true;
 	public hypToActive: boolean;
-	public planJson:any;
+	public planJson: any;
 	public backdef: boolean = true;
 	public backvol: boolean = true;
-	public iniciodef:boolean = false;
-	public iniciovol:boolean = false;
-	public tempdef:any;
-	public tempvol:any;
-	public type:any;
-	public filteredPlans:any;
+	public iniciodef: boolean = false;
+	public iniciovol: boolean = false;
+	public tempdef: any;
+	public tempvol: any;
+	public type: any;
+	public filteredPlans: any;
 	public url = Ruta.url;
-	public noplans:boolean = false;
+	public noplans: boolean = false;
 
 	constructor(private level: DatalevelsService,
-				private categories : CategoriasService,
-				private plans : PlanService) {
+		private categories: CategoriasService,
+		private plans: PlanService) {
 	}
 
-	ngOnChanges(){
-		if(!this.iniciodef){
+	ngOnChanges() {
+		if (!this.iniciodef) {
 			this.iniciodef = true;
 			this.tempdef = this.getDefCategories();
 		}
 
-		if(!this.iniciovol){
+		if (!this.iniciovol) {
 			this.iniciovol = true;
 			this.tempvol = this.getVolCategories();
 		}
@@ -62,24 +62,24 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-	
+
 		if (!this.inLvl) {
 
 
 			if (!this.defOrMass) {
-				
+
 				this.planJson = this.tempdef;
 
 
 			} else {
-		
+
 				this.planJson = this.tempvol;
 			}
 
 		} else {
 
-				this.planJson = this.plansValue;		
-			
+			this.planJson = this.plansValue;
+
 		}
 
 
@@ -120,7 +120,7 @@ export class ShortPlansComponent implements OnInit {
 			this.toLeft();
 		}
 
-		
+
 	}
 
 	// PRENDIDO O APAGADO DE UN BOTON, SE APAGA EL DE AL LADO
@@ -188,18 +188,18 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	basicBool() {
-		if(!this.returnDeforMassValue()){
+		if (!this.returnDeforMassValue()) {
 			this.type = "def";
-		}else{
+		} else {
 			this.type = "vol";
 		}
 		this.nameNivel = "basico";
 		this.plansValue = this.planFilter(this.type, this.nameNivel);
-		if(this.plansValue.length == 0){
+		if (this.plansValue.length == 0) {
 			Swal.fire(
-		        'Ha ocurrido un error!',
-		        'Por el momento no hay planes en esta categoría, pero pronto sí!, vuelva a intentarlo próximamente.',
-		        'error')
+				'Ha ocurrido un error!',
+				'Por el momento no hay planes en esta categoría, pero pronto sí!, vuelva a intentarlo próximamente.',
+				'info')
 			this.update();
 			this.noplans = true;
 			return;
@@ -212,18 +212,18 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	intermediateBool() {
-		if(!this.returnDeforMassValue()){
+		if (!this.returnDeforMassValue()) {
 			this.type = "def";
-		}else{
+		} else {
 			this.type = "vol";
 		}
 		this.nameNivel = "intermedio"
 		this.plansValue = this.planFilter(this.type, this.nameNivel);
-		if(this.plansValue.length == 0){
+		if (this.plansValue.length == 0) {
 			Swal.fire(
-		        'Ha ocurrido un error!',
-		        'Por el momento no hay planes en esta categoría, pero pronto sí!, vuelva a intentarlo próximamente.',
-		        'error')
+				'Ha ocurrido un error!',
+				'Por el momento no hay planes en esta categoría, pero pronto sí!, vuelva a intentarlo próximamente.',
+				'info')
 			this.update();
 			this.noplans = true;
 			return;
@@ -235,19 +235,19 @@ export class ShortPlansComponent implements OnInit {
 	}
 
 	advancedBool() {
-		if(!this.returnDeforMassValue()){
+		if (!this.returnDeforMassValue()) {
 			this.type = "def";
-		}else{
+		} else {
 			this.type = "vol";
 		}
 		this.nameNivel = "avanzado";
 		this.plansValue = this.planFilter(this.type, this.nameNivel);
-		if(this.plansValue.length == 0){
+		if (this.plansValue.length == 0) {
 			this.noplans = true;
 			Swal.fire(
-		        'Ha ocurrido un error!',
-		        'Por el momento no hay planes en esta categoría, pero pronto sí!, vuelva a intentarlo próximamente.',
-		        'error')
+				'Ha ocurrido un error!',
+				'Por el momento no hay planes en esta categoría, pero pronto sí!, vuelva a intentarlo próximamente.',
+				'info')
 			this.update();
 			return;
 		}
@@ -257,26 +257,26 @@ export class ShortPlansComponent implements OnInit {
 		this.scrollTop();
 	}
 
-	
-	getVolCategories(){
+
+	getVolCategories() {
 		let volCategories = this.Categories.filter(res => res.type == "vol")
 		this.planJson = volCategories;
 		return this.planJson;
 	}
 
-	getDefCategories(){
+	getDefCategories() {
 		let defCategories = this.Categories.filter(res => res.type == "def")
 		this.planJson = defCategories;
 		return this.planJson;
 	}
 
-	planFilter(type, nivel){
+	planFilter(type, nivel) {
 		let filteredPlans = this.Plans.filter(res => res.type == type && res.nivel == nivel);
 		this.plansValue = filteredPlans;
 		return this.plansValue;
 	}
 
-	returnDeforMassValue(){
+	returnDeforMassValue() {
 		return this.defOrMass;
 	}
 
@@ -284,11 +284,11 @@ export class ShortPlansComponent implements OnInit {
 		this.ngOnInit();
 	}
 
-	scrollTop(){
-			let el = document.getElementById("topShow");
-			$("html, body").animate({
-				scrollTop: $(el).offset().top
-			}, 500)
+	scrollTop() {
+		let el = document.getElementById("topShow");
+		$("html, body").animate({
+			scrollTop: $(el).offset().top
+		}, 500)
 	}
 
 
