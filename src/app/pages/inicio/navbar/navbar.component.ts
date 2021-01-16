@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LogoNavbarService } from '../../../services/inicio/logo-navbar.service';
 import { UserService } from '../../../services/usuario/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ruta } from '../../../config';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
+declare var $:any;
 
 @Component({
   selector: 'app-navbar',
@@ -37,11 +39,10 @@ export class NavbarComponent implements OnInit {
   public nombrecli: any;
   // devuelvo json
   public imagen: any;
-  @Input() public Token;
+  @Input() public Animated;
+  @Input() public Login;
 
   ngOnInit(): void {
-
-
 
     if (localStorage.getItem("email")) {
       this.login = true
@@ -49,11 +50,14 @@ export class NavbarComponent implements OnInit {
       this.login = false
     }
 
-    if (this.Token != undefined) {
-      this.logIn(this.Token);
-    }
-
   }
+
+  ngOnChanges(){
+    this.animated = this.Animated;
+    this.login = this.Login;
+    this.ngOnInit();
+  }
+
   // metodo for log ou
   salir() {
     this.animated = true;
@@ -65,40 +69,10 @@ export class NavbarComponent implements OnInit {
     if (window.location.pathname == "/contact" || window.location.pathname == "/crear-usuario") {
       window.location.replace("/");
     }
-
-
-
   }
 
-  logIn(token) {
-    this.user.loginToken(token).subscribe(res => {
-
-      if (res["status"] == 200) {
-        localStorage.setItem("email", res["cliente"]["mail"]);
-        localStorage.setItem("nombre", res["cliente"]["nombre"]);
-        localStorage.setItem("apellido", res["cliente"]["apellido"]);
-        this.animated = true;
-        this.login = true;
-        Swal.fire(
-          'Bienvenido a Ka Koach!',
-          'Cuenta Validada!',
-          'success')
-      } else if (res["status"] == 400) {
-        Swal.fire(
-          'No ha sido posible logearse!',
-          'El link ha caducado.',
-          'error')
-      } else {
-        Swal.fire(
-          'No ha sido posible logearse!',
-          'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
-          'error')
-      }
-    })
-  }
 
   onSubmit(f: NgForm) {
-
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
@@ -112,10 +86,7 @@ export class NavbarComponent implements OnInit {
               window.location.replace("/");
             }
             localStorage.setItem("email", this.listaUsuario["mail"])
-
-
-
-
+            
           } else {
             Swal.fire(
               'No ha sido posible logearse!',
