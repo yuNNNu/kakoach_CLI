@@ -32,11 +32,9 @@ const routes: Routes = [
   {
     path: '', component: InicioComponent,
     resolve: {
-      principalImage: PrincipalImageInicioResolver,
       secondaryplans: secondaryPlanResolver,
       plans: plansDataResolver,
-      benefits: benefitInicioResolver,
-      planPersonal: plansPersonalResolver
+      benefits: benefitInicioResolver
     }
   },
   {

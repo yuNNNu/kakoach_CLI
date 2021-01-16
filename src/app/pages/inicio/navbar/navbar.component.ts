@@ -5,8 +5,6 @@ import { UserService } from '../../../services/usuario/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ruta } from '../../../config';
 import Swal from 'sweetalert2'
-import $ from 'jquery'
-
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +13,7 @@ import $ from 'jquery'
 
 })
 export class NavbarComponent implements OnInit {
-  public navbarLogo = '4891.png';
+  public navbarLogo:any;
   constructor(private user: UserService, private _ac: ActivatedRoute, private _lg: LogoNavbarService) {
 
     /*=========================================
@@ -76,7 +74,6 @@ export class NavbarComponent implements OnInit {
     this.user.loginToken(token).subscribe(res => {
 
       if (res["status"] == 200) {
-        // if ()
         localStorage.setItem("email", res["cliente"]["mail"]);
         localStorage.setItem("nombre", res["cliente"]["nombre"]);
         localStorage.setItem("apellido", res["cliente"]["apellido"]);

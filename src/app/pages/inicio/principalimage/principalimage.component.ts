@@ -13,6 +13,7 @@ export class PrincipalimageComponent implements OnInit {
   public firstImageJson: any;
   public instagram: any;
   public url = Ruta.url;
+  public imagenData:any;
 
   constructor(private firstImage: FirstimageService,
     private social: SocialMediaService) {
@@ -24,10 +25,13 @@ export class PrincipalimageComponent implements OnInit {
       .subscribe(res => {
         this.instagram = res["data"][0];
       })
+
+    this.firstImage.getFirstImage().subscribe(res => {
+      this.imagenData = res["data"][0]
+    })
   }
 
   ngOnInit(): void {
-
   }
 
 }

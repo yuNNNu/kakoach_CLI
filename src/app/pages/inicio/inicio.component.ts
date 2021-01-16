@@ -14,8 +14,6 @@ export class InicioComponent implements OnInit {
   public secondary = this._ac.snapshot.data.secondaryplans.data;
   public benefits = this._ac.snapshot.data.benefits.data;
   public token = this._ac.snapshot.params.token;
-  public imagePincipal = this._ac.snapshot.data.principalImage.data[0];
-  public planPersonal = this._ac.snapshot.data.planPersonal.data[0];
 
   ngOnInit(): void {
 
