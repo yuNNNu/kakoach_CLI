@@ -63,7 +63,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'coleccion', component: ColeccionHistoriaComponent,
+    path: 'sobremi', component: ColeccionHistoriaComponent,
     resolve: {
       image: FirstImageSobreMiResolver,
       cards: cardResolver,
@@ -72,15 +72,15 @@ const routes: Routes = [
     }
   },
   {
-    path: 'historia/:id', component: HistoryComponent,
+    path: 'sobremi/:id', component: HistoryComponent,
     resolve: {
       card: cardResolver
     }
   },
   { path: 'crear-usuario', component: CrearusuarioComponent },
-  { path: 'recuperar-password', component: RecuperarpassComponent },
-  { path: 'contact', component: ContactmeComponent },
-  { path: 'nueva-password/:token', component: NuevapassComponent },
+  { path: 'recuperar-contrasena', component: RecuperarpassComponent },
+  { path: 'contactame', component: ContactmeComponent },
+  { path: 'nueva-contrasena/:token', component: NuevapassComponent },
   {
     path: 'terminos-y-condiciones', component: TerminosycondicionesComponent,
     resolve: {
