@@ -5,8 +5,8 @@ import { UserService } from '../../../services/usuario/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Ruta } from '../../../config';
 import Swal from 'sweetalert2';
-
-declare var $:any;
+import notie from 'notie'
+declare var $: any;
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +15,7 @@ declare var $:any;
 
 })
 export class NavbarComponent implements OnInit {
-  public navbarLogo:any;
+  public navbarLogo: any;
   constructor(private user: UserService, private _ac: ActivatedRoute, private _lg: LogoNavbarService) {
 
     /*=========================================
@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     this.animated = this.Animated;
     this.login = this.Login;
     this.ngOnInit();
@@ -66,8 +66,8 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem("login");
     localStorage.clear();
 
-    if (window.location.pathname == "/contact" || window.location.pathname == "/crear-usuario") {
-      window.location.replace("/");
+    if (window.location.pathname == "/contactame") {
+      window.location.href = "/";
     }
   }
 
@@ -76,17 +76,25 @@ export class NavbarComponent implements OnInit {
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
+        console.log("🚀 ~ file: navbar.component.ts ~ line 79 ~ NavbarComponent ~ onSubmit ~ res", res["status"])
+        if (res["status"] == 200) {
+          // Swal.fire(
+          //   "Bienvenido",
+          //   "",
+          //   'success')
+          notie.alert(4, 'Bienvenido', 1)
+        }
         let usr = res;
-
         if (usr["mensaje"] == "ok") {
           if (usr["verified"] == true) {
             this.animated = true;
             this.login = true;
-            if (window.location.pathname == "/contact" || window.location.pathname == "/crear-usuario") {
-              window.location.replace("/");
+            if (window.location.pathname == "/contactame") {
+              window.location.href = "/";
+
             }
             localStorage.setItem("email", this.listaUsuario["mail"])
-            
+
           } else {
             Swal.fire(
               'No ha sido posible logearse!',

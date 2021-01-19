@@ -23,6 +23,7 @@
     "@angular/router": "~10.1.4",
     "cors": "^2.8.5",
     "jquery": "^3.5.1",
+    "ng-notie": "0.0.1",
     "ng-recaptcha": "^7.0.1",
     "rxjs": "~6.6.0",
     "socket.io": "^3.0.4",
