@@ -82,7 +82,7 @@ export class NavbarComponent implements OnInit {
           //   "Bienvenido",
           //   "",
           //   'success')
-          notie.alert(4, 'Bienvenido', 1)
+          notie.alert(4, `Bienvenido!, ${res["nombre"]}`, 2)
         }
         let usr = res;
         if (usr["mensaje"] == "ok") {
@@ -102,7 +102,6 @@ export class NavbarComponent implements OnInit {
               'error')
 
             this.login = false;
-
 
           }
 

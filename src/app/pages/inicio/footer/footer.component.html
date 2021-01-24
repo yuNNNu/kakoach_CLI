@@ -8,11 +8,11 @@
                     <div class="row">
                         <!-- COLUMNA 1 -->
                         <!-- recorremos x item -->
-                        <div class="col-lg-4 col-md-6 mb-5 mb-lg-0" style="word-wrap: break-word;" *ngFor="let item of datosFooter">
+                        <div class="col-lg-4 col-md-6 mb-5" style="word-wrap: break-word;" *ngFor="let item of datosFooter">
 
-                            <div class="text-uppercase-expanded text-xs mb-4">{{item.titulo}}</div>
+                            <div class="text-uppercase-expanded text-xs mb-2">{{item.titulo}}</div>
                             <ul class="list-unstyled mb-0" *ngFor="let des of item.descripcion" >
-                                <li class="mb-2"><a href="javascript:void(0);">{{des}}</a></li>
+                                <li class="mb-2"><a href="{{des.link}}" target="_blank">{{des.descripcion}}</a></li>
                             </ul>
                             
                         </div>
