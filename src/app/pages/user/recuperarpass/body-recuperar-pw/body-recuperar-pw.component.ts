@@ -45,8 +45,8 @@ export class BodyRecuperarPwComponent implements OnInit {
       var esValido = expReg.test(this.mail);
       if (!esValido) {
         Swal.fire(
-          'Formato de email inválido!',
-          'Intente nuevamente.',
+          'Ha ocurrido un problema!',
+          'Formato de email inválido, Intente nuevamente.',
           'error'
         )
       } else {
@@ -54,8 +54,8 @@ export class BodyRecuperarPwComponent implements OnInit {
 
           if (res["status"] == 200) {
             Swal.fire({
-              title: 'Mail enviado con éxito!',
-              text: 'Se ha enviado un link con la recuperación de contraseña al mail ingresado.',
+              title: 'Todo ha salido bien!',
+              text: 'Mail enviado con éxito, se ha enviado un link con la recuperación de contraseña al mail ingresado.',
               icon: 'success',
               confirmButtonText: 'OK!'
             }).then((result) => {

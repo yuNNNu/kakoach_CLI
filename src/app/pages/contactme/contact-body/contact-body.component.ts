@@ -114,7 +114,7 @@ export class ContactBodyComponent implements OnInit {
                   if (res["status"] !== 200) {
 
                     Swal.fire(
-                      'Error al enviar el correo!',
+                      'Ha ocurrido un problema!',
                       'Ha existido un error del servidor, no ha sido posible enviar el correo.',
                       'error'
                     )
@@ -123,7 +123,7 @@ export class ContactBodyComponent implements OnInit {
 
                     Swal.fire({
 
-                      title: 'Mensaje enviado',
+                      title: 'Todo ha salido bien!',
                       text: 'Su mensaje será respondido lo antes posible, gracias por la espera!.',
                       icon: 'success',
                       confirmButtonText: 'OK!'
@@ -136,8 +136,8 @@ export class ContactBodyComponent implements OnInit {
             } else {
 
               Swal.fire(
-                'Mensaje no enviado',
-                'Acción cancelada!.',
+                'Ha ocurrido un problema!',
+                'Mensaje no enviado, acción cancelada!.',
                 'error'
               )
 

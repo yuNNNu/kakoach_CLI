@@ -44,8 +44,8 @@ export class NuevapassComponent implements OnInit {
 
      if(this.password !== this.password2){
         Swal.fire(
-            'Contraseñas no coinciden!',
-            'Intente nuevamente.',
+            'Ha ocurrido un problema!',
+            'Contraseñas no coinciden, Intente nuevamente.',
             'error'
           )
         this.password = "";
@@ -54,7 +54,8 @@ export class NuevapassComponent implements OnInit {
         }else{
         this.user.updatePass(this.token, this.password).subscribe( res => {
         Swal.fire({
-                    title: 'Cambio de contraseña realizada con éxito!',
+                    title: 'Todo ha salido bien!',
+                    text: 'Cambio de contraseña realizada con éxito, porfavor logearse.',
                     icon: 'success',
                     confirmButtonText: 'OK!'
                   }).then((result) => {

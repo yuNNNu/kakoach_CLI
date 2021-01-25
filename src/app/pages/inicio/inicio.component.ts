@@ -40,18 +40,18 @@ export class InicioComponent implements OnInit {
       this.animated = true;
       this.login = true;
       Swal.fire(
-        'Bienvenido a Ka Koach!',
-        'Cuenta Validada!',
+        'Todo ha salido bien!',
+        'Bienvenido a Ka Koach!, cuenta validada!.',
         'success')
     } else if (res["status"] == 400) {
       Swal.fire(
-        'No ha sido posible logearse!',
-        'El link ha caducado.',
+        'Ha ocurrido un problema!',
+        'No ha sido posible logearse, el link ha caducado.',
         'error')
     } else {
       Swal.fire(
-        'No ha sido posible logearse!',
-        'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
+        'Ha ocurrido un problema!',
+        'No ha sido posible logearse, antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
         'error')
       }
     })

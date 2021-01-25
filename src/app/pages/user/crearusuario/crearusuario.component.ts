@@ -91,8 +91,8 @@ export class CrearusuarioComponent implements OnInit {
       var esValido = expReg.test(this.listaUsuario["mail"]);
       if (!esValido) {
         Swal.fire(
-          'Formato de email inválido!',
-          'Intente nuevamente.',
+          'Ha ocurrido un problema!',
+          'Formato de email inválido, Intente nuevamente.',
           'error'
         )
       }
@@ -105,14 +105,14 @@ export class CrearusuarioComponent implements OnInit {
                 if (res["status"] == 400) {
 
                   Swal.fire(
-                    'Error',
+                    'Ha ocurrido un problema!',
                     res["mensaje"],
                     'error'
                   )
                 } else if (res["status"] == 500) {
 
                   Swal.fire(
-                    'Error',
+                    'Ha ocurrido un problema!',
                     res["mensaje"],
                     'error'
                   )
@@ -120,7 +120,7 @@ export class CrearusuarioComponent implements OnInit {
                 } else {
 
                   Swal.fire({
-                    title: 'Cuenta creada con éxito',
+                    title: 'Todo ha salido bien!',
                     text: res["mensaje"],
                     icon: 'success',
                     confirmButtonText: 'OK!'
@@ -135,8 +135,8 @@ export class CrearusuarioComponent implements OnInit {
 
           if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
             Swal.fire(
-              'Contraseñas no coinciden!',
-              'Intente nuevamente.',
+              'Ha ocurrido un problema!',
+              'Las contraseñas no coincodem, intente nuevamente.',
               'error'
             )
             this.listaUsuario["password"] = "";

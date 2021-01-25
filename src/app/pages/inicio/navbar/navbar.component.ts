@@ -97,7 +97,7 @@ export class NavbarComponent implements OnInit {
 
           } else {
             Swal.fire(
-              'No ha sido posible logearse!',
+              'Ha ocurrido un problema!',
               'Antes de ingresar, primero necesita validar su usuario con el link enviado a su correo.',
               'error')
 
@@ -107,7 +107,7 @@ export class NavbarComponent implements OnInit {
 
         } else {
           Swal.fire(
-            'No ha sido posible logearse!',
+            'Ha ocurrido un problema!',
             usr["mensaje"],
             'error')
 
