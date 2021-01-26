@@ -9,17 +9,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./nuevapass.component.css']
 })
 export class NuevapassComponent implements OnInit {
-  public password:any;
-  public password2:any;
-  constructor(private user : UserService,
-              private _ac : ActivatedRoute) {
+  public password: any;
+  public password2: any;
+  constructor(private user: UserService,
+    private _ac: ActivatedRoute) {
   }
 
   public token = this._ac.snapshot.params["token"];
 
   ngOnInit(): void {
 
-    
+
     (function () {
       'use strict';
       window.addEventListener('load', function () {
@@ -40,30 +40,44 @@ export class NuevapassComponent implements OnInit {
 
   }
 
-  onSubmit(f: NgForm){
+  onSubmit(f: NgForm) {
 
-     if(this.password !== this.password2){
-        Swal.fire(
-            'Ha ocurrido un problema!',
-            'Contraseñas no coinciden, Intente nuevamente.',
-            'error'
-          )
-        this.password = "";
-        this.password2 = "";
-        return;
-        }else{
-        this.user.updatePass(this.token, this.password).subscribe( res => {
-        Swal.fire({
-                    title: 'Todo ha salido bien!',
-                    text: 'Cambio de contraseña realizada con éxito, porfavor logearse.',
-                    icon: 'success',
-                    confirmButtonText: 'OK!'
-                  }).then((result) => {
-                    window.location.href = "/";
-                  })
+    if (this.password !== this.password2) {
+      Swal.fire(
+        'Ha ocurrido un problema!',
+        'Contraseñas no coinciden, Intente nuevamente.',
+        'error'
+      )
+      this.password = "";
+      this.password2 = "";
+      return;
+    } else {
+      this.user.updatePass(this.token, this.password).subscribe(res => {
+        if (res["status"] == 400) {
 
-    })
-      }
+          console.log("🚀 ~ file: nuevapass.component.ts ~ line 56 ~ NuevapassComponent ~ this.user.updatePass ~ res", res)
+          Swal.fire({
+            title: 'Ha ocurrido un problema!',
+            text: res["mensaje"],
+            icon: 'error',
+            confirmButtonText: 'OK!'
+          }).then((result) => {
+            window.location.href = "/";
+          })
+        } else {
+
+          Swal.fire({
+            title: 'Todo ha salido bien!',
+            text: 'Cambio de contraseña realizada con éxito, porfavor logearse.',
+            icon: 'success',
+            confirmButtonText: 'OK!'
+          }).then((result) => {
+            window.location.href = "/";
+          })
+        }
+
+      })
+    }
   }
 
 }
