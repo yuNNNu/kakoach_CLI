@@ -97,7 +97,13 @@ export class ContactBodyComponent implements OnInit {
       if (this.captcha) {
 
         var esValido = expReg.test(this.datosContactMe["mail"]);
-        if (!esValido) { return }
+        if (!esValido) { 
+           Swal.fire(
+          'Ha ocurrido un problema!',
+          'Formato de email inválido, Intente nuevamente.',
+          'error'
+          )
+        }
         else {
           Swal.fire({
             title: '¿Está seguro de realizar esta acción?',
@@ -149,7 +155,7 @@ export class ContactBodyComponent implements OnInit {
       } else {
         Swal.fire(
           'Ha ocurrido un problema!',
-          'Antes de registrarse, necesita validar el captcha solicitado.',
+          'Antes de enviar el mensaje, necesita validar el captcha solicitado.',
           'error'
         )
       }

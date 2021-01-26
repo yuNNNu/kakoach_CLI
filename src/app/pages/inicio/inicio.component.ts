@@ -41,7 +41,7 @@ export class InicioComponent implements OnInit {
       this.login = true;
       Swal.fire(
         'Todo ha salido bien!',
-        'Bienvenido a Ka Koach!, cuenta validada!.',
+        'Bienvenido a Ka Koach!, su cuenta ha sido validada correctamente.',
         'success')
     } else if (res["status"] == 400) {
       Swal.fire(

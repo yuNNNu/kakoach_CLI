@@ -136,7 +136,7 @@ export class CrearusuarioComponent implements OnInit {
           if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
             Swal.fire(
               'Ha ocurrido un problema!',
-              'Las contraseñas no coincodem, intente nuevamente.',
+              'Las contraseñas no coinciden, intente nuevamente.',
               'error'
             )
             this.listaUsuario["password"] = "";
