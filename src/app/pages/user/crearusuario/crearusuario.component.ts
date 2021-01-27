@@ -81,8 +81,6 @@ export class CrearusuarioComponent implements OnInit {
 
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-
-
     if (this.listaUsuario["nombre"] == "" || this.listaUsuario["apellido"] == "" || this.listaUsuario["mail"] == "" || this.listaUsuario["password"] == "" || this.listaUsuario["password1"] == "") {
 
       return
