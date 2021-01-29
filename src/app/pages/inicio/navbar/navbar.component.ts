@@ -80,7 +80,6 @@ export class NavbarComponent implements OnInit {
 
     this.user.loginCliente(this.listaUsuario)
       .subscribe(res => {
-        console.log("🚀 ~ file: navbar.component.ts ~ line 79 ~ NavbarComponent ~ onSubmit ~ res", res["status"])
         if (res["status"] == 200) {
           // Swal.fire(
           //   "Bienvenido",

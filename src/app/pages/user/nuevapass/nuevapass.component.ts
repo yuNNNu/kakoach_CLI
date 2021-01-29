@@ -55,7 +55,6 @@ export class NuevapassComponent implements OnInit {
       this.user.updatePass(this.token, this.password).subscribe(res => {
         if (res["status"] == 400) {
 
-          console.log("🚀 ~ file: nuevapass.component.ts ~ line 56 ~ NuevapassComponent ~ this.user.updatePass ~ res", res)
           Swal.fire({
             title: 'Ha ocurrido un problema!',
             text: res["mensaje"],

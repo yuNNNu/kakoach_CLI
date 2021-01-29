@@ -20,7 +20,7 @@ export class PlanesEstrellasComponent implements OnInit {
   public secondaryPlansJson2: any;
   public tituloDesc: any;
   public descripcionDesc: any;
-  public principal:any;
+  public principal: any;
 
   constructor(private personal: PersnalPlanService, private descripcion: DescripcionService) {
     /*=============================================
@@ -28,7 +28,6 @@ export class PlanesEstrellasComponent implements OnInit {
     ============================================== */
     this.descripcion.getDescripcion()
       .subscribe(respuesta => {
-        console.log("respuesta", respuesta);
         this.tituloDesc = respuesta["data"][0].titulo;
         this.descripcionDesc = respuesta["data"][0].descripcion;
       })
@@ -37,7 +36,7 @@ export class PlanesEstrellasComponent implements OnInit {
       this.principal = respuesta["data"][0]
     })
 
-   }
+  }
 
   ngOnInit(): void {
     this.secondaryPlansJson1 = this.Plans.find(res => res._id == this.Secondary[0].id);
