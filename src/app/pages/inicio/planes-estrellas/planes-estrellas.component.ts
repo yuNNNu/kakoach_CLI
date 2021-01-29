@@ -28,8 +28,9 @@ export class PlanesEstrellasComponent implements OnInit {
     ============================================== */
     this.descripcion.getDescripcion()
       .subscribe(respuesta => {
-        this.tituloDesc = respuesta["data"][0];
-        this.descripcionDesc = respuesta["data"][0];
+        console.log("respuesta", respuesta);
+        this.tituloDesc = respuesta["data"][0].titulo;
+        this.descripcionDesc = respuesta["data"][0].descripcion;
       })
 
     this.personal.getPersonalPlan().subscribe(respuesta => {
