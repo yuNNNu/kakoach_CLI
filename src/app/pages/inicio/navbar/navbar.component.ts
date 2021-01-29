@@ -71,6 +71,10 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
 
   onSubmit(f: NgForm) {
 
@@ -82,7 +86,8 @@ export class NavbarComponent implements OnInit {
           //   "Bienvenido",
           //   "",
           //   'success')
-          notie.alert(4, `Bienvenido!, ${res["nombre"]}`, 2)
+          let nombre = this.capitalizeFirstLetter(res["nombre"]);
+          notie.alert(4, `Bienvenido!, ${nombre}`, 2)
         }
         let usr = res;
         if (usr["mensaje"] == "ok") {
