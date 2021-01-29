@@ -86,7 +86,7 @@ export class ContactBodyComponent implements OnInit {
   onSubmit(f: NgForm) {
 
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-
+    var expRegString = /[^A-Za-z]+/g
 
 
     if (this.datosContactMe["nombre"] == "" || this.datosContactMe["apellido"] == "" || this.datosContactMe["mail"] == "" || this.datosContactMe["menaje"] == "") {
@@ -94,71 +94,81 @@ export class ContactBodyComponent implements OnInit {
       return
 
     } else {
-      if (this.captcha) {
+       var validName = expRegString.test(this.datosContactMe["nombre"]);
+       var validLastName = expRegString.test(this.datosContactMe["apellido"]);
+       if(!validName && !validLastName){
+          if (this.captcha) {
 
-        var esValido = expReg.test(this.datosContactMe["mail"]);
-        if (!esValido) { 
-           Swal.fire(
-          'Ha ocurrido un problema!',
-          'Formato de email inválido, Intente nuevamente.',
-          'error'
-          )
-        }
-        else {
-          Swal.fire({
-            title: '¿Está seguro de realizar esta acción?',
-            text: 'Si no lo está... Puede cancelar esta acción!, asegúrese que el correo sea válido',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Si',
-            cancelButtonText: 'No'
-          }).then((result) => {
-
-            if (result.isConfirmed) {
-              this._contact.contactMe(this.datosContactMe)
-                .subscribe(res => {
-                  if (res["status"] !== 200) {
-
-                    Swal.fire(
-                      'Ha ocurrido un problema!',
-                      'Ha existido un error del servidor, no ha sido posible enviar el correo.',
-                      'error'
-                    )
-
-                  } else {
-
-                    Swal.fire({
-
-                      title: 'Todo ha salido bien!',
-                      text: 'Su mensaje será respondido lo antes posible, gracias por la espera!.',
-                      icon: 'success',
-                      confirmButtonText: 'OK!'
-                    }).then((result) => {
-                      window.location.href = "/";
-                    })
-
-                  }
-                })
-            } else {
-
-              Swal.fire(
-                'Ha ocurrido un problema!',
-                'Mensaje no enviado, acción cancelada!.',
-                'error'
+            var esValido = expReg.test(this.datosContactMe["mail"]);
+            if (!esValido) { 
+               Swal.fire(
+              'Ha ocurrido un problema!',
+              'Formato de email inválido, Intente nuevamente.',
+              'error'
               )
+            }
+            else {
+              Swal.fire({
+                title: '¿Está seguro de realizar esta acción?',
+                text: 'Si no lo está... Puede cancelar esta acción!, asegúrese que el correo sea válido',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Si',
+                cancelButtonText: 'No'
+              }).then((result) => {
+
+                if (result.isConfirmed) {
+                  this._contact.contactMe(this.datosContactMe)
+                    .subscribe(res => {
+                      if (res["status"] !== 200) {
+
+                        Swal.fire(
+                          'Ha ocurrido un problema!',
+                          'Ha existido un error del servidor, no ha sido posible enviar el correo.',
+                          'error'
+                        )
+
+                      } else {
+
+                        Swal.fire({
+
+                          title: 'Todo ha salido bien!',
+                          text: 'Su mensaje será respondido lo antes posible, gracias por la espera!.',
+                          icon: 'success',
+                          confirmButtonText: 'OK!'
+                        }).then((result) => {
+                          window.location.href = "/";
+                        })
+
+                      }
+                    })
+                } else {
+
+                  Swal.fire(
+                    'Ha ocurrido un problema!',
+                    'Mensaje no enviado, acción cancelada!.',
+                    'error'
+                  )
+
+                }
+
+              })
 
             }
-
-          })
-
+          } else {
+            Swal.fire(
+              'Ha ocurrido un problema!',
+              'Antes de enviar el mensaje, necesita validar el captcha solicitado.',
+              'error'
+            )
+          }
+        }else{
+            Swal.fire(
+            'Ha ocurrido un problema!',
+            'Los campos del nombre no deben contener números ni signos, Intente nuevamente.',
+            'error'
+          )
         }
-      } else {
-        Swal.fire(
-          'Ha ocurrido un problema!',
-          'Antes de enviar el mensaje, necesita validar el captcha solicitado.',
-          'error'
-        )
-      }
     }
 
 

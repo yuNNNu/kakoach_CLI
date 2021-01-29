@@ -29,6 +29,7 @@ export class CrearusuarioComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
     /*=============================================
     VALIDAR FORMULARIO
@@ -80,6 +81,7 @@ export class CrearusuarioComponent implements OnInit {
   onSubmit(f: NgForm) {
 
     var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    var expRegString = /[^A-Za-z]+/g
 
     if (this.listaUsuario["nombre"] == "" || this.listaUsuario["apellido"] == "" || this.listaUsuario["mail"] == "" || this.listaUsuario["password"] == "" || this.listaUsuario["password1"] == "") {
 
@@ -87,70 +89,81 @@ export class CrearusuarioComponent implements OnInit {
 
     } else {
       var esValido = expReg.test(this.listaUsuario["mail"]);
-      if (!esValido) {
-        Swal.fire(
-          'Ha ocurrido un problema!',
-          'Formato de email inválido, Intente nuevamente.',
-          'error'
-        )
-      }
-      else {
-        if (this.captcha) {
+      var validName = expRegString.test(this.listaUsuario["nombre"]);
+      var validLastName = expRegString.test(this.listaUsuario["apellido"]);
 
-          if (this.listaUsuario["password"] === this.listaUsuario["password1"]) {
-            this.user.create(this.listaUsuario)
-              .subscribe(res => {
-                if (res["status"] == 400) {
+      if(!validName && !validLastName){
 
-                  Swal.fire(
-                    'Ha ocurrido un problema!',
-                    res["mensaje"],
-                    'error'
-                  )
-                } else if (res["status"] == 500) {
-
-                  Swal.fire(
-                    'Ha ocurrido un problema!',
-                    res["mensaje"],
-                    'error'
-                  )
-
-                } else {
-
-                  Swal.fire({
-                    title: 'Todo ha salido bien!',
-                    text: res["mensaje"],
-                    icon: 'success',
-                    confirmButtonText: 'OK!'
-                  }).then((result) => {
-                    window.location.href = "/";
-                  })
-                }
-              })
-
-
-          }
-
-          if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
-            Swal.fire(
-              'Ha ocurrido un problema!',
-              'Las contraseñas no coinciden, intente nuevamente.',
-              'error'
-            )
-            this.listaUsuario["password"] = "";
-            this.listaUsuario["password1"] = "";
-            return
-
-          }
-        } else {
+        if (!esValido) {
           Swal.fire(
             'Ha ocurrido un problema!',
-            'Antes de registrarse, necesita validar el captcha solicitado.',
+            'Formato de email inválido, Intente nuevamente.',
             'error'
           )
         }
-      }
+        else {
+          if (this.captcha) {
 
+            if (this.listaUsuario["password"] === this.listaUsuario["password1"]) {
+              this.user.create(this.listaUsuario)
+                .subscribe(res => {
+                  if (res["status"] == 400) {
+
+                    Swal.fire(
+                      'Ha ocurrido un problema!',
+                      res["mensaje"],
+                      'error'
+                    )
+                  } else if (res["status"] == 500) {
+
+                    Swal.fire(
+                      'Ha ocurrido un problema!',
+                      res["mensaje"],
+                      'error'
+                    )
+
+                  } else {
+
+                    Swal.fire({
+                      title: 'Todo ha salido bien!',
+                      text: res["mensaje"],
+                      icon: 'success',
+                      confirmButtonText: 'OK!'
+                    }).then((result) => {
+                      window.location.href = "/";
+                    })
+                  }
+                })
+
+
+            }
+
+            if (this.listaUsuario["password"] !== this.listaUsuario["password1"]) {
+              Swal.fire(
+                'Ha ocurrido un problema!',
+                'Las contraseñas no coinciden, intente nuevamente.',
+                'error'
+              )
+              this.listaUsuario["password"] = "";
+              this.listaUsuario["password1"] = "";
+              return
+
+            }
+          } else {
+            Swal.fire(
+              'Ha ocurrido un problema!',
+              'Antes de registrarse, necesita validar el captcha solicitado.',
+              'error'
+            )
+          }
+        }
+      }else{
+        Swal.fire(
+            'Ha ocurrido un problema!',
+            'Los campos del nombre no deben contener números ni signos, Intente nuevamente.',
+            'error'
+          )
+      }
 
     }
 
